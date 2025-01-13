@@ -45,21 +45,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2807033552888588054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e519a37f0cc22b408c5e2ac3c0cc807, type: 3}
+  m_Script: {fileID: 11500000, guid: 90e944f47da36a44390e2c1986db00eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 3296436029039494796}
+  controller: {fileID: 0}
   ignoreMask:
     serializedVersion: 2
-    m_Bits: 8
-  HP: 3
-  speed: 4
+    m_Bits: 0
+  speed: 5
   sprintMod: 3
   jumpMax: 2
   jumpSpeed: 12
   gravity: 28
   shootDamage: 1
-  shootDist: 3
+  shootDistance: 3
+  HP: 3
 --- !u!143 &3296436029039494796
 CharacterController:
   m_ObjectHideFlags: 0
@@ -181,10 +181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9175097341629718473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe4bd197704bfcf478948c5d23816bb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 11bc881ba66a73e408fec26ef2ee750a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sens: 300
+  sensitivity: 200
   lockVertMin: -90
   lockVertMax: 90
   invertY: 0

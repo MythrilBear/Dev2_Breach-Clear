@@ -1,7 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] CharacterController controller;
 
@@ -21,6 +22,8 @@ public class playerController : MonoBehaviour
 
     [SerializeField] int shootDistance;
 
+    [SerializeField] int HP;
+
     Vector3 moveDir;
 
     Vector3 playerVelocity;
@@ -29,10 +32,13 @@ public class playerController : MonoBehaviour
 
     int jumpCount;
 
+    int HPOriginal;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        HPOriginal = HP;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -65,7 +71,7 @@ public class playerController : MonoBehaviour
 
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
-        
+
         if (Input.GetButtonDown("Shoot"))
         {
             shoot();
@@ -110,5 +116,31 @@ public class playerController : MonoBehaviour
                 dmg.takeDamage(shootDamage);
             }
         }
+    }
+
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        updatePlayerUI();
+
+        StartCoroutine(flashDamagePanel());
+
+        if (HP <= 0)
+        {
+            GameManager.instance.youLose();
+        }
+    }
+
+    IEnumerator flashDamagePanel()
+    {
+        GameManager.instance.damagePanel.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        GameManager.instance.damagePanel.SetActive(false);
+    }
+
+    void updatePlayerUI()
+    {
+        GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
 
+    [SerializeField] TMP_Text goalCountText;
     public Image PlayerHPBar;
     public GameObject damagePanel;
 
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         goalCount += amount;
+        goalCountText.text = goalCount.ToString("F0");
 
         // you win
         if (goalCount <= 0)

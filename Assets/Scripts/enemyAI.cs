@@ -17,10 +17,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
 
     float angleToPlayer;
+    float scanDirection;
+    float counter;
 
     bool isShooting;
 
     bool playerInRange;
+
+    bool isRotatingLeft;
 
     Color colorOriginal;
 
@@ -32,6 +36,9 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         colorOriginal = model.material.color;
         GameManager.instance.updateGameGoal(1);
+        scanDirection = transform.rotation.eulerAngles.y;
+        isRotatingLeft = true;
+        counter = 2;
     }
 
     // Update is called once per frame
@@ -44,7 +51,15 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (playerInRange && canSeePlayer())
         {
+            scanDirection = transform.rotation.eulerAngles.y;
+        }
+        else { lookForTargets(); }
 
+        counter -= Time.deltaTime;
+        if (counter <= 0)
+        {
+            isRotatingLeft = !isRotatingLeft;
+            counter = 2;
         }
     }
 
@@ -92,6 +107,29 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerInRange = false;
         }
+    }
+
+    void lookForTargets()
+    {
+        
+        if (isRotatingLeft)
+        {
+            lookLeft();
+        }
+        else
+        {
+            lookRight();
+        }
+    }
+
+    void lookLeft()
+    {
+        transform.Rotate(0, -45 * Time.deltaTime, 0);
+    }
+
+    void lookRight()
+    {
+        transform.Rotate(0, 45 * Time.deltaTime, 0);
     }
 
     void faceTarget()

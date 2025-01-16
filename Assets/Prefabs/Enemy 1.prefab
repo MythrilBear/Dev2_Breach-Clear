@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6696368003606203443}
+  - component: {fileID: 5220354956741794130}
   - component: {fileID: 7967327473720043306}
   - component: {fileID: 8856473079020397493}
   - component: {fileID: 2211539315034677697}
@@ -164,6 +165,29 @@ Transform:
   - {fileID: 3481212270101467129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5220354956741794130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908802744481406258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654d3e8c482ea9643be37e77759740ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 7967327473720043306}
+  anim: {fileID: 8856473079020397493}
+  model: {fileID: 3673346816058440125}
+  shootPosition: {fileID: 6319629596299265121}
+  headPos: {fileID: 5202586658752945375}
+  HP: 3
+  faceTargetSpeed: 8
+  FOV: 60
+  animSpeedTrans: 8
+  bullet: {fileID: 4043548912659017893, guid: 5a6f6e7d9df86694883156225eac481b, type: 3}
+  shootRate: 0.5
 --- !u!195 &7967327473720043306
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -196,7 +220,7 @@ Animator:
   m_GameObject: {fileID: 908802744481406258}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f4209d51d1ad0434299f2d498ee076ba, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4442e8ee3764df64296b4766338068c1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -250,7 +274,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 45
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1228575547114929636
 GameObject:

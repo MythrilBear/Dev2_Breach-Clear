@@ -134,7 +134,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, playerDirection.y, playerDirection.z));
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDirection.x, 0, playerDirection.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
@@ -160,8 +160,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator shoot()
     {
+
         isShooting = true;
-        Instantiate(bullet, shootPosition.position, transform.rotation);
+        Instantiate(bullet, shootPosition.position, Quaternion.LookRotation(playerDirection.normalized));
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;

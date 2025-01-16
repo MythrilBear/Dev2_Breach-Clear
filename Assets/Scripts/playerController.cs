@@ -8,10 +8,6 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] LayerMask ignoreMask;
 
-    [SerializeField] Transform shootPosition;
-    [SerializeField] GameObject bullet;
-    [SerializeField] float shootRate;
-
     [SerializeField] int speed;
 
     [SerializeField] int sprintMod;

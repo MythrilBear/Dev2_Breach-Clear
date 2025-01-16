@@ -8,6 +8,10 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] LayerMask ignoreMask;
 
+    [SerializeField] Transform shootPosition;
+    [SerializeField] GameObject bullet;
+    [SerializeField] float shootRate;
+
     [SerializeField] int speed;
 
     [SerializeField] int sprintMod;
@@ -27,6 +31,8 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 moveDir;
 
     Vector3 playerVelocity;
+
+    bool isShooting;
 
     bool isSprinting;
 
@@ -75,6 +81,7 @@ public class playerController : MonoBehaviour, IDamage
         if (Input.GetButtonDown("Shoot"))
         {
             shoot();
+            
         }
     }
 
@@ -116,7 +123,10 @@ public class playerController : MonoBehaviour, IDamage
                 dmg.takeDamage(shootDamage);
             }
         }
+
     }
+
+    
 
     public void takeDamage(int amount)
     {

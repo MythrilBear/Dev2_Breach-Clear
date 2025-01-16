@@ -398,7 +398,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 257.61, y: 0.07666665, z: -39.17}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7680487958187515622}
   - {fileID: 8855294517637344203}
@@ -421,12 +421,12 @@ MonoBehaviour:
   model: {fileID: 2885883972660153826}
   shootPosition: {fileID: 7803223108399825961}
   headPos: {fileID: 6964674023234300133}
-  HP: 3
+  HP: 2
   faceTargetSpeed: 8
   FOV: 60
   animSpeedTrans: 8
   bullet: {fileID: 4043548912659017893, guid: 444cc546de1549b47a51bef9416fedef, type: 3}
-  shootRate: 2
+  shootRate: 3
 --- !u!195 &6290424137574350265
 NavMeshAgent:
   m_ObjectHideFlags: 0

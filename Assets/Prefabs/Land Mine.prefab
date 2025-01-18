@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5787089701123038986}
   - component: {fileID: 7461967444363326693}
+  - component: {fileID: 8088525689281451670}
   - component: {fileID: 5788278703691986719}
   - component: {fileID: 3225223290425719583}
   - component: {fileID: 6036553254981536859}
-  - component: {fileID: 8088525689281451670}
   m_Layer: 0
   m_Name: Land Mine
   m_TagString: Untagged
@@ -49,6 +49,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+--- !u!136 &8088525689281451670
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3109276388449417748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.18166
+  m_Height: 3.0003648
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &5788278703691986719
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -124,26 +147,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c868d64c5d6f0a944b81c633882034c5, type: 3}
---- !u!136 &8088525689281451670
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3109276388449417748}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 7.18166
-  m_Height: 3.0003648
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

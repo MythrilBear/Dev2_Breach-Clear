@@ -138,6 +138,16 @@ public class playerController : MonoBehaviour, IDamage
         }
     }
 
+    public void recoverHealth(int amount)
+    {
+        HP += amount;
+        if (HP > HPOriginal)
+        {
+            HP = HPOriginal;
+        }
+        updatePlayerUI();
+    }
+
     IEnumerator flashDamagePanel()
     {
         GameManager.instance.damagePanel.SetActive(true);

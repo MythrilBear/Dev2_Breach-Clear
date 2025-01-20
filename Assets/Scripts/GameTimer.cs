@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
     public float totalTime = 300f;
     public bool timerIsRunning = false;
     private float timeRemaining;
-    public Text timerText; //reference to UI text 
+    public TMP_Text timerText;
+   /* public Text timerText;*/ //reference to UI text 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

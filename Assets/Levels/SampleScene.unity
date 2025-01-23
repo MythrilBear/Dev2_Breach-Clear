@@ -8886,13 +8886,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Heavy
       objectReference: {fileID: 0}
+    - target: {fileID: 5220354956741794130, guid: 60353c42be9cdc94285cde5c324d948e, type: 3}
+      propertyPath: roamDist
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220354956741794130, guid: 60353c42be9cdc94285cde5c324d948e, type: 3}
+      propertyPath: roamPauseTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 60353c42be9cdc94285cde5c324d948e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 273.67557
       objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 60353c42be9cdc94285cde5c324d948e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18000197
+      value: 0.386
       objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 60353c42be9cdc94285cde5c324d948e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11001,6 +11009,10 @@ PrefabInstance:
     - target: {fileID: 1082360591973924108, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605495022416009403, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 198.9
       objectReference: {fileID: 0}
     - target: {fileID: 9012234813795458722, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_Name
@@ -13899,11 +13911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292935181483714740, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.13
+      value: 6.386
       objectReference: {fileID: 0}
     - target: {fileID: 3292935181483714740, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.777729
+      value: 30.31
       objectReference: {fileID: 0}
     - target: {fileID: 3292935181483714740, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13932,6 +13944,14 @@ PrefabInstance:
     - target: {fileID: 3292935181483714740, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487082756426004453, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
+      propertyPath: roamDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487082756426004453, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
+      propertyPath: roamPauseTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14007,17 +14027,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 5220354956741794130, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
+      propertyPath: roamDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220354956741794130, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
+      propertyPath: roamPauseTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 270.8555
       objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.13
+      value: 3.394
       objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.336952
+      value: 31.09
       objectReference: {fileID: 0}
     - target: {fileID: 6696368003606203443, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
       propertyPath: m_LocalRotation.w

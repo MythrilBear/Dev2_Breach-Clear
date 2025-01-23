@@ -12,11 +12,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
     [SerializeField] int animSpeedTrans;
+    [SerializeField] int roamPauseTime;
+    [SerializeField] int roamDist;
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
     float angleToPlayer;
+    float stoppingDistOrig;
     float scanDirection;
     float counter;
 
@@ -26,9 +29,15 @@ public class enemyAI : MonoBehaviour, IDamage
 
     bool isRotatingLeft;
 
+    bool isRoaming;
+
     Color colorOriginal;
 
     Vector3 playerDirection;
+
+    Vector3 startingPos;
+
+    Coroutine co;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +45,8 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         colorOriginal = model.material.color;
         GameManager.instance.updateGameGoal(1);
+        stoppingDistOrig = agent.stoppingDistance;
+        startingPos = transform.position;
         scanDirection = transform.rotation.eulerAngles.y;
         isRotatingLeft = true;
         counter = 2;
@@ -49,6 +60,20 @@ public class enemyAI : MonoBehaviour, IDamage
 
         anim.SetFloat("Speed", Mathf.MoveTowards(animSpeed, agentSpeed, Time.deltaTime * animSpeedTrans));
 
+        if (playerInRange && !canSeePlayer())
+        {
+            if (!isRoaming && agent.remainingDistance < 0.01f)
+            {
+                co = StartCoroutine(roam());
+            }
+        }
+        else if (!playerInRange)
+        {
+            if (!isRoaming && agent.remainingDistance < 0.01f)
+            {
+                co = StartCoroutine(roam());
+            }
+        }
         if (playerInRange && canSeePlayer())
         {
             scanDirection = transform.rotation.eulerAngles.y;
@@ -61,6 +86,21 @@ public class enemyAI : MonoBehaviour, IDamage
             isRotatingLeft = !isRotatingLeft;
             counter = 2;
         }
+    }
+    IEnumerator roam()
+    {
+        isRoaming = true;
+        yield return new WaitForSeconds(roamPauseTime);
+        agent.stoppingDistance = 0;
+
+        Vector3 randomPos = Random.insideUnitSphere * roamDist;
+        randomPos += startingPos;
+
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+        agent.SetDestination(hit.position);
+
+        isRoaming = false;
     }
 
     bool canSeePlayer()
@@ -86,6 +126,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 {
                     StartCoroutine(shoot());
                 }
+                agent.stoppingDistance = stoppingDistOrig;
                 return true;
             }
         }
@@ -106,6 +147,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            agent.stoppingDistance = 0;
         }
     }
 
@@ -142,9 +184,16 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
 
+        agent.SetDestination(GameManager.instance.player.transform.position);
+        if (co != null)
+        {
+            StopCoroutine(co);
+            isRoaming = false;
+        }
+
         StartCoroutine(flashRed());
 
-        agent.SetDestination(GameManager.instance.player.transform.position);
+        //agent.SetDestination(GameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {

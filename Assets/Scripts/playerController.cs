@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
@@ -18,9 +19,15 @@ public class playerController : MonoBehaviour, IDamage
 
     [SerializeField] int gravity;
 
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+   
+    [SerializeField] GameObject gunModel;
+
     [SerializeField] int shootDamage;
 
     [SerializeField] int shootDistance;
+
+    [SerializeField] float shootRate;
 
     [SerializeField] int HP;
 
@@ -36,6 +43,8 @@ public class playerController : MonoBehaviour, IDamage
 
     int HPOriginal;
 
+    int gunListPos;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,8 +56,12 @@ public class playerController : MonoBehaviour, IDamage
     void Update()
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
+        if(!GameManager.instance.isPaused)
+        {
+            movement();
+            selectGun();
 
-        movement();
+        }
         sprint();
     }
 
@@ -158,5 +171,38 @@ public class playerController : MonoBehaviour, IDamage
     void updatePlayerUI()
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
+    }
+    public void getGunStats(gunStats gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
+        changeGun();
+
+    }
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel")>0 && gunListPos<gunList.Count-1)
+        {
+            gunListPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        {
+            gunListPos--;
+            changeGun();
+        }
+
+    }
+    void changeGun()
+    {
+        //change the stats
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDistance = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
+
+        //change model
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].model.GetComponent<MeshRenderer>().sharedMaterial;
+
     }
 }

@@ -23,6 +23,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
    
     [SerializeField] GameObject gunModel;
 
+    [SerializeField] GameObject muzzleFlash;
+
     [SerializeField] int shootDamage;
 
     [SerializeField] int shootDistance;
@@ -44,6 +46,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int HPOriginal;
 
     int gunListPos;
+    float shootTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,7 +63,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             movement();
             selectGun();
-
+            shootTimer += Time.deltaTime;
         }
         sprint();
     }
@@ -87,11 +90,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButtonDown("Shoot"))
+        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate)
         {
             shoot();
             
-        }
+        } 
     }
 
     void sprint()
@@ -119,11 +122,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void shoot()
     {
+        shootTimer = 0;
+
+        StartCoroutine(flashMuzzleFire());
+
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDistance, ~ignoreMask))
         {
             Debug.Log(hit.collider.name);
+
+            Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
+
+            
 
             IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -132,10 +143,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 dmg.takeDamage(shootDamage);
             }
         }
-
     }
 
-    
+    IEnumerator flashMuzzleFire()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        muzzleFlash.SetActive(false);
+    }
 
     public void takeDamage(int amount)
     {

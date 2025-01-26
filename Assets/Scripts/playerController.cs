@@ -1,26 +1,36 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
+    [Header("----- Components -----")]
+
+
     [SerializeField] CharacterController controller;
+
+    [SerializeField] AudioSource aud;
 
     [SerializeField] LayerMask ignoreMask;
 
-    [SerializeField] int speed;
+    [Header("----- Stats -----")]
 
-    [SerializeField] int sprintMod;
+    [Range(1, 10)] [SerializeField] int HP;
 
-    [SerializeField] int jumpMax;
+    [Range(1, 10)] [SerializeField] int speed;
 
-    [SerializeField] int jumpSpeed;
+    [Range(1, 5)] [SerializeField] int sprintMod;
 
-    [SerializeField] int gravity;
+    [Range(1, 2)] [SerializeField] int jumpMax;
+
+    [Range(5, 20)] [SerializeField] int jumpSpeed;
+
+    [Range(15, 45)] [SerializeField] int gravity;
+
+    [Header("----- Guns-----")]
 
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
-   
+
     [SerializeField] GameObject gunModel;
 
     [SerializeField] GameObject muzzleFlash;
@@ -31,7 +41,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     [SerializeField] float shootRate;
 
-    [SerializeField] int HP;
+    [Header("----- Audio -----")]
+
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0, 1)][SerializeField] float audStepsVol;
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
 
     Vector3 moveDir;
 
@@ -39,7 +56,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     bool isShooting;
 
-    bool isSprinting;
 
     int jumpCount;
 
@@ -48,11 +64,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int gunListPos;
     float shootTimer;
 
+    bool isSprinting;
+    bool isPlayingSteps;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         HPOriginal = HP;
         updatePlayerUI();
+        shootTimer = shootRate;
     }
 
     // Update is called once per frame
@@ -76,6 +96,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         if (controller.isGrounded)
         {
+            if (moveDir.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playSteps());
+            }
+
             jumpCount = 0;
             playerVelocity = Vector3.zero;
         }
@@ -97,6 +122,22 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         } 
     }
 
+    IEnumerator playSteps()
+    {
+        isPlayingSteps = true;
+        aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+        if (!isSprinting)
+        {
+
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        isPlayingSteps = false;
+    }
     void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
@@ -115,6 +156,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpCount++;
             playerVelocity.y = jumpSpeed;
         }
@@ -155,6 +197,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void takeDamage(int amount)
     {
         HP -= amount;
+
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
 
         updatePlayerUI();
 

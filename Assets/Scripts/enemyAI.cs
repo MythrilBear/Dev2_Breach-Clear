@@ -44,7 +44,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         colorOriginal = model.material.color;
-        GameManager.instance.updateGameGoal(1);
+        //GameManager.instance.updateGameGoal(1);
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         scanDirection = transform.rotation.eulerAngles.y;

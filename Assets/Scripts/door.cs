@@ -4,7 +4,7 @@ using UnityEngine;
 public class door : MonoBehaviour
 {
     [SerializeField] GameObject Model;
-   
+
 
     bool inTrigger;
 
@@ -29,8 +29,6 @@ public class door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-
         if (other.isTrigger)
         
             return;   
@@ -58,7 +56,7 @@ public class door : MonoBehaviour
         if (open != null)
         {
             Model.SetActive(true);
-           GameManager.instance.buttonInteract.SetActive(false);
+            GameManager.instance.buttonInteract.SetActive(false);
         }
     }
 }

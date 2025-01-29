@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPickup
+public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 {
     [Header("----- Components -----")]
 

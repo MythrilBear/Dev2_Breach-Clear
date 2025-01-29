@@ -2,11 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-<<<<<<< Updated upstream
-public class playerController : MonoBehaviour, IDamage
-=======
+
 public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
->>>>>>> Stashed changes
+
 {
     [SerializeField] CharacterController controller;
 

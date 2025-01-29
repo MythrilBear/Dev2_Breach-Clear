@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text goalCountText;
     public Image PlayerHPBar;
     public GameObject damagePanel;
+    public GameObject buttonInteract;
 
     public GameObject player;
     public playerController playerScript;

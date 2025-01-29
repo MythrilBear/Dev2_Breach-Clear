@@ -8,7 +8,7 @@ public class GameTimer : MonoBehaviour
     public bool timerIsRunning = false;
     private float timeRemaining;
     public TMP_Text timerText;
-   /* public Text timerText;*/ //reference to UI text 
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,5 +49,6 @@ public class GameTimer : MonoBehaviour
     void TimerEnded()
     {
         Debug.Log("Timer has ended! GAME OVER");
+        GameManager.instance.timeIsUp();
     }
 }

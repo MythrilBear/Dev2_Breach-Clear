@@ -13,11 +13,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     [SerializeField] LayerMask ignoreMask;
 
+    [SerializeField] Transform playerCamera;
+
     [Header("----- Stats -----")]
 
     [Range(1, 10)] [SerializeField] int HP;
 
-    [Range(1, 10)] [SerializeField] int speed;
+    [Range(1, 10)] [SerializeField] float speed;
 
     [Range(1, 5)] [SerializeField] int sprintMod;
 
@@ -26,6 +28,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [Range(5, 20)] [SerializeField] int jumpSpeed;
 
     [Range(15, 45)] [SerializeField] int gravity;
+
+    [Header("----- Crouch -----")]
+
+    [SerializeField] float crouchHeight;
+    [SerializeField] float crouchSpeedMod;
 
     [Header("----- Guns-----")]
 
@@ -60,6 +67,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     Vector3 playerVelocity;
 
+    Vector3 originalScale;
+
     bool isShooting;
 
 
@@ -70,8 +79,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     int gunListPos;
     float shootTimer;
 
+    float originalSpeed;
+    float originalHeight;
+    float originalCameraY;
+
     bool isSprinting;
     bool isPlayingSteps;
+    bool isCrouching;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -79,6 +93,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         HPOriginal = HP;
         updatePlayerUI();
         shootTimer = shootRate;
+        originalSpeed = speed;
+        originalHeight = controller.height;
+        originalCameraY = playerCamera.localPosition.y;
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -91,6 +109,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             selectGun();
             shootTimer += Time.deltaTime;
         }
+        ToggleCrouch();
         sprint();
     }
 
@@ -150,6 +169,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     }
     void sprint()
     {
+        if (isCrouching) return;
+
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
@@ -164,11 +185,34 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     void jump()
     {
+        if (isCrouching) return;
+
         if (Input.GetButtonDown("Jump") && jumpCount < jumpMax)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpCount++;
             playerVelocity.y = jumpSpeed;
+        }
+    }
+    void ToggleCrouch()
+    {
+        if(Input.GetButtonDown("Crouch"))
+        {
+            isCrouching = !isCrouching;
+            Vector3 cameraPosition = playerCamera.localPosition;
+            if(isCrouching)
+            {
+                transform.localScale = new Vector3(originalScale.x, crouchHeight / originalHeight, originalScale.z);
+                cameraPosition.y = originalCameraY * (crouchHeight / originalHeight);
+                speed = crouchSpeedMod;
+            }
+            else
+            {
+                transform.localScale = originalScale;
+                cameraPosition.y = originalCameraY;
+                speed = originalSpeed;
+            }
+            playerCamera.localPosition = cameraPosition;
         }
     }
 

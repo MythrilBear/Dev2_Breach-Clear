@@ -17355,6 +17355,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 359670202}
     - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: crouchHeight
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1771679054}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: crouchSpeedMod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: audHurt.Array.size
       value: 6
       objectReference: {fileID: 0}

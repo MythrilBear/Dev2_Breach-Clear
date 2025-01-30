@@ -15723,6 +15723,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2087106010240182603, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: totalTime
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087106010240182603, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: timerIsRunning
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2920794792182666649, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_Pivot.x
       value: 0

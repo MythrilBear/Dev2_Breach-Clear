@@ -187,6 +187,8 @@ MonoBehaviour:
   faceTargetSpeed: 8
   FOV: 60
   animSpeedTrans: 8
+  roamPauseTime: 2
+  roamDist: 15
   bullet: {fileID: 4043548912659017893, guid: 5a6f6e7d9df86694883156225eac481b, type: 3}
   shootRate: 1
 --- !u!195 &7967327473720043306

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject timeOver;
 
     [SerializeField] TMP_Text goalCountText;
     public Image PlayerHPBar;
@@ -85,6 +86,13 @@ public class GameManager : MonoBehaviour
     {
         statePause();
         menuActive = menuLose;
+        menuActive.SetActive(true);
+    }
+
+    public void timeIsUp()
+    {
+        statePause();
+        menuActive = timeOver;
         menuActive.SetActive(true);
     }
 }

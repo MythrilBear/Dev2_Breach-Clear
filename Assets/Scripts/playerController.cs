@@ -41,6 +41,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     [SerializeField] float shootRate;
 
+    [Header("----- Melee -----")]
+    
+    [SerializeField] int meleeDamage;
+    [SerializeField] float meleeRange;
+
+
     [Header("----- Audio -----")]
 
     [SerializeField] AudioClip[] audSteps;
@@ -120,6 +126,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             shoot();
             
         } 
+        if(Input.GetButtonDown("Melee"))
+        {
+            meleeAttack();
+        }
     }
 
     IEnumerator playSteps()
@@ -183,6 +193,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             if (dmg != null)
             {
                 dmg.takeDamage(shootDamage);
+            }
+        }
+    }
+    void meleeAttack()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, meleeRange, ~ignoreMask))
+        {
+            Debug.Log(hit.collider.name);
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            if (dmg!=null)
+            {
+                dmg.takeDamage(meleeDamage);
             }
         }
     }

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject timeOver;
 
     [SerializeField] TMP_Text goalCountText;
+    [SerializeField] TMP_Text ammoCountText;
+
     public Image PlayerHPBar;
     public GameObject damagePanel;
     public GameObject buttonInteract;
@@ -80,6 +82,11 @@ public class GameManager : MonoBehaviour
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
+    }
+
+    public void updateAmmoCount(int amount)
+    {
+        ammoCountText.text = amount.ToString("F0");
     }
 
     public void youLose()

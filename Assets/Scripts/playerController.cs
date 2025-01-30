@@ -6,27 +6,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 {
     [Header("----- Components -----")]
 
-
     [SerializeField] CharacterController controller;
-
     [SerializeField] AudioSource aud;
-
     [SerializeField] LayerMask ignoreMask;
-
     [SerializeField] Transform playerCamera;
 
     [Header("----- Stats -----")]
 
     [Range(1, 10)] [SerializeField] int HP;
-
     [Range(1, 10)] [SerializeField] float speed;
-
     [Range(1, 5)] [SerializeField] int sprintMod;
-
     [Range(1, 2)] [SerializeField] int jumpMax;
-
     [Range(5, 20)] [SerializeField] int jumpSpeed;
-
     [Range(15, 45)] [SerializeField] int gravity;
 
     [Header("----- Crouch -----")]
@@ -37,15 +28,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [Header("----- Guns-----")]
 
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
-
     [SerializeField] GameObject gunModel;
-
     [SerializeField] GameObject muzzleFlash;
-
     [SerializeField] int shootDamage;
-
     [SerializeField] int shootDistance;
-
     [SerializeField] float shootRate;
 
     [Header("----- Melee -----")]
@@ -221,6 +207,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     {
         shootTimer = 0;
 
+        aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
+
         StartCoroutine(flashMuzzleFire());
 
         RaycastHit hit;
@@ -298,6 +286,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     void updatePlayerUI()
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
+        GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
+
     }
     public void getGunStats(gunStats gun)
     {

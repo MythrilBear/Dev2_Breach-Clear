@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] CharacterController controller;
 
@@ -23,6 +23,11 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int shootDistance;
 
     [SerializeField] int HP;
+
+    [SerializeField] shieldStats shield;
+    private int currentShieldHealth;
+    private bool shieldActive;
+    private Coroutine shieldRechargeCoroutine;
 
     Vector3 moveDir;
 
@@ -158,5 +163,10 @@ public class playerController : MonoBehaviour, IDamage
     void updatePlayerUI()
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
+    }
+
+    void IPickup.getShieldStats(shieldStats shield)
+    {
+        throw new NotImplementedException();
     }
 }

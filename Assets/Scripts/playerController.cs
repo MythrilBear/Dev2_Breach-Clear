@@ -352,7 +352,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         meleeDamage = melee.damage;
         meleeRange = melee.attackRate;
 
-        knifeModel.GetComponent<MeshFilter>().sharedMesh = melee.model.GetComponent<MeshFilter>().sharedMesh;
-        knifeModel.GetComponent<MeshRenderer>().sharedMaterial = melee.model.GetComponent<MeshRenderer>().sharedMaterial;
+        knifeModel.GetComponent<MeshRenderer>().enabled = !knifeModel.GetComponent<MeshRenderer>().enabled;
+
+        //knifeModel.GetComponent<MeshFilter>().sharedMesh = melee.model.GetComponent<MeshFilter>().sharedMesh;
+        //knifeModel.GetComponent<MeshRenderer>().sharedMaterial = melee.model.GetComponent<MeshRenderer>().sharedMaterial;
     }
 }

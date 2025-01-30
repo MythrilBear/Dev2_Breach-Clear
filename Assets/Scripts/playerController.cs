@@ -128,12 +128,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate 
-            && gunList[gunListPos].ammoCur > 0 && !isReloading)
+        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate && !isReloading)
         {
-            shoot();
+            if (gunList[gunListPos].ammoCur > 0)
+            {
+                shoot();
+            }
+            else
+            {
+                aud.PlayOneShot(gunList[gunListPos].gunEmptySound[Random.Range(0, gunList[gunListPos].gunEmptySound.Length)], gunList[gunListPos].gunEmptySoundVol);
+            }
             
         } 
+
         if(Input.GetButtonDown("Melee"))
         {
             meleeAttack();
@@ -142,6 +149,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         {
             StartCoroutine(reloadGun());
         }
+        //if (Input.GetButtonDown("Aim"))
+        //{
+        //    Camera.main.fieldOfView = 50f;
+        //}
+        //if (Input.GetButtonUp("Aim"))
+        //{
+        //    Camera.main.fieldOfView = 60f;
+        //}
     }
 
     IEnumerator playSteps()

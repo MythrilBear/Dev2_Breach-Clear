@@ -25,3 +25,6 @@ MonoBehaviour:
   reloadSound:
   - {fileID: 8300000, guid: f21ddb70131501e498ffef62ce539430, type: 3}
   reloadSoundVol: 0.5
+  gunEmptySound:
+  - {fileID: 0}
+  gunEmptySoundVol: 0.5

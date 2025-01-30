@@ -73,6 +73,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     bool isSprinting;
     bool isPlayingSteps;
     bool isCrouching;
+    bool isReloading;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -128,7 +129,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         playerVelocity.y -= gravity * Time.deltaTime;
 
         if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate 
-            && gunList[gunListPos].ammoCur > 0)
+            && gunList[gunListPos].ammoCur > 0 && !isReloading)
         {
             shoot();
             
@@ -136,6 +137,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         if(Input.GetButtonDown("Melee"))
         {
             meleeAttack();
+        }
+        if(Input.GetButtonDown("Reload"))
+        {
+            StartCoroutine(reloadGun());
         }
     }
 
@@ -232,6 +237,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
                 dmg.takeDamage(shootDamage);
             }
         }
+    }
+
+    IEnumerator reloadGun()
+    {
+        isReloading = true;
+        aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
+        yield return new WaitForSeconds(gunList[gunListPos].reloadSound.Length);
+        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        isReloading = false;
     }
     void meleeAttack()
     {

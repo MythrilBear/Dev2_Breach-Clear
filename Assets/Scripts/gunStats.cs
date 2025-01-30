@@ -11,4 +11,6 @@ public class gunStats : ScriptableObject
     public ParticleSystem hitEffect;
     public AudioClip[] shootSound;
     public float shootSoundVol;
+    public AudioClip[] reloadSound;
+    public float reloadSoundVol;
 }

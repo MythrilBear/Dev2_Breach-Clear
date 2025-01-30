@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
 
     int goalCount;
+    int ammoCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -86,7 +87,8 @@ public class GameManager : MonoBehaviour
 
     public void updateAmmoCount(int amount)
     {
-        ammoCountText.text = amount.ToString("F0");
+        ammoCount = amount;
+        ammoCountText.text = ammoCount.ToString("F0");
     }
 
     public void youLose()

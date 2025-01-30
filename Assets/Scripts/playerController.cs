@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     [SerializeField] GameObject muzzleFlash;
+    [SerializeField] int currentAmmoCount;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
@@ -57,7 +58,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     Vector3 originalScale;
 
     bool isShooting;
-
 
     int jumpCount;
 
@@ -127,7 +127,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate)
+        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate 
+            && gunList[gunListPos].ammoCur > 0)
         {
             shoot();
             
@@ -205,6 +206,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     void shoot()
     {
+        gunList[gunListPos].ammoCur--;
+        updatePlayerUI();
+
         shootTimer = 0;
 
         aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
@@ -286,7 +290,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     void updatePlayerUI()
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
-        GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
+
+        if (gunList.Count > 0)
+        {
+            GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
+        }
+        
 
     }
     public void getGunStats(gunStats gun)
@@ -298,6 +307,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     }
     void selectGun()
     {
+        updatePlayerUI();
         if(Input.GetAxis("Mouse ScrollWheel")>0 && gunListPos<gunList.Count-1)
         {
             gunListPos++;

@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 170517437}
   - component: {fileID: 170517436}
   m_Layer: 5
-  m_Name: Goal Count
+  m_Name: Ammo Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3875,9 +3875,9 @@ RectTransform:
   - {fileID: 170517435}
   m_Father: {fileID: 920981156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -292, y: 75}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1628, y: -1005}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410022429
@@ -17910,6 +17910,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8262295152042259817, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: ammoCountText
+      value: 
+      objectReference: {fileID: 170517436}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

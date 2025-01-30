@@ -52,6 +52,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     
     [SerializeField] int meleeDamage;
     [SerializeField] float meleeRange;
+    [SerializeField] GameObject knifeModel;
 
 
     [Header("----- Audio -----")]
@@ -330,5 +331,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].model.GetComponent<MeshRenderer>().sharedMaterial;
 
+    }
+
+    public void getMeleeStats(MeleeStats melee)
+    {
+        meleeDamage = melee.damage;
+        meleeRange = melee.attackRate;
+
+        knifeModel.GetComponent<MeshFilter>().sharedMesh = melee.model.GetComponent<MeshFilter>().sharedMesh;
+        knifeModel.GetComponent<MeshRenderer>().sharedMaterial = melee.model.GetComponent<MeshRenderer>().sharedMaterial;
     }
 }

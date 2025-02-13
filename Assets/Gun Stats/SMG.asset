@@ -12,23 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f69dbe2725df4488c6bb708b839f1b, type: 3}
   m_Name: SMG
   m_EditorClassIdentifier: 
-  gunName: Pistol
+  gunName: SMG
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1
   shootingRange: 100
-  fireRate: 4
-  magazineSize: 17
-  reserveAmmoMax: 51
-  reloadTime: 2
+  fireRate: 8
+  magazineSize: 50
+  reserveAmmoMax: 150
+  reloadTime: 1
   recoilAmount: 0
   maxRecoil: {x: 0, y: 0}
   recoilSpeed: 0
   resetRecoilSpeed: 0
-  hitEffect: {fileID: 0}
-  shootSound: []
-  shootSoundVol: 0
-  reloadSound: []
-  reloadSoundVol: 0
-  gunEmptySound: []
-  gunEmptySoundVol: 0
+  hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: 69c4de6e630250843b4dd2a66ba49a63, type: 3}
+  shootSoundVol: 0.5
+  reloadSound:
+  - {fileID: 8300000, guid: f21ddb70131501e498ffef62ce539430, type: 3}
+  reloadSoundVol: 0.5
+  gunEmptySound:
+  - {fileID: 8300000, guid: 34676cde624bc2f4eb825404344c7063, type: 3}
+  gunEmptySoundVol: 0.5

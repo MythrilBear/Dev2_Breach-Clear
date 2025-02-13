@@ -87,6 +87,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         originalHeight = controller.height;
         originalCameraY = playerCamera.localPosition.y;
         originalScale = transform.localScale;
+
+       
     }
 
     // Update is called once per frame

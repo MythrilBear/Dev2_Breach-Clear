@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;
 
+    [Range(0, 2)] [SerializeField] public int equipmentLoadout;
+
     public Image PlayerHPBar;
     public GameObject damagePanel;
     public GameObject buttonInteract;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
 
     int goalCount;
-    float ammoCount;
+    public float ammoCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()

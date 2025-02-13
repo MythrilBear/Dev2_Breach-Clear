@@ -11,6 +11,7 @@ public class Shotgun : Gun
             out hit, gunStats.shootingRange, gunStats.targetLayerMask))
         {
             Debug.Log(gunStats.gunName + " hit " + hit.collider.name);
+            Instantiate(gunStats.hitEffect, hit.point, Quaternion.identity);
         }
     }
 

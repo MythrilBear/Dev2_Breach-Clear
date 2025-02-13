@@ -12,7 +12,7 @@ public abstract class Gun : MonoBehaviour
     public Transform cameraTransform;
 
     private float reserveAmmo = 0f;
-    private float currentAmmo = 0f;
+    public float currentAmmo = 0f;
     private float fireDelay = 0f;
 
     private bool isReloading = false;
@@ -31,6 +31,10 @@ public abstract class Gun : MonoBehaviour
     public virtual void Update()
     {
         //playerController.ResetRecoil(gunStats);
+        if (GameManager.instance.ammoCount != currentAmmo)
+        {
+            GameManager.instance.updateAmmoCount(currentAmmo);
+        }
     }
 
     public void tryReload()

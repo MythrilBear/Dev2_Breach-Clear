@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [SerializeField] CharacterController controller;
     [SerializeField] AudioSource aud;
     [SerializeField] LayerMask ignoreMask;
-    [SerializeField] Transform playerCamera;
+    [SerializeField] public Transform playerCamera;
 
     [Header("----- Stats -----")]
 

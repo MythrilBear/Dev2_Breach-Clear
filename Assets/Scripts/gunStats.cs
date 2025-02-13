@@ -13,6 +13,7 @@ public class gunStats : ScriptableObject
 
     [Header("Reload Config")]
     public float magazineSize;
+    public float reserveAmmo;
     public float reloadTime;
 
     //public GameObject model;

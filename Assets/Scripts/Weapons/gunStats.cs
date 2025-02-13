@@ -13,8 +13,14 @@ public class gunStats : ScriptableObject
 
     [Header("Reload Config")]
     public float magazineSize;
-    public float reserveAmmo;
+    public float reserveAmmoMax;
     public float reloadTime;
+
+    [Header("Recoil Settings")]
+    public float recoilAmount;
+    public Vector2 maxRecoil;
+    public float recoilSpeed;
+    public float resetRecoilSpeed;
 
     //public GameObject model;
     //public int shootDamage;

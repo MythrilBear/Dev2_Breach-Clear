@@ -1,12 +1,25 @@
 using UnityEngine;
-[CreateAssetMenu]
+
+[CreateAssetMenu (fileName = "NewGunData", menuName = "Gun/GunData")]
 public class gunStats : ScriptableObject
 {
-    public GameObject model;
-    public int shootDamage;
-    public int shootDist;
-    public float shootRate;
-    public int ammoCur, ammoMax;
+    public string gunName;
+
+    public LayerMask targetLayerMask;
+
+    [Header("Fire Config")]
+    public float shootingRange;
+    public float fireRate;
+
+    [Header("Reload Config")]
+    public float magazineSize;
+    public float reloadTime;
+
+    //public GameObject model;
+    //public int shootDamage;
+    //public int shootDist;
+    //public float shootRate;
+    //public int ammoCur, ammoMax;
 
     public ParticleSystem hitEffect;
     public AudioClip[] shootSound;

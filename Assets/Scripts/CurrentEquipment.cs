@@ -71,11 +71,13 @@ public class CurrentEquipment : MonoBehaviour
             {
                 secondaryWeapon.SetActive(false);
                 grenade.SetActive(true);
+                GameManager.instance.updateAmmoCount(0);
             }
             else if (grenade.activeSelf)
             {
                 grenade.SetActive(false);
                 specialEquipment.SetActive(true);
+                GameManager.instance.updateAmmoCount(0);
             }
             else if (specialEquipment.activeSelf)
             {

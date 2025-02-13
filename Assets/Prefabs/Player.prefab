@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116012284554637274}
+  - component: {fileID: 3220917121280248855}
   - component: {fileID: 6471940700617647837}
   - component: {fileID: 7663559925674277512}
   - component: {fileID: 8226803367821846853}
@@ -31,12 +32,27 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 74.6, y: 0.682, z: -10.3}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5844858037362672395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &3220917121280248855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521528651127843265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cfe5f4586bece448735e57a3fac832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leanAngle: 45
+  leanSpeed: 15
+  targetLeanAngle: 45
 --- !u!114 &6471940700617647837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,9 +428,6 @@ MonoBehaviour:
   lockVertMin: -90
   lockVertMax: 90
   invertY: 0
-  peekDistance: 0.5
-  peekLeftKey: 113
-  peekRightKey: 101
 --- !u!20 &2151178324024853346
 Camera:
   m_ObjectHideFlags: 0
@@ -610,9 +623,6 @@ MonoBehaviour:
   lockVertMin: -90
   lockVertMax: 90
   invertY: 0
-  peekDistance: 0.5
-  peekLeftKey: 113
-  peekRightKey: 101
 --- !u!20 &377540141656784969
 Camera:
   m_ObjectHideFlags: 0

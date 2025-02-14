@@ -11643,6 +11643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1598756534669404792, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_Name
+      value: Player Stamina Bar
+      objectReference: {fileID: 0}
     - target: {fileID: 2920794792182666649, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11724,9 +11728,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8262295152042259817, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
-      propertyPath: equipmentLoadout
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: PlayerStamBar
+      value: 
+      objectReference: {fileID: 954977306}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29982,6 +29986,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2201375334409816497, guid: 69f175f98404e434e8bdb308b3780cd5, type: 3}
   m_PrefabInstance: {fileID: 953698269}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &954977306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8062963190694465669, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 367835571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &955976491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49573,6 +49588,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: HP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: Stam
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: gunModel
       value: 
       objectReference: {fileID: 0}
@@ -66853,6 +66876,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 367835571}
   - {fileID: 315136621}
+  - {fileID: 1587648278}
   - {fileID: 234880228}
   - {fileID: 1263254886}
   - {fileID: 2079483091}
@@ -66865,4 +66889,3 @@ SceneRoots:
   - {fileID: 926719436}
   - {fileID: 862498491}
   - {fileID: 1682991356}
-  - {fileID: 1587648278}

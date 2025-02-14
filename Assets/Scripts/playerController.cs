@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
+public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
 {
     [Header("----- Components -----")]
 
@@ -14,6 +14,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [Header("----- Stats -----")]
 
     [Range(1, 10)] [SerializeField] int HP;
+    [Range(1, 10)][SerializeField] int Stam;
     [Range(1, 10)] [SerializeField] float speed;
     [Range(1, 5)] [SerializeField] int sprintMod;
     [Range(1, 2)] [SerializeField] int jumpMax;
@@ -64,6 +65,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     int jumpCount;
 
     int HPOriginal;
+    int StamOrig;
 
     int gunListPos;
     float shootTimer;
@@ -81,14 +83,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     void Start()
     {
         HPOriginal = HP;
-        updatePlayerUI();
+        StamOrig = Stam;
         shootTimer = shootRate;
         originalSpeed = speed;
         originalHeight = controller.height;
         originalCameraY = playerCamera.localPosition.y;
         originalScale = transform.localScale;
-
-       
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -212,8 +213,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             speed /= sprintMod;
             isSprinting = false;
         }
-    }
 
+        if(isSprinting && Stam > 0)
+        {
+            useStamina(1);
+        }
+    } 
+    
     void jump()
     {
         if (isCrouching) return;
@@ -223,8 +229,32 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpCount++;
             playerVelocity.y = jumpSpeed;
+            useStamina(1);
         }
     }
+    
+    public void useStamina(int amount)
+    {
+        updatePlayerUI();
+        Stam -= amount;
+        if (Stam <= 1)
+        {
+            Stam = 1;
+        }
+    }
+    
+
+    //public void recoverStamina(int amount)
+    //{
+    //    Stam += amount;
+    //    updatePlayerUI();
+    //    if (Stam > StamOrig)
+    //    {
+    //        Stam = StamOrig;
+    //    }
+    //}
+
+ 
     void ToggleCrouch()
     {
         if(Input.GetButtonDown("Crouch"))
@@ -324,12 +354,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     public void recoverHealth(int amount)
     {
+        updatePlayerUI();
         HP += amount;
         if (HP > HPOriginal)
         {
             HP = HPOriginal;
         }
-        updatePlayerUI();
     }
 
     IEnumerator flashDamagePanel()
@@ -342,12 +372,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     void updatePlayerUI()
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
+        GameManager.instance.PlayerStamBar.fillAmount = (float)Stam / StamOrig;
 
         //if (gunList.Count > 0)
         //{
         //    GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
         //}
-        
+
 
     }
     //public void getGunStats(gunStats gun)

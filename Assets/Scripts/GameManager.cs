@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Range(0, 2)] [SerializeField] public int equipmentLoadout;
 
     public Image PlayerHPBar;
+    public Image PlayerStamBar;
     public GameObject damagePanel;
     public GameObject buttonInteract;
 

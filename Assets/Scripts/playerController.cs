@@ -213,6 +213,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         {
             speed /= sprintMod;
             isSprinting = false;
+            StartCoroutine(RecoverStaminaOverTime());
         }
 
         if (Stam <= 0)
@@ -231,6 +232,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         }
     }
 
+    IEnumerator RecoverStaminaOverTime()
+    {
+        while (!isSprinting && Stam < StamOrig)
+        {
+            recoverStamina(1);
+            yield return new WaitForSeconds(1f); // Adjust the interval as needed
+        }
+    }
+
     void jump()
     {
         if (isCrouching) return;
@@ -240,7 +250,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpCount++;
             playerVelocity.y = jumpSpeed;
-            useStamina(1);
+            useStamina(2);
+            StartCoroutine(RecoverStaminaOverTime());
         }
     }
     
@@ -253,19 +264,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         }
         updatePlayerUI();
     }
-    
 
-    //public void recoverStamina(int amount)
-    //{
-    //    Stam += amount;
-    //    updatePlayerUI();
-    //    if (Stam > StamOrig)
-    //    {
-    //        Stam = StamOrig;
-    //    }
-    //}
 
- 
+    public void recoverStamina(int amount)
+    {
+        Stam += amount;
+        if (Stam > StamOrig)
+        {
+            Stam = StamOrig;
+        }
+        updatePlayerUI();
+    }
+
+
     void ToggleCrouch()
     {
         if(Input.GetButtonDown("Crouch"))

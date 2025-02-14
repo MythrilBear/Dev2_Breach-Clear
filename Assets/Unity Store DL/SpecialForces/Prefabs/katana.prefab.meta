@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb59b23bf3279744996a508970175e01
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189812
+  packageName: LOWPOLY - Special Forces
+  packageVersion: 1.0
+  assetPath: Assets/SpecialForces/Prefabs/katana.prefab
+  uploadId: 418911

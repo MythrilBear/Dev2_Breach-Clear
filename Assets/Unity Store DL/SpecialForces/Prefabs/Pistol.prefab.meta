@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a0429ae1d53c49f4f85f48b57d2ba7e6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189812
+  packageName: LOWPOLY - Special Forces
+  packageVersion: 1.0
+  assetPath: Assets/SpecialForces/Prefabs/Pistol.prefab
+  uploadId: 418911

@@ -20,7 +20,7 @@ public class SMG : Gun
     {
         base.Update();
 
-        if (Input.GetButtonDown("Shoot"))
+        while (Input.GetButtonDown("Shoot"))
         {
             TryShoot();
         }

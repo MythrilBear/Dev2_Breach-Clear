@@ -14,9 +14,17 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int animSpeedTrans;
     [SerializeField] int roamPauseTime;
     [SerializeField] int roamDist;
+    [SerializeField] bool roaming;
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+
+    //enemies moving between points - MG
+    [SerializeField] float patrolSpeed;
+    [SerializeField] Transform startPoint;
+    [SerializeField] Transform endPoint;
+    [SerializeField] bool patrol;
+    Coroutine cor;
 
     float angleToPlayer;
     float stoppingDistOrig;
@@ -60,25 +68,31 @@ public class enemyAI : MonoBehaviour, IDamage
 
         anim.SetFloat("Speed", Mathf.MoveTowards(animSpeed, agentSpeed, Time.deltaTime * animSpeedTrans));
 
-        if (playerInRange && !canSeePlayer())
+        if (roaming != false)
         {
-            if (!isRoaming && agent.remainingDistance < 0.01f)
+            if (playerInRange && !canSeePlayer())
             {
-                co = StartCoroutine(roam());
+                if (!isRoaming && agent.remainingDistance < 0.01f)
+                {
+                    co = StartCoroutine(roam());
+                }
+            }
+            else if (!playerInRange)
+            {
+                if (!isRoaming && agent.remainingDistance < 0.01f)
+                {
+                    co = StartCoroutine(roam());
+                }
             }
         }
-        else if (!playerInRange)
-        {
-            if (!isRoaming && agent.remainingDistance < 0.01f)
-            {
-                co = StartCoroutine(roam());
-            }
-        }
+
         if (playerInRange && canSeePlayer())
         {
             scanDirection = transform.rotation.eulerAngles.y;
         }
         else { lookForTargets(); }
+
+        
 
         counter -= Time.deltaTime;
         if (counter <= 0)
@@ -86,21 +100,29 @@ public class enemyAI : MonoBehaviour, IDamage
             isRotatingLeft = !isRotatingLeft;
             counter = 2;
         }
+
+        // Method for the enemy patrolling - MG
+        if (patrol != false && !isRoaming)
+        {
+            cor = StartCoroutine(patrolling());
+        }
+        
     }
+
     IEnumerator roam()
     {
-        isRoaming = true;
-        yield return new WaitForSeconds(roamPauseTime);
-        agent.stoppingDistance = 0;
+            isRoaming = true;
+            yield return new WaitForSeconds(roamPauseTime);
+            agent.stoppingDistance = 0;
 
-        Vector3 randomPos = Random.insideUnitSphere * roamDist;
-        randomPos += startingPos;
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
 
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-        agent.SetDestination(hit.position);
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
 
-        isRoaming = false;
+            isRoaming = false;
     }
 
     bool canSeePlayer()
@@ -217,5 +239,35 @@ public class enemyAI : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    IEnumerator patrolling()
+    {
+        bool atPoint = true;
+        isRoaming = true;
+        agent.stoppingDistance = 0;
+
+        while (patrol)
+        {
+            if (!playerInRange && agent.remainingDistance < 0.01f)
+            {
+                yield return new WaitForSeconds(roamPauseTime);
+
+                if (atPoint)
+                {
+                    agent.SetDestination(endPoint.position);
+                }
+                else
+                {
+                    agent.SetDestination(startPoint.position);
+                }
+
+                atPoint = !atPoint;
+            }
+
+            yield return null;
+        }
+
+        isRoaming = false;
     }
 }

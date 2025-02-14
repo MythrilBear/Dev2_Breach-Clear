@@ -30,7 +30,7 @@ public abstract class Gun : MonoBehaviour
 
     public virtual void Update()
     {
-        //playerController.ResetRecoil(gunStats);
+        playerController.ResetRecoil(gunStats);
         if (GameManager.instance.ammoCount != currentAmmo)
         {
             GameManager.instance.updateAmmoCount(currentAmmo);
@@ -95,7 +95,7 @@ public abstract class Gun : MonoBehaviour
         GameManager.instance.updateAmmoCount(currentAmmo);
 
         // recoil
-        //playerController.ApplyRecoil(gunStats);
+        playerController.ApplyRecoil(gunStats);
         // muzzleFlash
         StartCoroutine(flashMuzzleFire());
         // shootSound

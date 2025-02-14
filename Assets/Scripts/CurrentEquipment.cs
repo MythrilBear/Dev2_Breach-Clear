@@ -11,6 +11,9 @@ public class CurrentEquipment : MonoBehaviour
     public GameObject grenade;
     public GameObject knife;
     public GameObject specialEquipment;
+    public GameObject doorbreaker;
+    public GameObject claymore;
+    public GameObject riotShield;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,14 +22,17 @@ public class CurrentEquipment : MonoBehaviour
         if (GameManager.instance.equipmentLoadout == 0)
         {
             primaryWeapon = rifle;
+            specialEquipment = claymore;
         }
         else if (GameManager.instance.equipmentLoadout == 1)
         {
              primaryWeapon = submachinegun;
+            specialEquipment = doorbreaker;
         }
         else
         {
             primaryWeapon = shotgun;
+            specialEquipment = riotShield;
         }
         primaryWeapon.SetActive(true);
     }
@@ -39,8 +45,14 @@ public class CurrentEquipment : MonoBehaviour
             if (primaryWeapon.activeSelf)
             {
                 primaryWeapon.SetActive(false);
+                knife.SetActive(true);
+                GameManager.instance.updateAmmoCount(-1);
+            }
+            else if (knife.activeSelf)
+            {
+                knife.SetActive(false);
                 specialEquipment.SetActive(true);
-                GameManager.instance.updateAmmoCount(0);
+                GameManager.instance.updateAmmoCount(-1);
             }
             else if (specialEquipment.activeSelf)
             {
@@ -77,11 +89,17 @@ public class CurrentEquipment : MonoBehaviour
             {
                 grenade.SetActive(false);
                 specialEquipment.SetActive(true);
-                GameManager.instance.updateAmmoCount(0);
+                GameManager.instance.updateAmmoCount(-1);
             }
             else if (specialEquipment.activeSelf)
             {
                 specialEquipment.SetActive(false);
+                knife.SetActive(true);
+                GameManager.instance.updateAmmoCount(-1);
+            }
+            else if (knife.activeSelf)
+            {
+                knife.SetActive(false);
                 primaryWeapon.SetActive(true);
             }
 

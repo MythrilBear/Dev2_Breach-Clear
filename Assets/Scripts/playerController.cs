@@ -36,7 +36,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
     private Vector3 targetRecoil = Vector3.zero;
-    private Vector3 currentRecoil = Vector3.zero;
+    public Vector3 currentRecoil = Vector3.zero;
 
     [Header("----- Melee -----")]
     
@@ -99,7 +99,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         if(!GameManager.instance.isPaused)
         {
             movement();
-            // selectGun();
+            cameraController.instance.currentRecoil = currentRecoil;
             shootTimer += Time.deltaTime;
         }
         ToggleCrouch();
@@ -118,7 +118,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
             {
                 StartCoroutine(playSteps());
             }
-
             jumpCount = 0;
             playerVelocity = Vector3.zero;
         }
@@ -126,12 +125,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         moveDir = (Input.GetAxis("Horizontal") * transform.right) +
                     (Input.GetAxis("Vertical") * transform.forward);
 
-        //playerCamera.transform.Rotate(currentRecoil);
-
+        
+        
+        // WASD movement.
         controller.Move(moveDir * speed * Time.deltaTime);
 
         jump();
 
+        // Vertical movement
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
 
@@ -170,6 +171,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     {
         float recoilX = Random.Range(-stats.maxRecoil.x, stats.maxRecoil.x) * stats.recoilAmount;
         float recoilY = Random.Range(-stats.maxRecoil.y, stats.maxRecoil.y) * stats.recoilAmount;
+
+        if (recoilY > 0)
+        {
+            recoilY *= -1;
+        }
 
         targetRecoil += new Vector3(recoilX, recoilY, 0);
 
@@ -403,6 +409,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
 
 
     }
+
+    public Vector3 getCurrentRecoil()
+    {
+        return currentRecoil;
+    }
+
     //public void getGunStats(gunStats gun)
     //{
     //    gunList.Add(gun);

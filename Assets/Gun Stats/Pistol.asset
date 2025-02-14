@@ -21,10 +21,10 @@ MonoBehaviour:
   magazineSize: 17
   reserveAmmoMax: 51
   reloadTime: 1
-  recoilAmount: 0
-  maxRecoil: {x: 0, y: 0}
-  recoilSpeed: 0
-  resetRecoilSpeed: 0
+  recoilAmount: 100
+  maxRecoil: {x: 4, y: 8}
+  recoilSpeed: 100
+  resetRecoilSpeed: 10
   hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 69c4de6e630250843b4dd2a66ba49a63, type: 3}

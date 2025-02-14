@@ -456,6 +456,9 @@ MonoBehaviour:
   grenade: {fileID: 6149485878972472497}
   knife: {fileID: 5924078363885860166}
   specialEquipment: {fileID: 4487794019606964900}
+  doorbreaker: {fileID: 4487794019606964900}
+  claymore: {fileID: 0}
+  riotShield: {fileID: 0}
 --- !u!1 &8836556694494866420
 GameObject:
   m_ObjectHideFlags: 0

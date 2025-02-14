@@ -1,0 +1,109 @@
+using NUnit.Framework;
+using UnityEngine;
+
+public class CurrentEquipment : MonoBehaviour
+{
+    private GameObject primaryWeapon;
+    public GameObject rifle;
+    public GameObject submachinegun;
+    public GameObject shotgun;
+    public GameObject secondaryWeapon;
+    public GameObject grenade;
+    public GameObject knife;
+    public GameObject specialEquipment;
+    public GameObject doorbreaker;
+    public GameObject claymore;
+    public GameObject riotShield;
+    
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        if (GameManager.instance.equipmentLoadout == 0)
+        {
+            primaryWeapon = rifle;
+            specialEquipment = claymore;
+        }
+        else if (GameManager.instance.equipmentLoadout == 1)
+        {
+             primaryWeapon = submachinegun;
+            specialEquipment = doorbreaker;
+        }
+        else
+        {
+            primaryWeapon = shotgun;
+            specialEquipment = riotShield;
+        }
+        primaryWeapon.SetActive(true);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            if (primaryWeapon.activeSelf)
+            {
+                primaryWeapon.SetActive(false);
+                knife.SetActive(true);
+                GameManager.instance.updateAmmoCount(-1);
+            }
+            else if (knife.activeSelf)
+            {
+                knife.SetActive(false);
+                specialEquipment.SetActive(true);
+                GameManager.instance.updateAmmoCount(-1);
+            }
+            else if (specialEquipment.activeSelf)
+            {
+                specialEquipment.SetActive(false);
+                grenade.SetActive(true);
+                GameManager.instance.updateAmmoCount(0);
+            }
+            else if (grenade.activeSelf)
+            {
+                grenade.SetActive(false);
+                secondaryWeapon.SetActive(true);
+                
+            }
+            else if (secondaryWeapon.activeSelf)
+            {
+                secondaryWeapon.SetActive(false);
+                primaryWeapon.SetActive(true);
+            }
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            if (primaryWeapon.activeSelf)
+            {
+                primaryWeapon.SetActive(false);
+                secondaryWeapon.SetActive(true);
+            }
+            else if (secondaryWeapon.activeSelf)
+            {
+                secondaryWeapon.SetActive(false);
+                grenade.SetActive(true);
+                GameManager.instance.updateAmmoCount(0);
+            }
+            else if (grenade.activeSelf)
+            {
+                grenade.SetActive(false);
+                specialEquipment.SetActive(true);
+                GameManager.instance.updateAmmoCount(-1);
+            }
+            else if (specialEquipment.activeSelf)
+            {
+                specialEquipment.SetActive(false);
+                knife.SetActive(true);
+                GameManager.instance.updateAmmoCount(-1);
+            }
+            else if (knife.activeSelf)
+            {
+                knife.SetActive(false);
+                primaryWeapon.SetActive(true);
+            }
+
+        }
+        
+    }
+}

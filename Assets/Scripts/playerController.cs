@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [SerializeField] CharacterController controller;
     [SerializeField] AudioSource aud;
     [SerializeField] LayerMask ignoreMask;
-    [SerializeField] Transform playerCamera;
+    [SerializeField] public Transform playerCamera;
 
     [Header("----- Stats -----")]
 
@@ -29,11 +29,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
-    [SerializeField] GameObject muzzleFlash;
+    //[SerializeField] GameObject muzzleFlash;
     [SerializeField] int currentAmmoCount;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
+    private Vector3 targetRecoil = Vector3.zero;
+    private Vector3 currentRecoil = Vector3.zero;
 
     [Header("----- Melee -----")]
     
@@ -85,6 +87,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         originalHeight = controller.height;
         originalCameraY = playerCamera.localPosition.y;
         originalScale = transform.localScale;
+
+       
     }
 
     // Update is called once per frame
@@ -94,7 +98,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         if(!GameManager.instance.isPaused)
         {
             movement();
-            selectGun();
+            // selectGun();
             shootTimer += Time.deltaTime;
         }
         ToggleCrouch();
@@ -121,6 +125,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         moveDir = (Input.GetAxis("Horizontal") * transform.right) +
                     (Input.GetAxis("Vertical") * transform.forward);
 
+        //playerCamera.transform.Rotate(currentRecoil);
+
         controller.Move(moveDir * speed * Time.deltaTime);
 
         jump();
@@ -128,27 +134,27 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate && !isReloading)
-        {
-            if (gunList[gunListPos].ammoCur > 0)
-            {
-                shoot();
-            }
-            else
-            {
-                aud.PlayOneShot(gunList[gunListPos].gunEmptySound[Random.Range(0, gunList[gunListPos].gunEmptySound.Length)], gunList[gunListPos].gunEmptySoundVol);
-            }
+        //if (Input.GetButton("Shoot") && gunList.Count > 0 && shootTimer >= shootRate && !isReloading)
+        //{
+        //    if (gunList[gunListPos].ammoCur > 0)
+        //    {
+        //        shoot();
+        //    }
+        //    else
+        //    {
+        //        aud.PlayOneShot(gunList[gunListPos].gunEmptySound[Random.Range(0, gunList[gunListPos].gunEmptySound.Length)], gunList[gunListPos].gunEmptySoundVol);
+        //    }
             
-        } 
+        //} 
 
-        if(Input.GetButtonDown("Melee"))
-        {
-            meleeAttack();
-        }
-        if(Input.GetButtonDown("Reload"))
-        {
-            StartCoroutine(reloadGun());
-        }
+        //if(Input.GetButtonDown("Melee"))
+        //{
+        //    meleeAttack();
+        //}
+        //if(Input.GetButtonDown("Reload"))
+        //{
+        //    StartCoroutine(reloadGun());
+        //}
         //if (Input.GetButtonDown("Aim"))
         //{
         //    Camera.main.fieldOfView = 50f;
@@ -157,6 +163,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         //{
         //    Camera.main.fieldOfView = 60f;
         //}
+    }
+
+    public void ApplyRecoil(gunStats stats)
+    {
+        float recoilX = Random.Range(-stats.maxRecoil.x, stats.maxRecoil.x) * stats.recoilAmount;
+        float recoilY = Random.Range(-stats.maxRecoil.y, stats.maxRecoil.y) * stats.recoilAmount;
+
+        targetRecoil += new Vector3(recoilX, recoilY, 0);
+
+        currentRecoil = Vector3.MoveTowards(currentRecoil, targetRecoil, Time.deltaTime * stats.recoilSpeed);
+
+    }
+
+    public void ResetRecoil(gunStats stats)
+    {
+        currentRecoil = Vector3.MoveTowards(currentRecoil, Vector3.zero, Time.deltaTime * stats.resetRecoilSpeed);
+        targetRecoil = Vector3.MoveTowards(targetRecoil, Vector3.zero, Time.deltaTime * stats.resetRecoilSpeed);
     }
 
     IEnumerator playSteps()
@@ -224,64 +247,64 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         }
     }
 
-    void shoot()
-    {
-        gunList[gunListPos].ammoCur--;
-        updatePlayerUI();
+    //void shoot()
+    //{
+    //    gunList[gunListPos].ammoCur--;
+    //    updatePlayerUI();
 
-        shootTimer = 0;
+    //    shootTimer = 0;
 
-        aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
+    //    aud.PlayOneShot(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
 
-        StartCoroutine(flashMuzzleFire());
+    //    StartCoroutine(flashMuzzleFire());
 
-        RaycastHit hit;
+    //    RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDistance, ~ignoreMask))
-        {
-            Debug.Log(hit.collider.name);
+    //    if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDistance, ~ignoreMask))
+    //    {
+    //        Debug.Log(hit.collider.name);
 
-            Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
+    //        Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
 
             
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+    //        IDamage dmg = hit.collider.GetComponent<IDamage>();
 
-            if (dmg != null)
-            {
-                dmg.takeDamage(shootDamage);
-            }
-        }
-    }
+    //        if (dmg != null)
+    //        {
+    //            dmg.takeDamage(shootDamage);
+    //        }
+    //    }
+    //}
 
-    IEnumerator reloadGun()
-    {
-        isReloading = true;
-        aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
-        yield return new WaitForSeconds(gunList[gunListPos].reloadSound.Length);
-        gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
-        isReloading = false;
-    }
-    void meleeAttack()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, meleeRange, ~ignoreMask))
-        {
-            Debug.Log(hit.collider.name);
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-            if (dmg!=null)
-            {
-                dmg.takeDamage(meleeDamage);
-            }
-        }
-    }
+    //IEnumerator reloadGun()
+    //{
+    //    isReloading = true;
+    //    aud.PlayOneShot(gunList[gunListPos].reloadSound[Random.Range(0, gunList[gunListPos].reloadSound.Length)], gunList[gunListPos].reloadSoundVol);
+    //    yield return new WaitForSeconds(gunList[gunListPos].reloadSound.Length);
+    //    gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+    //    isReloading = false;
+    //}
+    //void meleeAttack()
+    //{
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, meleeRange, ~ignoreMask))
+    //    {
+    //        Debug.Log(hit.collider.name);
+    //        IDamage dmg = hit.collider.GetComponent<IDamage>();
+    //        if (dmg!=null)
+    //        {
+    //            dmg.takeDamage(meleeDamage);
+    //        }
+    //    }
+    //}
 
-    IEnumerator flashMuzzleFire()
-    {
-        muzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        muzzleFlash.SetActive(false);
-    }
+    //IEnumerator flashMuzzleFire()
+    //{
+    //    muzzleFlash.SetActive(true);
+    //    yield return new WaitForSeconds(0.05f);
+    //    muzzleFlash.SetActive(false);
+    //}
 
     public void takeDamage(int amount)
     {
@@ -320,56 +343,56 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
 
-        if (gunList.Count > 0)
-        {
-            GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
-        }
+        //if (gunList.Count > 0)
+        //{
+        //    GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
+        //}
         
 
     }
-    public void getGunStats(gunStats gun)
-    {
-        gunList.Add(gun);
-        gunListPos = gunList.Count - 1;
-        changeGun();
+    //public void getGunStats(gunStats gun)
+    //{
+    //    gunList.Add(gun);
+    //    gunListPos = gunList.Count - 1;
+    //    changeGun();
 
-    }
-    void selectGun()
-    {
-        updatePlayerUI();
-        if(Input.GetAxis("Mouse ScrollWheel")>0 && gunListPos<gunList.Count-1)
-        {
-            gunListPos++;
-            changeGun();
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
-        {
-            gunListPos--;
-            changeGun();
-        }
+    //}
+    //void selectGun()
+    //{
+    //    updatePlayerUI();
+    //    if(Input.GetAxis("Mouse ScrollWheel")>0 && gunListPos<gunList.Count-1)
+    //    {
+    //        gunListPos++;
+    //        changeGun();
+    //    }
+    //    else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+    //    {
+    //        gunListPos--;
+    //        changeGun();
+    //    }
 
-    }
-    void changeGun()
-    {
-        //change the stats
-        shootDamage = gunList[gunListPos].shootDamage;
-        shootDistance = gunList[gunListPos].shootDist;
-        shootRate = gunList[gunListPos].shootRate;
+    //}
+    //void changeGun()
+    //{
+    //    //change the stats
+    //    shootDamage = gunList[gunListPos].shootDamage;
+    //    shootDistance = gunList[gunListPos].shootDist;
+    //    shootRate = gunList[gunListPos].shootRate;
 
-        //change model
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].model.GetComponent<MeshRenderer>().sharedMaterial;
+    //    //change model
+    //    gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].model.GetComponent<MeshFilter>().sharedMesh;
+    //    gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].model.GetComponent<MeshRenderer>().sharedMaterial;
 
-    }
+    //}
 
-    public void getMeleeStats(MeleeStats melee)
-    {
-        meleeDamage = melee.damage;
-        meleeRange = melee.attackRate;
+    //public void getMeleeStats(MeleeStats melee)
+    //{
+    //    meleeDamage = melee.damage;
+    //    meleeRange = melee.attackRate;
 
-        knifeModel.GetComponent<MeshRenderer>().enabled = !knifeModel.GetComponent<MeshRenderer>().enabled;
+    //    knifeModel.GetComponent<MeshRenderer>().enabled = !knifeModel.GetComponent<MeshRenderer>().enabled;
 
-        //knifeModel.GetComponent<MeshFilter>().sharedMesh = melee.model.GetComponent<MeshFilter>().sharedMesh;
-        //knifeModel.GetComponent<MeshRenderer>().sharedMaterial = melee.model.GetComponent<MeshRenderer>().sharedMaterial;
-    }
+    //    //knifeModel.GetComponent<MeshFilter>().sharedMesh = melee.model.GetComponent<MeshFilter>().sharedMesh;
+    //    //knifeModel.GetComponent<MeshRenderer>().sharedMaterial = melee.model.GetComponent<MeshRenderer>().sharedMaterial;
+    //}
 }

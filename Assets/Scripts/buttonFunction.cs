@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunction : MonoBehaviour
 {
+    [SerializeField] public GameObject startGame;
+    [SerializeField] public GameObject menuOptions;
+
     public void resume()
     {
        GameManager.instance.stateUnpause();
@@ -29,5 +32,11 @@ public class buttonFunction : MonoBehaviour
         Time.timeScale = 1; // Ensure the game is unpaused
         GameManager.instance.stateUnpause();
         GameManager.instance.menuActive.SetActive(false); // Deactivate the main menu
+    }
+
+    public void OpenOptions()
+    {
+        startGame.SetActive(false);
+        menuOptions.SetActive(true);
     }
 }

@@ -12,8 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject timeOver;
-    [SerializeField] public GameObject mainMenu;
-    [SerializeField] public GameObject optionsMenu;
 
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;

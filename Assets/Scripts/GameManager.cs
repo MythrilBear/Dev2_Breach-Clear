@@ -7,12 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [SerializeField] GameObject menuActive;
+    [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject timeOver;
-    [SerializeField] GameObject mainMenu;
+    [SerializeField] public GameObject mainMenu;
+    [SerializeField] public GameObject optionsMenu;
 
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;
@@ -38,10 +39,6 @@ public class GameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
-
-        //Main menu start up.
-        menuActive = mainMenu;
-        menuActive.SetActive(true);
     }
 
     // Update is called once per frame

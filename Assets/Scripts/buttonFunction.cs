@@ -3,12 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunction : MonoBehaviour
 {
-    public void StartGame()
-    {
-        GameManager.instance.stateUnpause();
-        SceneManager.LoadScene("Level1");
-    }
-
     public void resume()
     {
        GameManager.instance.stateUnpause();
@@ -27,5 +21,13 @@ public class buttonFunction : MonoBehaviour
     #else
         Application.Quit();
     #endif
+    }  
+
+    public void StartGame()
+    {  
+        SceneManager.LoadScene("Level1");
+        Time.timeScale = 1; // Ensure the game is unpaused
+        GameManager.instance.stateUnpause();
+        GameManager.instance.menuActive.SetActive(false); // Deactivate the main menu
     }
 }

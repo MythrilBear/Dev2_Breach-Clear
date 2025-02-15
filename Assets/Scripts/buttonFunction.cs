@@ -3,6 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunction : MonoBehaviour
 {
+    public void StartGame()
+    {
+        GameManager.instance.stateUnpause();
+        SceneManager.LoadScene("Level1");
+    }
+
     public void resume()
     {
        GameManager.instance.stateUnpause();

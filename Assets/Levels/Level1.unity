@@ -11732,7 +11732,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 954977306}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5055332956226960029, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
@@ -61540,6 +61541,9 @@ MonoBehaviour:
   grenade: {fileID: 1389453894}
   knife: {fileID: 1947566652}
   specialEquipment: {fileID: 368013487}
+  doorbreaker: {fileID: 0}
+  claymore: {fileID: 0}
+  riotShield: {fileID: 0}
 --- !u!1001 &1997417217
 PrefabInstance:
   m_ObjectHideFlags: 0

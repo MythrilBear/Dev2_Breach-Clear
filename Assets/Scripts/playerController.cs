@@ -95,6 +95,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     // Update is called once per frame
     void Update()
     {
+       
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         if(!GameManager.instance.isPaused)
         {

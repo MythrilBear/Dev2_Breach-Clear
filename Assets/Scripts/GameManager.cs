@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < loadouts.Length; i++)
         {
+            CanvasGroup canvasGroup = loadouts[i].GetComponent<CanvasGroup>();
             if (i == SelectLoadout)
             {
                 loadouts[i].GetComponent<CanvasGroup>().alpha = 1f;

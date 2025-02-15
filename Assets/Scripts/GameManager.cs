@@ -1,21 +1,24 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    private CurrentEquipment PlayerEquip;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject timeOver;
-
+    [SerializeField] GameObject Selection1, Selection2, Selection3;
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;
 
-    [Range(0, 2)] [SerializeField] public int equipmentLoadout;
+    [Range(0, 2)][SerializeField] public int equipmentLoadout;
 
     public Image PlayerHPBar;
     public GameObject damagePanel;
@@ -28,18 +31,68 @@ public class GameManager : MonoBehaviour
 
     int goalCount;
     public float ammoCount;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
-        player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+        if (SceneManager.GetActiveScene().name != "LoadOutScene")
+        {
+            player = GameObject.FindWithTag("Player");
+            playerScript = player.GetComponent<playerController>();
+            PlayerEquip = player.GetComponent<CurrentEquipment>();
+        }
+    }
+    public void SelectLoadout(int Select)
+    {
+        equipmentLoadout = Select;
+        LoadOutUI(Select);
+    }
+
+    public void LoadOutUI(int SelectLoadout)
+    {
+        GameObject[] loadouts = { Selection1, Selection2, Selection3 };
+
+        for (int i = 0; i < loadouts.Length; i++)
+        {
+            if (i == SelectLoadout)
+            {
+                loadouts[i].GetComponent<CanvasGroup>().alpha = 1f;
+                ToggleLoadOutLabel(loadouts[i], true);
+            }
+            else
+            {
+                loadouts[i].GetComponent<CanvasGroup>().alpha = 0.5f;
+                ToggleLoadOutLabel(loadouts[i], false);
+            }
+        }
+    }
+
+    private void ToggleLoadOutLabel(GameObject loadout, bool isActive)
+    {
+        for (int i = 0; i < loadout.transform.childCount; i++)
+        {
+            GameObject child = loadout.transform.GetChild(i).gameObject;
+
+            if (child.name == "Text (TMP)")  
+            {
+                continue;
+            }
+
+            child.SetActive(isActive);
+        }
+    }
+    public void ConfirmSelection()
+    {
+       PlayerPrefs.SetInt("SelectedLoadout", equipmentLoadout); 
+       PlayerPrefs.Save();
+       Time.timeScale = 1;
+       SceneManager.LoadScene("Level1");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         if (Input.GetButtonDown("Cancel"))
         {
             if(menuActive == null)
@@ -54,7 +107,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    
     public void statePause()
     {
         isPaused = !isPaused;
@@ -63,7 +116,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void stateUnpause() 
+    public void stateUnpause()
     {
         isPaused = !isPaused;
         Time.timeScale = 1;
@@ -71,8 +124,8 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
-    }
 
+    }
     public void updateGameGoal(int amount)
     {
         goalCount += amount;

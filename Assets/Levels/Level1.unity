@@ -11609,7 +11609,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5055332956226960029, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
@@ -60485,6 +60486,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 21595179352170218, guid: fe6cc0c2293db7d4194ff59999086f0e, type: 3}
   m_PrefabInstance: {fileID: 1991642130}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+--- !u!1 &1993361218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1993361219}
+  - component: {fileID: 1993361220}
+  m_Layer: 0
+  m_Name: Weapon Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1993361219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993361218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1105998891}
+  - {fileID: 1617526298}
+  - {fileID: 1657988798}
+  - {fileID: 1171146934}
+  - {fileID: 462632276}
+  - {fileID: 892506829}
+  - {fileID: 1947566653}
+  m_Father: {fileID: 1587648279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1993361220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993361218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12954195fcdd81e4a983342175edba37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rifle: {fileID: 1352262326}
+  submachinegun: {fileID: 638212889}
+  shotgun: {fileID: 167505662}
+  secondaryWeapon: {fileID: 2070607946}
+  grenade: {fileID: 1389453894}
+  knife: {fileID: 1947566652}
+  specialEquipment: {fileID: 368013487}
+  doorbreaker: {fileID: 0}
+  claymore: {fileID: 0}
+  riotShield: {fileID: 0}
+>>>>>>> de1356a1ae954784b4fbee2be58d2af984fc32de
 --- !u!1001 &1997417217
 PrefabInstance:
   m_ObjectHideFlags: 0

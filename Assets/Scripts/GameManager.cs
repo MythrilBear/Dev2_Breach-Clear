@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    private CurrentEquipment PlayerEquip;
     [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject timeOver;
-
+    [SerializeField] GameObject Selection1, Selection2, Selection3;
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;
 
@@ -36,8 +36,61 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+
+        if (SceneManager.GetActiveScene().name != "LoadOutScene")
+        {
+            player = GameObject.FindWithTag("Player");
+            playerScript = player.GetComponent<playerController>();
+            PlayerEquip = player.GetComponent<CurrentEquipment>();
+        }
+    }
+    public void SelectLoadout(int Select)
+    {
+        equipmentLoadout = Select;
+        LoadOutUI(Select);
+    }
+
+    public void LoadOutUI(int SelectLoadout)
+    {
+        GameObject[] loadouts = { Selection1, Selection2, Selection3 };
+
+        for (int i = 0; i < loadouts.Length; i++)
+        {
+            CanvasGroup canvasGroup = loadouts[i].GetComponent<CanvasGroup>();
+            if (i == SelectLoadout)
+            {
+                loadouts[i].GetComponent<CanvasGroup>().alpha = 1f;
+                ToggleLoadOutLabel(loadouts[i], true);
+            }
+            else
+            {
+                loadouts[i].GetComponent<CanvasGroup>().alpha = 0.5f;
+                ToggleLoadOutLabel(loadouts[i], false);
+            }
+        }
+    }
+
+    private void ToggleLoadOutLabel(GameObject loadout, bool isActive)
+    {
+        for (int i = 0; i < loadout.transform.childCount; i++)
+        {
+            GameObject child = loadout.transform.GetChild(i).gameObject;
+
+            if (child.name == "Text (TMP)")
+            {
+                continue;
+            }
+
+            child.SetActive(isActive);
+        }
+    }
+    public void ConfirmSelection()
+    {
+        PlayerPrefs.SetInt("SelectedLoadout", equipmentLoadout);
+        PlayerPrefs.Save();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level1");
+
     }
 
     // Update is called once per frame

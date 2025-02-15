@@ -27,8 +27,14 @@ public class buttonFunction : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameManager.instance.stateUnpause();
+        PlayerPrefs.SetInt("SelectedLoadout", 0); // Reset to Loadout 1
+        PlayerPrefs.Save(); // Ensure the reset is stored
+
+        Time.timeScale = 1; // Ensure time is running when restarting
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        SceneManager.LoadScene("LoadoutScene");
     }
 
     public void quit()
@@ -42,10 +48,17 @@ public class buttonFunction : MonoBehaviour
 
     public void StartGame()
     {  
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("LoadoutScene");
+        // Make sure the cursor is visible and not locked
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         Time.timeScale = 1; // Ensure the game is unpaused
         GameManager.instance.stateUnpause();
         GameManager.instance.menuActive.SetActive(false); // Deactivate the main menu
+
+        // Ensure the Loadout UI is displayed
+        GameManager.instance.LoadOutUI(GameManager.instance.equipmentLoadout);
     }
 
     public void OpenOptions()

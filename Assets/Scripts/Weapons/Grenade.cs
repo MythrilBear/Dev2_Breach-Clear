@@ -44,13 +44,13 @@ public class Grenade : Gun
     {
         base.Update();
         
-        if (Input.GetButtonDown("Shoot") && currentAmmo > 0)
+        if (Input.GetButtonDown("Shoot") && currentAmmo > 0 && !GameManager.instance.isPaused)
         {
             StartThrowing();
             //grenadePrefab.SetActive(false);
         }
 
-        if (isCharging)
+        if (isCharging && !GameManager.instance.isPaused)
         {
             ChargeThrow();
         }

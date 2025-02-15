@@ -6,8 +6,10 @@ public class buttonFunction : MonoBehaviour
 {
     [SerializeField] public GameObject startGame;
     [SerializeField] public GameObject menuOptions;
+    [SerializeField] public GameObject menuCredits;
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider SFXSlider;
+
 
     private void Start()
     {
@@ -76,5 +78,16 @@ public class buttonFunction : MonoBehaviour
         {
             SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         }
+    } 
+    public void OpenCredits()
+    {
+        startGame.SetActive(false);
+        menuCredits.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        startGame.SetActive(true);
+        menuCredits.SetActive(false);
     }
 }

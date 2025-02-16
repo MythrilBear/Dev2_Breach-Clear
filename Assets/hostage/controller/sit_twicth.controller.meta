@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 465f247c9f18b874da9639ff566f833c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/sit_twicth.controller
+  uploadId: 608760

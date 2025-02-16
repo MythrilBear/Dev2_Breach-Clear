@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1740dfbe7a3f27248b1273284f0de937
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/hands behind head loop.controller
+  uploadId: 608760

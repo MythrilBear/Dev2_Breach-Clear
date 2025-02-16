@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dfb7539c10228c24baa9a6d6358bcb6c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/hostage situation death(suspect).controller
+  uploadId: 608760

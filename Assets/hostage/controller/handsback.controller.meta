@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 61b1e56da674a0b40b2365daf17230f9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/handsback.controller
+  uploadId: 608760

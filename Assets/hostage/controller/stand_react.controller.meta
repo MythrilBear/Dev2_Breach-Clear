@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 38eedb69f83efe947b6d0392fd559380
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/stand_react.controller
+  uploadId: 608760

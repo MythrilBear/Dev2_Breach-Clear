@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e56a179190df2ba42a368ecfa680ea6e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/handsup loop.controller
+  uploadId: 608760

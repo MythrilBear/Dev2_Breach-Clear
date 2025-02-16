@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7396c0e9ffe3b2c46a441da93989d5eb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/hostage  situation escape (hostage).controller
+  uploadId: 608760

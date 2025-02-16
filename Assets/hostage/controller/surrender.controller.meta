@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ae190c885d1a27542ab2419f1a7f9c92
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/surrender.controller
+  uploadId: 608760

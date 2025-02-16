@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 989521652bdbcda4581b4d960faa2f52
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/walking2.controller
+  uploadId: 608760

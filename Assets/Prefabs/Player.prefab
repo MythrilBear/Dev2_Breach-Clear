@@ -1799,9 +1799,9 @@ MonoBehaviour:
   playerController: {fileID: 6471940700617647837}
   cameraTransform: {fileID: 5844858037362672395}
   currentAmmo: 0
-  adsPosition: {fileID: 0}
+  adsPosition: {fileID: 3671662516924832089}
   hipPosition: {fileID: 3671662516924832089}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 2151178324024853346}
   adsFOV: 0
   adsSpeed: 0
   adsDown: 0

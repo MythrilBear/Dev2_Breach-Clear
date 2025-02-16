@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6eb63c0d8c5066f408ec042c2ae41930
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189812
+  packageName: LOWPOLY - Special Forces
+  packageVersion: 1.0
+  assetPath: Assets/SpecialForces/Prefabs/medic_bag.prefab
+  uploadId: 418911

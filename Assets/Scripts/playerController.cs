@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
+public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
 {
     [Header("----- Components -----")]
 
@@ -14,6 +14,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [Header("----- Stats -----")]
 
     [Range(1, 10)] [SerializeField] int HP;
+    [Range(1, 10)][SerializeField] int Stam;
     [Range(1, 10)] [SerializeField] float speed;
     [Range(1, 5)] [SerializeField] int sprintMod;
     [Range(1, 2)] [SerializeField] int jumpMax;
@@ -35,7 +36,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
     private Vector3 targetRecoil = Vector3.zero;
-    private Vector3 currentRecoil = Vector3.zero;
+    public Vector3 currentRecoil = Vector3.zero;
 
     [Header("----- Melee -----")]
     
@@ -64,6 +65,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     int jumpCount;
 
     int HPOriginal;
+    int StamOrig;
 
     int gunListPos;
     float shootTimer;
@@ -81,24 +83,24 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     void Start()
     {
         HPOriginal = HP;
-        updatePlayerUI();
+        StamOrig = Stam;
         shootTimer = shootRate;
         originalSpeed = speed;
         originalHeight = controller.height;
         originalCameraY = playerCamera.localPosition.y;
         originalScale = transform.localScale;
-
-       
+        updatePlayerUI();
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         if(!GameManager.instance.isPaused)
         {
             movement();
-            // selectGun();
+            cameraController.instance.currentRecoil = currentRecoil;
             shootTimer += Time.deltaTime;
         }
         ToggleCrouch();
@@ -117,7 +119,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             {
                 StartCoroutine(playSteps());
             }
-
             jumpCount = 0;
             playerVelocity = Vector3.zero;
         }
@@ -125,12 +126,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         moveDir = (Input.GetAxis("Horizontal") * transform.right) +
                     (Input.GetAxis("Vertical") * transform.forward);
 
-        //playerCamera.transform.Rotate(currentRecoil);
-
+        
+        
+        // WASD movement.
         controller.Move(moveDir * speed * Time.deltaTime);
 
         jump();
 
+        // Vertical movement
         controller.Move(playerVelocity * Time.deltaTime);
         playerVelocity.y -= gravity * Time.deltaTime;
 
@@ -170,6 +173,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         float recoilX = Random.Range(-stats.maxRecoil.x, stats.maxRecoil.x) * stats.recoilAmount;
         float recoilY = Random.Range(-stats.maxRecoil.y, stats.maxRecoil.y) * stats.recoilAmount;
 
+        if (recoilY > 0)
+        {
+            recoilY *= -1;
+        }
+
         targetRecoil += new Vector3(recoilX, recoilY, 0);
 
         currentRecoil = Vector3.MoveTowards(currentRecoil, targetRecoil, Time.deltaTime * stats.recoilSpeed);
@@ -206,11 +214,37 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         {
             speed *= sprintMod;
             isSprinting = true;
+            StartCoroutine(DecreaseStaminaOverTime());
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
             isSprinting = false;
+            StartCoroutine(RecoverStaminaOverTime());
+        }
+
+        if (Stam <= 0)
+        {
+            speed = originalSpeed;
+            isSprinting = false;
+        }
+    }
+
+    IEnumerator DecreaseStaminaOverTime()
+    {
+        while (isSprinting && Stam > 0)
+        {
+            useStamina(1);
+            yield return new WaitForSeconds(1f); // Adjust the interval as needed
+        }
+    }
+
+    IEnumerator RecoverStaminaOverTime()
+    {
+        while (!isSprinting && Stam < StamOrig)
+        {
+            recoverStamina(1);
+            yield return new WaitForSeconds(1f); // Adjust the interval as needed
         }
     }
 
@@ -223,8 +257,33 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpCount++;
             playerVelocity.y = jumpSpeed;
+            useStamina(2);
+            StartCoroutine(RecoverStaminaOverTime());
         }
     }
+    
+    public void useStamina(int amount)
+    {
+        Stam -= amount;
+        if (Stam <= 0)
+        {
+           Stam = 0;
+        }
+        updatePlayerUI();
+    }
+
+
+    public void recoverStamina(int amount)
+    {
+        Stam += amount;
+        if (Stam > StamOrig)
+        {
+            Stam = StamOrig;
+        }
+        updatePlayerUI();
+    }
+
+
     void ToggleCrouch()
     {
         if(Input.GetButtonDown("Crouch"))
@@ -324,12 +383,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
 
     public void recoverHealth(int amount)
     {
+        updatePlayerUI();
         HP += amount;
         if (HP > HPOriginal)
         {
             HP = HPOriginal;
         }
-        updatePlayerUI();
     }
 
     IEnumerator flashDamagePanel()
@@ -342,14 +401,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     void updatePlayerUI()
     {
         GameManager.instance.PlayerHPBar.fillAmount = (float)HP / HPOriginal;
+        GameManager.instance.PlayerStamBar.fillAmount = (float)Stam / StamOrig;
 
         //if (gunList.Count > 0)
         //{
         //    GameManager.instance.updateAmmoCount(gunList[gunListPos].ammoCur);
         //}
-        
+
 
     }
+
+    public Vector3 getCurrentRecoil()
+    {
+        return currentRecoil;
+    }
+
     //public void getGunStats(gunStats gun)
     //{
     //    gunList.Add(gun);

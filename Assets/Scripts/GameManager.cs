@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Selection1, Selection2, Selection3;
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;
+    [SerializeField] TMP_Text reserveAmmoCountText;
 
     [Range(0, 2)] [SerializeField] public int equipmentLoadout;
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     int goalCount;
     public float ammoCount;
+    public float reserveAmmoCount;
     internal float volume;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -147,6 +149,12 @@ public class GameManager : MonoBehaviour
     {
         ammoCount = amount;
         ammoCountText.text = ammoCount.ToString("F0");
+    }
+
+    public void updateReserveAmmoCount(float amount)
+    {
+        reserveAmmoCount = amount;
+        reserveAmmoCountText.text = reserveAmmoCount.ToString("F0");
     }
 
     public void youLose()

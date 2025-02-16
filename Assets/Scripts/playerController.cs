@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
     //[SerializeField] GameObject muzzleFlash;
-    [SerializeField] int currentAmmoCount;
+    [SerializeField] public int currentAmmoCount;
     [SerializeField] int shootDamage;
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;

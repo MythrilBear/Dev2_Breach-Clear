@@ -1,15 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class ThrowingBullet : MonoBehaviour
 {
-    [SerializeField] private int maxAmmo;
+    [SerializeField] private float maxAmmo;
+
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform throwPosition;
     [SerializeField] private float throwForce;
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioSource audioSource;
 
-    private int currentAmmo;
+    private float currentAmmo;
 
     void Start()
     {
@@ -26,32 +28,26 @@ public class ThrowingBullet : MonoBehaviour
 
     void ThrowBullet()
     {
-        currentAmmo--;
-
+        // Instantiate the bullet at the throw position
         GameObject bullet = Instantiate(bulletPrefab, throwPosition.position, throwPosition.rotation);
+
+        // Apply force to the bullet to simulate throwing
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(throwPosition.forward * throwForce, ForceMode.VelocityChange);
-
-        bullet.AddComponent<BulletCollision>().Initialize(hitSound, audioSource);
-    }
-}
-
-public class BulletCollision : MonoBehaviour
-{
-    private AudioClip hitSound;
-    private AudioSource audioSource;
-
-    public void Initialize(AudioClip hitSound, AudioSource audioSource)
-    {
-        this.hitSound = hitSound;
-        this.audioSource = audioSource;
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (rb != null)
         {
-            audioSource.PlayOneShot(hitSound);
+            rb.AddForce(throwPosition.forward * throwForce, ForceMode.Impulse);
         }
+
+        // Play the audio clip with a delay
+        StartCoroutine(PlayAudioWithDelay(0.5f)); // Adjust the delay as needed
+
+        // Decrease the current ammo count
+        currentAmmo--;
+    }
+
+    IEnumerator PlayAudioWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.PlayOneShot(hitSound);
     }
 }

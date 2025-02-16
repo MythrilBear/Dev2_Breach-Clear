@@ -26,6 +26,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] bool patrol;
     Coroutine cor;
 
+    Vector3 soundPos;
+
     float angleToPlayer;
     float stoppingDistOrig;
     float scanDirection;
@@ -58,6 +60,9 @@ public class enemyAI : MonoBehaviour, IDamage
         scanDirection = transform.rotation.eulerAngles.y;
         isRotatingLeft = true;
         counter = 2;
+
+        agent = GetComponent<NavMeshAgent>();
+
     }
 
     // Update is called once per frame
@@ -269,5 +274,57 @@ public class enemyAI : MonoBehaviour, IDamage
         }
 
         isRoaming = false;
+    }
+
+    public void investigate(Vector3 soundPos, float radius)
+    {
+        Debug.Log("Enemy investigating sound at: " + soundPos);
+
+        if (co != null) StopCoroutine(co);
+        if (cor != null) StopCoroutine(cor);
+
+        agent.isStopped = false;
+        isRoaming = true;
+
+        Vector3 randomPos = soundPos + Random.insideUnitSphere * radius;
+
+        NavMeshHit hit;
+        if (!NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
+        {
+            Debug.LogWarning("No valid NavMesh position found, using sound source.");
+            hit.position = soundPos;
+        }
+
+        agent.SetDestination(hit.position);
+
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            StartCoroutine(InvestigateArea());
+        }
+    }
+
+
+    IEnumerator InvestigateArea()
+    {
+        Debug.Log("Investigating area...");
+
+        yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
+
+        Debug.Log("Reached investigation point, pausing...");
+        yield return new WaitForSeconds(3f);
+
+        if (!canSeePlayer())
+        {
+            isRoaming = false;
+
+            if (roaming)
+            {
+                co = StartCoroutine(roam());
+            }
+            else if (patrol)
+            {
+                cor = StartCoroutine(patrolling());
+            }
+        }
     }
 }

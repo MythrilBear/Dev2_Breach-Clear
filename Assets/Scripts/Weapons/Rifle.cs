@@ -37,4 +37,6 @@ public class Rifle : Gun
             tryReload();
         }
     }
+
+
 }

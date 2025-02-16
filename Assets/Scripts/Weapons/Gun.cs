@@ -17,6 +17,18 @@ public abstract class Gun : MonoBehaviour
 
     private bool isReloading = false;
 
+    // ADS functionality
+    [SerializeField] private Transform adsPosition;
+    [SerializeField] private Transform hipPosition;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float adsFOV;
+    private float normalFOV;
+    [SerializeField] private float adsSpeed;
+    private bool isAiming = false;
+
+    [SerializeField] float adsDown;
+    [SerializeField] float adsForward;
+
     private void Start()
     {
         currentAmmo = gunStats.magazineSize;
@@ -27,6 +39,8 @@ public abstract class Gun : MonoBehaviour
 
         playerController = transform.root.GetComponent<playerController>();
         cameraTransform = playerController.playerCamera.transform;
+
+        normalFOV = playerCamera.fieldOfView;
     }
 
     public virtual void Update()
@@ -40,6 +54,25 @@ public abstract class Gun : MonoBehaviour
         {
             GameManager.instance.updateAmmoCount(reserveAmmo);
         }
+
+
+        if (Input.GetButton("Aim"))
+        {
+            isAiming = true;
+        }
+        else
+        {
+            isAiming = false;
+        }
+
+        //ADS Mechanic
+        Vector3 targetLocalPosition = hipPosition.localPosition;
+        if (isAiming)
+        {
+            targetLocalPosition = adsPosition.localPosition + Vector3.forward * adsForward + Vector3.down * adsDown;
+        }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPosition, Time.deltaTime * adsSpeed);
     }
 
     public void tryReload()
@@ -124,6 +157,5 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void Shoot();
-
 
 }

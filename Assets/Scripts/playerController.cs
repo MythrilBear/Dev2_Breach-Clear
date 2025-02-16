@@ -79,6 +79,22 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     bool isCrouching;
     bool isReloading;
 
+
+
+    //Additions from Branch PA
+
+    float defusalRange;
+    private BombDefusal currentBomb;
+
+    float extractionRange;
+    private IntelExtraction currentIntel;
+
+    float moveSpeed;
+    float climbSpeed;
+    private Rigidbody rb;
+    bool isClimbing;
+    bool isOnLadder;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -263,6 +279,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
             useStamina(2);
             StartCoroutine(RecoverStaminaOverTime());
         }
+        
     }
     
     public void useStamina(int amount)
@@ -464,4 +481,90 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     //    //knifeModel.GetComponent<MeshFilter>().sharedMesh = melee.model.GetComponent<MeshFilter>().sharedMesh;
     //    //knifeModel.GetComponent<MeshRenderer>().sharedMaterial = melee.model.GetComponent<MeshRenderer>().sharedMaterial;
     //}
+
+    //Additions from Branch PA
+
+    void CheckForBombDefusal()
+    {
+        if (Input.GetButtonDown("Defuse") && currentBomb != null)
+        {
+            float distanceToBomb = Vector3.Distance(transform.position, currentBomb.transform.position);
+            if (distanceToBomb <= defusalRange)
+            {
+                currentBomb.DefuseBomb();
+            }
+        }
+    }
+
+    void CheckForIntelExtraction()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && currentIntel != null)
+        {
+            float distancetoIntel = Vector3.Distance(transform.position, currentIntel.transform.position);
+            if (distancetoIntel <= extractionRange)
+            {
+                currentIntel.StartExtraction();
+            }
+        }
+    }
+
+    void CheckForLadder()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (isClimbing)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y += verticalInput * climbSpeed * Time.deltaTime;
+            transform.position = newPosition;
+        }
+        else
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.x += horizontalInput * moveSpeed * Time.deltaTime;
+            transform.position = newPosition;
+        }
+        if (isOnLadder && Mathf.Abs(verticalInput) > 0)
+        {
+            isClimbing = true;
+            rb.useGravity = false;
+        }
+        else if (!isOnLadder)
+        {
+            isClimbing = false;
+            rb.useGravity = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bomb"))
+        {
+            currentBomb = other.GetComponent<BombDefusal>();
+        }
+        else if (other.CompareTag("Intel"))
+        {
+            currentIntel = other.GetComponent<IntelExtraction>();
+        }
+        else if (other.CompareTag("Ladder"))
+        {
+            isOnLadder = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bomb"))
+        {
+            currentBomb = null;
+        }
+        else if (other.CompareTag("Intel"))
+        {
+            currentIntel = null;
+        }
+        else if (other.CompareTag("Ladder"))
+        {
+            isOnLadder = false;
+        }
+    }
 }

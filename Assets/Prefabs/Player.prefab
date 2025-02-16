@@ -167,8 +167,8 @@ MonoBehaviour:
   playerCamera: {fileID: 5844858037362672395}
   HP: 5
   Stam: 10
-  speed: 5
-  sprintMod: 3
+  speed: 4
+  sprintMod: 2
   jumpMax: 1
   jumpSpeed: 12
   gravity: 28
@@ -227,7 +227,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

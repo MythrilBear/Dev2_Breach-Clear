@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f69dbe2725df4488c6bb708b839f1b, type: 3}
-  m_Name: Rifle
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  gunName: Rifle
+  gunName: Knife
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  shootingRange: 200
-  fireRate: 2
-  magazineSize: 30
-  reserveAmmoMax: 90
-  reloadTime: 2
+  shootingRange: 100
+  fireRate: 4
+  magazineSize: 17
+  reserveAmmoMax: 51
+  reloadTime: 1
   recoilAmount: 100
   maxRecoil: {x: 4, y: 8}
-  recoilSpeed: 200
+  recoilSpeed: 100
   resetRecoilSpeed: 10
-  shootDamage: 5
   hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 69c4de6e630250843b4dd2a66ba49a63, type: 3}

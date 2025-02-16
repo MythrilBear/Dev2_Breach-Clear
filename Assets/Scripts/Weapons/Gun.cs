@@ -78,7 +78,12 @@ public abstract class Gun : MonoBehaviour
         }
         else if (currentAmmo <= 0)
         {
-            aud.PlayOneShot(gunStats.gunEmptySound[Random.Range(0, gunStats.gunEmptySound.Length)], gunStats.gunEmptySoundVol);
+            if (Time.time >= fireDelay)
+            {
+                aud.PlayOneShot(gunStats.gunEmptySound[Random.Range(0, gunStats.gunEmptySound.Length)], gunStats.gunEmptySoundVol);
+                fireDelay = Time.time + (1 / gunStats.fireRate);
+            }
+            
             return;
         }
 

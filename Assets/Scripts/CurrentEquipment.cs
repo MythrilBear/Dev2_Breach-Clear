@@ -8,7 +8,8 @@ public class CurrentEquipment : MonoBehaviour
     public GameObject submachinegun;
     public GameObject shotgun;
     public GameObject secondaryWeapon;
-    public GameObject grenade;
+    public GameObject heldGrenade;
+    public GameObject tossedGrenade;
     public GameObject knife;
     public GameObject specialEquipment;
     public GameObject doorbreaker;
@@ -64,12 +65,15 @@ public class CurrentEquipment : MonoBehaviour
             else if (specialEquipment.activeSelf)
             {
                 specialEquipment.SetActive(false);
-                grenade.SetActive(true);
+                heldGrenade.SetActive(true);
+                //tossedGrenade.SetActive(true);
+                //Destroy(tossedGrenade);
                 GameManager.instance.updateAmmoCount(0);
             }
-            else if (grenade.activeSelf)
+            else if (heldGrenade.activeSelf)
             {
-                grenade.SetActive(false);
+                heldGrenade.SetActive(false);
+                //tossedGrenade.SetActive(false);
                 secondaryWeapon.SetActive(true);
 
             }
@@ -89,12 +93,15 @@ public class CurrentEquipment : MonoBehaviour
             else if (secondaryWeapon.activeSelf)
             {
                 secondaryWeapon.SetActive(false);
-                grenade.SetActive(true);
+                heldGrenade.SetActive(true);
+                //tossedGrenade.SetActive(true);
+                //Destroy(tossedGrenade);
                 GameManager.instance.updateAmmoCount(0);
             }
-            else if (grenade.activeSelf)
+            else if (heldGrenade.activeSelf)
             {
-                grenade.SetActive(false);
+                heldGrenade.SetActive(false);
+                //tossedGrenade.SetActive(false);
                 specialEquipment.SetActive(true);
                 GameManager.instance.updateAmmoCount(-1);
             }

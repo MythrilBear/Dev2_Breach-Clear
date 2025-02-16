@@ -3,7 +3,7 @@ using UnityEngine;
 public class Shotgun : Gun
 {
     public int pelletsPerShot = 6;
-    public float shotSpread = 0.000001f;
+    public float shotSpread = 5.0f;
 
     public override void Shoot()
     {
@@ -11,13 +11,16 @@ public class Shotgun : Gun
         {
             RaycastHit hit;
 
-            //Vector3 targetPos = Vector3.zero; //cameraTransform.position + cameraTransform.forward * gunStats.shootingRange;
+            Vector3 targetPos = cameraTransform.position + cameraTransform.forward * gunStats.shootingRange;
 
-            Vector3 targetPos = new Vector3(cameraTransform.forward.x + Random.Range(-shotSpread, shotSpread),
-                                    cameraTransform.forward.y + Random.Range(-shotSpread, shotSpread),
-                                    cameraTransform.forward.z + Random.Range(-shotSpread, shotSpread));
+            targetPos = new Vector3(targetPos.x + Random.Range(-shotSpread, shotSpread),
+                                    targetPos.y + Random.Range(-shotSpread, shotSpread),
+                                    targetPos.z + Random.Range(-shotSpread, shotSpread));
 
-            if (Physics.Raycast(cameraTransform.position, targetPos,
+            Vector3 direction = targetPos - cameraTransform.position;
+            direction = Vector3.Normalize(direction);
+
+            if (Physics.Raycast(cameraTransform.position, direction,
                 out hit, gunStats.shootingRange, gunStats.targetLayerMask))
             {
                 Debug.Log(gunStats.gunName + " hit " + hit.collider.name);

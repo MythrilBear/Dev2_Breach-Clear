@@ -23,6 +23,7 @@ public abstract class Gun : MonoBehaviour
         reserveAmmo = gunStats.reserveAmmoMax;
 
         GameManager.instance.updateAmmoCount(currentAmmo);
+        GameManager.instance.updateReserveAmmoCount(reserveAmmo);
 
         playerController = transform.root.GetComponent<playerController>();
         cameraTransform = playerController.playerCamera.transform;
@@ -34,6 +35,10 @@ public abstract class Gun : MonoBehaviour
         if (GameManager.instance.ammoCount != currentAmmo)
         {
             GameManager.instance.updateAmmoCount(currentAmmo);
+        }
+        if (GameManager.instance.reserveAmmoCount != reserveAmmo)
+        {
+            GameManager.instance.updateAmmoCount(reserveAmmo);
         }
     }
 
@@ -68,6 +73,7 @@ public abstract class Gun : MonoBehaviour
         isReloading = false;
         Debug.Log(gunStats.gunName + " is reloaded.");
         GameManager.instance.updateAmmoCount(currentAmmo);
+        GameManager.instance.updateReserveAmmoCount(reserveAmmo);
     }
 
     public void TryShoot()

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9f73ea1f3c9224e4788cb9e05e9ca28a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/stand_to_knees.controller
+  uploadId: 608760

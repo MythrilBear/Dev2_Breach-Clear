@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 651043f835070e04ca3651315cdff0ef
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/kneeling.controller
+  uploadId: 608760

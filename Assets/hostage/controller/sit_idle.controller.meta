@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9e1615dac5143fb46a3b74fde12f19cc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/sit_idle.controller
+  uploadId: 608760

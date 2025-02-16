@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5efc344995062ec4fb93aee4680d8fd7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/hostage situation loop(suspect).controller
+  uploadId: 608760

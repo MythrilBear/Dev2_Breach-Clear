@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5a2bc26244bb063478320af5152d6767
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/material/cloth.mat
+  uploadId: 608760

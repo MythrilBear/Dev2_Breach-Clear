@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b5c776ed2d086e641ad3e136ac7de394
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/stand_idle.controller
+  uploadId: 608760

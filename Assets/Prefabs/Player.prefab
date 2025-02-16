@@ -865,6 +865,13 @@ MonoBehaviour:
   playerController: {fileID: 6471940700617647837}
   cameraTransform: {fileID: 5844858037362672395}
   currentAmmo: 0
+  adsPosition: {fileID: 0}
+  hipPosition: {fileID: 1774399872351903550}
+  playerCamera: {fileID: 0}
+  adsFOV: 0
+  adsSpeed: 0
+  adsDown: 0
+  adsForward: 0
 --- !u!4 &1774399872351903550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4103414840200297536, guid: 4948c140e386c4f41b4ca03a672f3a9c, type: 3}
@@ -1451,6 +1458,13 @@ MonoBehaviour:
   playerController: {fileID: 6471940700617647837}
   cameraTransform: {fileID: 5844858037362672395}
   currentAmmo: 0
+  adsPosition: {fileID: 0}
+  hipPosition: {fileID: 3671662516924832089}
+  playerCamera: {fileID: 0}
+  adsFOV: 0
+  adsSpeed: 0
+  adsDown: 0
+  adsForward: 0
   grenadePrefab: {fileID: 1188298417882237661, guid: e75bbf45869c76f4ea6a70b71189c8af, type: 3}
   throwPosition: {fileID: 3671662516924832089}
   throwDirection: {x: 0, y: 1, z: 0}
@@ -1638,6 +1652,13 @@ MonoBehaviour:
   playerController: {fileID: 6471940700617647837}
   cameraTransform: {fileID: 5844858037362672395}
   currentAmmo: 0
+  adsPosition: {fileID: 0}
+  hipPosition: {fileID: 6200131910945169628}
+  playerCamera: {fileID: 0}
+  adsFOV: 0
+  adsSpeed: 0
+  adsDown: 0
+  adsForward: 0
 --- !u!1001 &8300585468537780624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1811,6 +1832,13 @@ MonoBehaviour:
   playerController: {fileID: 6471940700617647837}
   cameraTransform: {fileID: 5844858037362672395}
   currentAmmo: 0
+  adsPosition: {fileID: 0}
+  hipPosition: {fileID: 2866309784250302534}
+  playerCamera: {fileID: 0}
+  adsFOV: 0
+  adsSpeed: 0
+  adsDown: 0
+  adsForward: 0
   pelletsPerShot: 6
   shotSpread: 1
 --- !u!1001 &9018787474859279661
@@ -1994,3 +2022,10 @@ MonoBehaviour:
   playerController: {fileID: 6471940700617647837}
   cameraTransform: {fileID: 5844858037362672395}
   currentAmmo: 0
+  adsPosition: {fileID: 0}
+  hipPosition: {fileID: 5791930555050455209}
+  playerCamera: {fileID: 0}
+  adsFOV: 0
+  adsSpeed: 0
+  adsDown: 0
+  adsForward: 0

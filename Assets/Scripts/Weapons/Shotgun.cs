@@ -2,22 +2,36 @@ using UnityEngine;
 
 public class Shotgun : Gun
 {
+    public int pelletsPerShot = 6;
+    public float shotSpread = 5.0f;
 
     public override void Shoot()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
-            out hit, gunStats.shootingRange, gunStats.targetLayerMask))
+        for ( int i = 0; i < pelletsPerShot; i++)
         {
-            Debug.Log(gunStats.gunName + " hit " + hit.collider.name);
-            Instantiate(gunStats.hitEffect, hit.point, Quaternion.identity);
+            RaycastHit hit;
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            Vector3 targetPos = cameraTransform.position + cameraTransform.forward * gunStats.shootingRange;
 
-            if (dmg != null)
+            targetPos = new Vector3(targetPos.x + Random.Range(-shotSpread, shotSpread),
+                                    targetPos.y + Random.Range(-shotSpread, shotSpread),
+                                    targetPos.z + Random.Range(-shotSpread, shotSpread));
+
+            Vector3 direction = targetPos - cameraTransform.position;
+            direction = Vector3.Normalize(direction);
+
+            if (Physics.Raycast(cameraTransform.position, direction,
+                out hit, gunStats.shootingRange, gunStats.targetLayerMask))
             {
-                dmg.takeDamage(gunStats.shootDamage);
+                Debug.Log(gunStats.gunName + " hit " + hit.collider.name);
+                Instantiate(gunStats.hitEffect, hit.point, Quaternion.identity);
+
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (dmg != null)
+                {
+                    dmg.takeDamage(gunStats.shootDamage);
+                }
             }
         }
     }

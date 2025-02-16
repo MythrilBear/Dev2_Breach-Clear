@@ -40,7 +40,7 @@ public class CurrentEquipment : MonoBehaviour
             specialEquipment = riotShield;
         }
         if (primaryWeapon != null) primaryWeapon.SetActive(true);
-        if (secondaryWeapon != null) secondaryWeapon.SetActive(true);
+        //if (secondaryWeapon != null) secondaryWeapon.SetActive(true);
 
     }
 

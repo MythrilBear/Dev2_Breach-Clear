@@ -25,6 +25,7 @@ MonoBehaviour:
   maxRecoil: {x: 1, y: 2}
   recoilSpeed: 300
   resetRecoilSpeed: 20
+  shootDamage: 2
   hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 69c4de6e630250843b4dd2a66ba49a63, type: 3}

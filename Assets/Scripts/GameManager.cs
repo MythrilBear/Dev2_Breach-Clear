@@ -1,15 +1,13 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private CurrentEquipment PlayerEquip;
-    [SerializeField] GameObject menuActive;
+    [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -17,10 +15,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Selection1, Selection2, Selection3;
     [SerializeField] TMP_Text goalCountText;
     [SerializeField] TMP_Text ammoCountText;
+    [SerializeField] TMP_Text reserveAmmoCountText;
 
-    [Range(0, 2)][SerializeField] public int equipmentLoadout;
+    [Range(0, 2)] [SerializeField] public int equipmentLoadout;
 
     public Image PlayerHPBar;
+    public Image PlayerStamBar;
     public GameObject damagePanel;
     public GameObject buttonInteract;
 
@@ -31,9 +31,14 @@ public class GameManager : MonoBehaviour
 
     int goalCount;
     public float ammoCount;
+    public float reserveAmmoCount;
+    internal float volume;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
+
         if (SceneManager.GetActiveScene().name != "LoadOutScene")
         {
             player = GameObject.FindWithTag("Player");
@@ -73,7 +78,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject child = loadout.transform.GetChild(i).gameObject;
 
-            if (child.name == "Text (TMP)")  
+            if (child.name == "Text (TMP)")
             {
                 continue;
             }
@@ -83,17 +88,16 @@ public class GameManager : MonoBehaviour
     }
     public void ConfirmSelection()
     {
-       PlayerPrefs.SetInt("SelectedLoadout", equipmentLoadout); 
-       PlayerPrefs.Save();
-       Time.timeScale = 1;
-       SceneManager.LoadScene("Level1");
-       
+        PlayerPrefs.SetInt("SelectedLoadout", equipmentLoadout);
+        PlayerPrefs.Save();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level1");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
         if (Input.GetButtonDown("Cancel"))
         {
             if(menuActive == null)
@@ -108,7 +112,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
     public void statePause()
     {
         isPaused = !isPaused;
@@ -117,7 +121,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void stateUnpause()
+    public void stateUnpause() 
     {
         isPaused = !isPaused;
         Time.timeScale = 1;
@@ -125,8 +129,8 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
-
     }
+
     public void updateGameGoal(int amount)
     {
         goalCount += amount;
@@ -145,6 +149,12 @@ public class GameManager : MonoBehaviour
     {
         ammoCount = amount;
         ammoCountText.text = ammoCount.ToString("F0");
+    }
+
+    public void updateReserveAmmoCount(float amount)
+    {
+        reserveAmmoCount = amount;
+        reserveAmmoCountText.text = reserveAmmoCount.ToString("F0");
     }
 
     public void youLose()

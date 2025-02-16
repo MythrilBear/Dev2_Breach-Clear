@@ -17,15 +17,30 @@ public abstract class Gun : MonoBehaviour
 
     private bool isReloading = false;
 
+    // ADS functionality
+    [SerializeField] private Transform adsPosition;
+    [SerializeField] private Transform hipPosition;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float adsFOV;
+    private float normalFOV;
+    [SerializeField] private float adsSpeed;
+    private bool isAiming = false;
+
+    [SerializeField] float adsDown;
+    [SerializeField] float adsForward;
+
     private void Start()
     {
         currentAmmo = gunStats.magazineSize;
         reserveAmmo = gunStats.reserveAmmoMax;
 
         GameManager.instance.updateAmmoCount(currentAmmo);
+        GameManager.instance.updateReserveAmmoCount(reserveAmmo);
 
         playerController = transform.root.GetComponent<playerController>();
         cameraTransform = playerController.playerCamera.transform;
+
+        normalFOV = playerCamera.fieldOfView;
     }
 
     public virtual void Update()
@@ -35,6 +50,29 @@ public abstract class Gun : MonoBehaviour
         {
             GameManager.instance.updateAmmoCount(currentAmmo);
         }
+        if (GameManager.instance.reserveAmmoCount != reserveAmmo)
+        {
+            GameManager.instance.updateAmmoCount(reserveAmmo);
+        }
+
+
+        if (Input.GetButton("Aim"))
+        {
+            isAiming = true;
+        }
+        else
+        {
+            isAiming = false;
+        }
+
+        //ADS Mechanic
+        Vector3 targetLocalPosition = hipPosition.localPosition;
+        if (isAiming)
+        {
+            targetLocalPosition = adsPosition.localPosition + Vector3.forward * adsForward + Vector3.down * adsDown;
+        }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPosition, Time.deltaTime * adsSpeed);
     }
 
     public void tryReload()
@@ -68,6 +106,7 @@ public abstract class Gun : MonoBehaviour
         isReloading = false;
         Debug.Log(gunStats.gunName + " is reloaded.");
         GameManager.instance.updateAmmoCount(currentAmmo);
+        GameManager.instance.updateReserveAmmoCount(reserveAmmo);
     }
 
     public void TryShoot()
@@ -78,7 +117,12 @@ public abstract class Gun : MonoBehaviour
         }
         else if (currentAmmo <= 0)
         {
-            aud.PlayOneShot(gunStats.gunEmptySound[Random.Range(0, gunStats.gunEmptySound.Length)], gunStats.gunEmptySoundVol);
+            if (Time.time >= fireDelay)
+            {
+                aud.PlayOneShot(gunStats.gunEmptySound[Random.Range(0, gunStats.gunEmptySound.Length)], gunStats.gunEmptySoundVol);
+                fireDelay = Time.time + (1 / gunStats.fireRate);
+            }
+            
             return;
         }
 
@@ -113,6 +157,5 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void Shoot();
-
 
 }

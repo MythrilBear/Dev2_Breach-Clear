@@ -12,6 +12,13 @@ public class Rifle : Gun
         {
             Debug.Log(gunStats.gunName + " hit " + hit.collider.name);
             Instantiate(gunStats.hitEffect, hit.point, Quaternion.identity);
+
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+            if (dmg != null)
+            {
+                dmg.takeDamage(gunStats.shootDamage);
+            }
         }
     }
 
@@ -20,7 +27,7 @@ public class Rifle : Gun
     {
         base.Update();
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Shoot"))
         {
             TryShoot();
         }
@@ -30,4 +37,6 @@ public class Rifle : Gun
             tryReload();
         }
     }
+
+
 }

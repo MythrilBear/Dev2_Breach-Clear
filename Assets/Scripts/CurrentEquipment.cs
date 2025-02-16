@@ -15,32 +15,39 @@ public class CurrentEquipment : MonoBehaviour
     public GameObject doorbreaker;
     public GameObject claymore;
     public GameObject riotShield;
-    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        if (GameManager.instance.equipmentLoadout == 0)
+        int savedLoadout = PlayerPrefs.GetInt("SelectedLoadout", 0); 
+        AssignLoadOut(savedLoadout);
+    }
+    public void AssignLoadOut(int loadoutSelection)
+    {
+       
+        if (loadoutSelection == 0)
         {
             primaryWeapon = rifle;
             specialEquipment = claymore;
         }
-        else if (GameManager.instance.equipmentLoadout == 1)
+        else if (loadoutSelection == 1)
         {
-             primaryWeapon = submachinegun;
+            primaryWeapon = submachinegun;
             specialEquipment = doorbreaker;
         }
-        else
+        else if (loadoutSelection == 2)
         {
             primaryWeapon = shotgun;
             specialEquipment = riotShield;
         }
-        primaryWeapon.SetActive(true);
+        if (primaryWeapon != null) primaryWeapon.SetActive(true);
+        if (secondaryWeapon != null) secondaryWeapon.SetActive(true);
+
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
+        if (primaryWeapon == null) return;
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             if (primaryWeapon.activeSelf)
@@ -68,7 +75,7 @@ public class CurrentEquipment : MonoBehaviour
                 heldGrenade.SetActive(false);
                 //tossedGrenade.SetActive(false);
                 secondaryWeapon.SetActive(true);
-                
+
             }
             else if (secondaryWeapon.activeSelf)
             {
@@ -111,6 +118,7 @@ public class CurrentEquipment : MonoBehaviour
             }
 
         }
-        
+
     }
+
 }

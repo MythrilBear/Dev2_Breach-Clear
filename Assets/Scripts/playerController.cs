@@ -90,10 +90,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
     bool isClimbing;
     bool isOnLadder;
 
+<<<<<<< Updated upstream
     int maxAmmo = 100;
     int currentAmmo;
     int ammoRefillAmount = 50;
 
+=======
+>>>>>>> Stashed changes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -105,7 +108,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen
         originalCameraY = playerCamera.localPosition.y;
         originalScale = transform.localScale;
         rb = GetComponent<Rigidbody>();
+<<<<<<< Updated upstream
         currentAmmo = maxAmmo;
+=======
+>>>>>>> Stashed changes
        
     }
 

@@ -54,7 +54,6 @@ public class buttonFunction : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         Time.timeScale = 1; // Ensure the game is unpaused
-        GameManager.instance.stateUnpause();
         GameManager.instance.menuActive.SetActive(false); // Deactivate the main menu
 
         // Ensure the Loadout UI is displayed

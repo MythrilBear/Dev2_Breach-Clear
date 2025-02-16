@@ -234,7 +234,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     {
         while (isSprinting && Stam > 0)
         {
-            useStamina(1);
+            if (moveDir.magnitude > 0)
+            {
+                useStamina(1);
+            }
             yield return new WaitForSeconds(1f); // Adjust the interval as needed
         }
     }

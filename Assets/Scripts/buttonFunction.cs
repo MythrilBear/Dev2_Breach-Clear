@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class buttonFunction : MonoBehaviour
 {
@@ -18,6 +19,50 @@ public class buttonFunction : MonoBehaviour
         // Add listeners to save values when sliders are changed
         musicSlider.onValueChanged.AddListener(delegate { SaveOptions(); });
         SFXSlider.onValueChanged.AddListener(delegate { SaveOptions(); });
+        SetButtonSelected("Start Game Button");
+    }
+
+    private void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            SetButtonSelected("Start Game Button"); // Change if needed
+        }
+
+        // Handle Enter key to trigger the selected button
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            GameObject selected = EventSystem.current.currentSelectedGameObject;
+            if (selected != null)
+            {
+                UnityEngine.UI.Button button = selected.GetComponent<UnityEngine.UI.Button>();
+                if (button != null)
+                {
+                    button.onClick.Invoke();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (menuOptions.activeSelf) // If options menu is open
+            {
+                CloseOptions();
+            }
+            else if (menuCredits.activeSelf) // If credits menu is open
+            {
+                CloseCredits();
+            }
+        }
+       
+    }
+
+    private void SetButtonSelected(string buttonName)
+    {
+        GameObject button = GameObject.Find(buttonName);
+        if (button != null)
+        {
+            EventSystem.current.SetSelectedGameObject(button);
+        }
     }
 
     public void resume()
@@ -47,7 +92,8 @@ public class buttonFunction : MonoBehaviour
     }  
 
     public void StartGame()
-    {  
+    {
+        SetButtonSelected("Start Game Button");
         SceneManager.LoadScene("LoadoutScene");
         // Make sure the cursor is visible and not locked
         Cursor.visible = true;
@@ -64,6 +110,7 @@ public class buttonFunction : MonoBehaviour
     {
         startGame.SetActive(false);
         menuOptions.SetActive(true);
+        SetButtonSelected("Options Button");
     }
 
     public void CloseOptions()
@@ -95,6 +142,7 @@ public class buttonFunction : MonoBehaviour
     {
         startGame.SetActive(false);
         menuCredits.SetActive(true);
+        SetButtonSelected("Credits Button");
     }
 
     public void CloseCredits()

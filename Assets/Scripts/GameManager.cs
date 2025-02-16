@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
     {
         equipmentLoadout = Select;
         LoadOutUI(Select);
+      
+
     }
 
     public void LoadOutUI(int SelectLoadout)
@@ -111,6 +114,56 @@ public class GameManager : MonoBehaviour
                 stateUnpause();
             }
         }
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            NavigateLoadoutButtons(Input.GetKeyDown(KeyCode.DownArrow));
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && equipmentLoadout == 3) // Only triggers if Confirm is selected
+        {
+            ConfirmSelection();
+        }
+    }
+    private void NavigateLoadoutButtons(bool moveDown)
+    {
+        if (equipmentLoadout < 0 || equipmentLoadout > 3) // Allow selection of Confirm (3)
+            return;
+
+        if (moveDown)
+        {
+            if (equipmentLoadout < 3)  // Move down, including Confirm
+            {
+                equipmentLoadout++;
+            }
+            else
+            {
+                equipmentLoadout = 0;  // Loop back to Loadout 1
+            }
+        }
+        else
+        {
+            if (equipmentLoadout > 0)  // Move up, including Confirm
+            {
+                equipmentLoadout--;
+            }
+            else
+            {
+                equipmentLoadout = 3;  // Loop back to Confirm
+            }
+        }
+
+        if (equipmentLoadout == 3)
+        {
+            GameObject confirmButton = GameObject.Find("Confirm/Exit"); // Find Confirm button
+            if (confirmButton != null)
+            {
+                EventSystem.current.SetSelectedGameObject(confirmButton);
+            }
+        }
+        else
+        {
+            SelectLoadout(equipmentLoadout);
+        }
+
     }
 
     public void statePause()

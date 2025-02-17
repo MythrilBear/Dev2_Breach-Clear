@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class IntelExtraction : MonoBehaviour
@@ -6,7 +7,13 @@ public class IntelExtraction : MonoBehaviour
     private float extractionTime = 5f; //required time to extract the intel
     private float currentExtractionTime = 0;
     private bool isExtracting = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+         GameManager.instance.AddMissionObjective("Extract Intel");
+    }
+
     public void StartExtraction()
     {
         isExtracting = true;
@@ -38,5 +45,6 @@ public class IntelExtraction : MonoBehaviour
     {
         Debug.Log("Intel collected!");
         Destroy(gameObject);
+        GameManager.instance.CompleteMissionObjective("Extract Intel");
     }
 }

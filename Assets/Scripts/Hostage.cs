@@ -14,6 +14,7 @@ public class Hostage : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         hostageUI.SetActive(false);
+        GameManager.instance.AddMissionObjective("Rescue Hostage");
     }
     void Update()
     {
@@ -46,7 +47,7 @@ public class Hostage : MonoBehaviour
     {
         CancelInvoke("MoveForward");
         Disappear();
-        
+        GameManager.instance.CompleteMissionObjective("Rescue Hostage");
     }
     void Disappear()
     {
@@ -68,7 +69,5 @@ public class Hostage : MonoBehaviour
             hostageUI.SetActive(false);
         }
     }
-   
-
 }
 

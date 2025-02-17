@@ -273,11 +273,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!143 &597001438 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 3296436029039494796, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
-  m_PrefabInstance: {fileID: 666318019}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &666318019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,7 +284,7 @@ PrefabInstance:
     - target: {fileID: 1008627694655939957, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: controller
       value: 
-      objectReference: {fileID: 597001438}
+      objectReference: {fileID: 0}
     - target: {fileID: 1008627694655939957, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: ignoreMask.m_Bits
       value: 8
@@ -486,6 +481,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1082360591973924108, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082500138505248884, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9012234813795458722, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}

@@ -2118,7 +2118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7288271787834148090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2753,7 +2753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9220855850175084321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4142,6 +4142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349111986414457868}
   - component: {fileID: 4443335237886758668}
+  - component: {fileID: 8576296166796261545}
   m_Layer: 5
   m_Name: GameManger
   m_TagString: Untagged
@@ -4201,6 +4202,19 @@ MonoBehaviour:
   isPaused: 0
   ammoCount: 0
   reserveAmmoCount: 0
+--- !u!114 &8576296166796261545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702500478605280772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f92c7804b5a5f4493110169b7dda48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionObjectiveText: {fileID: 5052641205753884541}
 --- !u!1 &3791463750406974680
 GameObject:
   m_ObjectHideFlags: 0
@@ -4559,7 +4573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7726672801491854347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5984,7 +5998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9181928854210222246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9402,7 +9416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7805469348902054752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9662,7 +9676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4800496464353127902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10229,7 +10243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3054605350378010095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10532,6 +10546,10 @@ PrefabInstance:
     - target: {fileID: 2185230562757408124, guid: 869cf556cb81c7745b37b822721fe93e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110257070886709200, guid: 869cf556cb81c7745b37b822721fe93e, type: 3}
+      propertyPath: volume
+      value: 0.466
       objectReference: {fileID: 0}
     - target: {fileID: 8081081906970002875, guid: 869cf556cb81c7745b37b822721fe93e, type: 3}
       propertyPath: m_Name

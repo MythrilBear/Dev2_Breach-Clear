@@ -119,6 +119,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1127402669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5006123555652541461, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 6342776099373700393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2117879925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 6342776099373700393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6342776099373700393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,6 +221,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8576296166796261545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: missionObjective
+      value: 
+      objectReference: {fileID: 2117879925}
+    - target: {fileID: 8576296166796261545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: missionObjectiveText
+      value: 
+      objectReference: {fileID: 1127402669}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

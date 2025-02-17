@@ -39249,6 +39249,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -39267,6 +39271,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8576296166796261545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: missionObjective
+      value: 
+      objectReference: {fileID: 1804362752}
+    - target: {fileID: 8576296166796261545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: missionObjectiveText
       value: 
       objectReference: {fileID: 1303923506}
     - target: {fileID: 9211178022242370415, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
@@ -52158,6 +52166,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e449ee857113d68468c8619a3c2396ec, type: 3}
+--- !u!1 &1804362752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 1315538147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1805945663
 PrefabInstance:
   m_ObjectHideFlags: 0

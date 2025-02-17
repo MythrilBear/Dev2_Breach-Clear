@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5a21fcb3b83122249b862ecf23a96d32
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/sit_dive.controller
+  uploadId: 608760

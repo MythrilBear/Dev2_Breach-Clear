@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a91f7547f4ed0bb48b2c53c30b712851
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/knees_die.controller
+  uploadId: 608760

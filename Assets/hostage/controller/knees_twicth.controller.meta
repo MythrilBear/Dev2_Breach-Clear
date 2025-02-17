@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 17851d8d6ea78064aba2d31258a9de67
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 248230
+  packageName: Hostage Animations
+  packageVersion: 2
+  assetPath: Assets/hostage/controller/knees_twicth.controller
+  uploadId: 608760

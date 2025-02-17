@@ -121,6 +121,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         }
         ToggleCrouch();
         sprint();
+
+        // Update mission objective.
+
+
     }
 
     void movement()
@@ -435,6 +439,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     {
         return currentRecoil;
     }
+
 
     //public void getGunStats(gunStats gun)
     //{

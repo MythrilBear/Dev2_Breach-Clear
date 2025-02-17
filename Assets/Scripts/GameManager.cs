@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
             PlayerEquip = player.GetComponent<CurrentEquipment>();
         }
     }
+
     public void SelectLoadout(int Select)
     {
         equipmentLoadout = Select;
@@ -156,6 +158,19 @@ public class GameManager : MonoBehaviour
         reserveAmmoCount = amount;
         reserveAmmoCountText.text = reserveAmmoCount.ToString("F0");
     }
+
+    public void AddMissionObjective(string description) //add mission objective
+    {
+        Debug.Log("GameManager: AddMissionObjective called with: " + description);
+        MissionObjectiveManager.instance.AddObjective(description);
+    }
+
+    public void CompleteMissionObjective(string description) //remove completed mission objective
+    {
+        Debug.Log("GameManager: CompleteMissionObjective called with: " + description);
+        MissionObjectiveManager.instance.CompleteObjective(description);
+    }
+
 
     public void youLose()
     {

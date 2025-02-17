@@ -542,34 +542,34 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Bomb"))
-        {
-            currentBomb = other.GetComponent<BombDefusal>();
-        }
-        else if (other.CompareTag("Intel"))
-        {
-            currentIntel = other.GetComponent<IntelExtraction>();
-        }
-        else if (other.CompareTag("Ladder"))
-        {
-            isOnLadder = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Bomb"))
-        {
-            currentBomb = null;
-        }
-        else if (other.CompareTag("Intel"))
-        {
-            currentIntel = null;
-        }
-        else if (other.CompareTag("Ladder"))
-        {
-            isOnLadder = false;
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Bomb"))
+    //    {
+    //        currentBomb = other.GetComponent<BombDefusal>();
+    //    }
+    //    else if (other.CompareTag("Intel Spot"))
+    //    {
+            
+    //    }
+    //    else if (other.CompareTag("Ladder"))
+    //    {
+    //        isOnLadder = true;
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Bomb"))
+    //    {
+    //        currentBomb = null;
+    //    }
+    //    else if (other.CompareTag("Intel Spot"))
+    //    {
+    //        currentIntel = null;
+    //    }
+    //    else if (other.CompareTag("Ladder"))
+    //    {
+    //        isOnLadder = false;
+    //    }
+    //}
 }

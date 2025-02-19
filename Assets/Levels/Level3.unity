@@ -23115,6 +23115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3082500138505248884, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4384665306400991373, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -23133,6 +23137,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8576296166796261545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: missionObjective
+      value: 
+      objectReference: {fileID: 2135715114}
+    - target: {fileID: 8576296166796261545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: missionObjectiveText
       value: 
       objectReference: {fileID: 1053404176}
     - target: {fileID: 9211178022242370415, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
@@ -46084,6 +46092,11 @@ Transform:
   - {fileID: 1417104622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2135715114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 1053404175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2137335736
 GameObject:
   m_ObjectHideFlags: 0

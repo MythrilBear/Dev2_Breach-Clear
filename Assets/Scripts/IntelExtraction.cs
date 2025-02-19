@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class IntelExtraction : MonoBehaviour
     private float extractionTime = 5f; //required time to extract the intel
     private float currentExtractionTime = 0;
     private bool isExtracting = false;
+    bool playerInRange;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,10 +26,13 @@ public class IntelExtraction : MonoBehaviour
     // Update is called once per frame
     void Update()//similar to BombDefusing
     {
-        if (isExtracting)
+        
+        
+        if (playerInRange)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.F))
             {
+                //StartExtraction();
                 currentExtractionTime += Time.deltaTime;
                 if (currentExtractionTime >= extractionTime)
                 {
@@ -44,7 +50,23 @@ public class IntelExtraction : MonoBehaviour
     void ExtractIntel()
     {
         Debug.Log("Intel collected!");
-        Destroy(gameObject);
+        //Destroy(gameObject);
         GameManager.instance.CompleteMissionObjective("Extract Intel");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
     }
 }

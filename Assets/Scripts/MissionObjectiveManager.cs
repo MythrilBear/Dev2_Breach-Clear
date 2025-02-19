@@ -5,7 +5,8 @@ using UnityEngine;
 public class MissionObjectiveManager : MonoBehaviour
 {
     public static MissionObjectiveManager instance;
-    [SerializeField] GameObject missionObjective;
+    public GameObject missionObjectiveText;
+    public GameObject missionObjective;
 
     private List<string> objectives = new List<string>();
 
@@ -28,10 +29,12 @@ public class MissionObjectiveManager : MonoBehaviour
 
     private void UpdateMissionObjectivesUI()
     {
-        missionObjective.GetComponent<TMP_Text>().text = "Mission Objectives:\n";
+        missionObjectiveText.GetComponent<TMP_Text>().text = "Mission Objectives:\n";
         foreach (string objective in objectives)
         {
-            missionObjective.GetComponent<TMP_Text>().text += "- " + objective + "\n";
+            missionObjectiveText.GetComponent<TMP_Text>().text += "- " + objective + "\n";
         }
     }
+
+
 }

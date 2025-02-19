@@ -24,6 +24,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform startPoint;
     [SerializeField] Transform endPoint;
     [SerializeField] bool patrol;
+
     Coroutine cor;
 
     Vector3 soundPos;
@@ -224,7 +225,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            GameManager.instance.updateGameGoal(-1);
+            //GameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
@@ -254,7 +255,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
         while (patrol)
         {
-            if (!playerInRange && agent.remainingDistance < 0.01f)
+            if (!playerInRange && agent.remainingDistance < 2f)
             {
                 yield return new WaitForSeconds(roamPauseTime);
 

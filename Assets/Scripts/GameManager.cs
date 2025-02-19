@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
             player = GameObject.FindWithTag("Player");
             playerScript = player.GetComponent<playerController>();
             PlayerEquip = player.GetComponent<CurrentEquipment>();
+
+            MissionObjectiveManager.instance.missionObjective.SetActive(true);
         }
     }
 
@@ -94,6 +96,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
         Time.timeScale = 1;
         SceneManager.LoadScene("Level1");
+        
 
     }
 
@@ -169,6 +172,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager: CompleteMissionObjective called with: " + description);
         MissionObjectiveManager.instance.CompleteObjective(description);
+
+        // Temp win scenario
+
+        updateGameGoal(0);
     }
 
 

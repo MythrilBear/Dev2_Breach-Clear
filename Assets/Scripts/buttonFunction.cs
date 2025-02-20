@@ -10,7 +10,7 @@ public class buttonFunction : MonoBehaviour
     [SerializeField] public GameObject menuCredits;
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider SFXSlider;
-    [SerializeField] public AudioMixer audioMixer;
+   // [SerializeField] public AudioMixer audioMixer;
 
     private GameObject previousMenu;
 
@@ -107,14 +107,14 @@ public class buttonFunction : MonoBehaviour
         {
             float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
             musicSlider.value = musicVolume;
-            SetMusicVolume(musicVolume);
+           // SetMusicVolume(musicVolume);
         }
 
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
             float SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
             SFXSlider.value = SFXVolume;
-            SetSFXVolume(SFXVolume);
+           // SetSFXVolume(SFXVolume);
         }
     } 
     public void OpenCredits()
@@ -130,14 +130,14 @@ public class buttonFunction : MonoBehaviour
     }
 
     // Method to set music volume
-    public void SetMusicVolume(float volume)
-    {
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-    }
+    //public void SetMusicVolume(float volume)
+    //{
+    //    audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+    //}
 
-    // Method to set SFX volume
-    public void SetSFXVolume(float volume)
-    {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-    }
+    //// Method to set SFX volume
+    //public void SetSFXVolume(float volume)
+    //{
+    //    audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+    //}
 }

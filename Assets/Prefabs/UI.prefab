@@ -2118,7 +2118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7288271787834148090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2753,7 +2753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9220855850175084321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3667,7 +3667,6 @@ MonoBehaviour:
   menuCredits: {fileID: 2081097097700482265}
   musicSlider: {fileID: 6215949505890070968}
   SFXSlider: {fileID: 7098413337383666781}
-  audioMixer: {fileID: 24100000, guid: 2521c1e758dcbbc479461e216962bbf2, type: 2}
 --- !u!1 &3365778189459654085
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,7 +4981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7726672801491854347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5791,15 +5790,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6409,7 +6408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9181928854210222246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6419,7 +6418,7 @@ RectTransform:
   m_GameObject: {fileID: 5460130388425451153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6611004627060402073}
@@ -8664,7 +8663,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 698505845662275064}
         m_TargetAssemblyTypeName: buttonFunction, Assembly-CSharp
-        m_MethodName: OpenOptions
+        m_MethodName: OpenOptionsFromPauseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9960,7 +9959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7805469348902054752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10220,7 +10219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4800496464353127902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10789,7 +10788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3054605350378010095
 RectTransform:
   m_ObjectHideFlags: 0

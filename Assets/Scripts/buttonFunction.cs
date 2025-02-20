@@ -46,6 +46,16 @@ public class buttonFunction : MonoBehaviour
     #endif
     }  
 
+    public void StartMenu()
+    {
+        SceneManager.LoadScene("Start Menu");
+        // Make sure the cursor is visible and not locked
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 1; // Ensure the game is unpaused
+        GameManager.instance.menuActive.SetActive(false); // Deactivate the main menu
+    }
+
     public void StartGame()
     {  
         SceneManager.LoadScene("LoadoutScene");

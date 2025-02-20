@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MissionObjectiveManager : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class MissionObjectiveManager : MonoBehaviour
     {
         objectives.Remove(objective);
         UpdateMissionObjectivesUI();
+
+        if (objectives.Count == 0)
+        {
+            missionObjectiveText.GetComponent<TMP_Text>().text = "Mission Complete!";
+            SceneManager.LoadScene("LoadOutScene");
+        }
     }
 
     private void UpdateMissionObjectivesUI()
@@ -35,6 +42,4 @@ public class MissionObjectiveManager : MonoBehaviour
             missionObjectiveText.GetComponent<TMP_Text>().text += "- " + objective + "\n";
         }
     }
-
-
 }

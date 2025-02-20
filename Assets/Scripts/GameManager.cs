@@ -1,4 +1,3 @@
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,9 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject timeOver;
     [SerializeField] GameObject Selection1, Selection2, Selection3;
-    [SerializeField] TMP_Text goalCountText;
-    [SerializeField] TMP_Text ammoCountText;
-    [SerializeField] TMP_Text reserveAmmoCountText;
+    [SerializeField] TMPro.TMP_Text goalCountText;
+    [SerializeField] TMPro.TMP_Text ammoCountText;
+    [SerializeField] TMPro.TMP_Text reserveAmmoCountText;
 
     [Range(0, 2)] [SerializeField] public int equipmentLoadout;
 
@@ -96,8 +95,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
         Time.timeScale = 1;
         SceneManager.LoadScene("Level1");
-        
-
     }
 
     // Update is called once per frame

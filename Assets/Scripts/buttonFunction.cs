@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,7 +10,9 @@ public class buttonFunction : MonoBehaviour
     [SerializeField] public GameObject menuCredits;
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider SFXSlider;
+    [SerializeField] public AudioMixer audioMixer;
 
+    private GameObject previousMenu;
 
     private void Start()
     {
@@ -69,17 +72,26 @@ public class buttonFunction : MonoBehaviour
         // Ensure the Loadout UI is displayed
         GameManager.instance.LoadOutUI(GameManager.instance.equipmentLoadout);
     }
-
-    public void OpenOptions()
+    public void OpenOptionsFromStartMenu()
     {
+        OpenOptions(startGame);
+    }
+
+    public void OpenOptionsFromPauseMenu()
+    {
+        OpenOptions(GameManager.instance.menuPause);
+    }
+    public void OpenOptions(GameObject currentMenu)
+    {
+        previousMenu = currentMenu;
         startGame.SetActive(false);
         menuOptions.SetActive(true);
     }
 
     public void CloseOptions()
     {
-        startGame.SetActive(true);
         menuOptions.SetActive(false);
+        previousMenu.SetActive(true);
     }
 
     public void SaveOptions()
@@ -93,12 +105,16 @@ public class buttonFunction : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
-            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+            float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+            musicSlider.value = musicVolume;
+            SetMusicVolume(musicVolume);
         }
 
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
-            SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            float SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
+            SFXSlider.value = SFXVolume;
+            SetSFXVolume(SFXVolume);
         }
     } 
     public void OpenCredits()
@@ -111,5 +127,17 @@ public class buttonFunction : MonoBehaviour
     {
         startGame.SetActive(true);
         menuCredits.SetActive(false);
+    }
+
+    // Method to set music volume
+    public void SetMusicVolume(float volume)
+    {
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+    }
+
+    // Method to set SFX volume
+    public void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
     }
 }

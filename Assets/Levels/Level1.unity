@@ -49874,6 +49874,10 @@ PrefabInstance:
       value: 0.451
       objectReference: {fileID: 0}
     - target: {fileID: 4538761555881927848, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: maxAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538761555881927848, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: timeStep
       value: 6
       objectReference: {fileID: 0}
@@ -49892,7 +49896,7 @@ PrefabInstance:
     - target: {fileID: 4538761555881927848, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: alertSystemSniper
       value: 
-      objectReference: {fileID: 4862918810707873528, guid: 4cb52af9f4353184b9939264f235860a, type: 3}
+      objectReference: {fileID: 9046409457212086224, guid: 7ec6a650242fe9049a3797ccb9b843b2, type: 3}
     - target: {fileID: 4538761555881927848, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: alertSystemSoldier
       value: 
@@ -62780,6 +62784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavMesh Surface
       objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 2b3c5f53c05fe254a940fc0efda2fde4, type: 2}
     - target: {fileID: 5225118411328928265, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.469291

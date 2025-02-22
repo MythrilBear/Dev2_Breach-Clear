@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public float reserveAmmoCount;
     internal float volume;
 
+    public int remainingHostages;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -174,8 +175,19 @@ public class GameManager : MonoBehaviour
 
         updateGameGoal(0);
     }
+    public void RegisterHostage()
+    {
+        remainingHostages++;
+    }
 
-
+    public void RescueHostage()
+    {
+        remainingHostages--;
+        if (remainingHostages <= 0)
+        {
+            CompleteMissionObjective("Rescue Hostage");
+        }
+    }
     public void youLose()
     {
         statePause();

@@ -42,14 +42,14 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "LoadOutScene")
         {
+
             player = GameObject.FindWithTag("Player");
             playerScript = player.GetComponent<playerController>();
             PlayerEquip = player.GetComponent<CurrentEquipment>();
-
             MissionObjectiveManager.instance.missionObjective.SetActive(true);
         }
     }
-
+  
     public void SelectLoadout(int Select)
     {
         equipmentLoadout = Select;
@@ -95,10 +95,24 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("SelectedLoadout", equipmentLoadout);
         PlayerPrefs.Save();
         Time.timeScale = 1;
-        SceneManager.LoadScene("Level1");
-    }
+        string currentScene = SceneManager.GetActiveScene().name;
 
-    // Update is called once per frame
+        if (currentScene == "LoadOutScene")
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        else if (currentScene == "LoadOutScene 1")
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        else if (currentScene == "LoadOutScene 2")
+        {
+            SceneManager.LoadScene("Level3");
+        }
+        //SceneManager.LoadScene("Level1");
+
+    }
+ 
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))

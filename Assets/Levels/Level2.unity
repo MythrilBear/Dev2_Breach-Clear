@@ -51898,6 +51898,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: Selection1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: Selection2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: Selection3
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1

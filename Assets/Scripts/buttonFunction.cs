@@ -60,7 +60,8 @@ public class buttonFunction : MonoBehaviour
     }
 
     public void StartGame()
-    {  
+    {
+        
         SceneManager.LoadScene("LoadoutScene");
         // Make sure the cursor is visible and not locked
         Cursor.visible = true;
@@ -72,6 +73,8 @@ public class buttonFunction : MonoBehaviour
         // Ensure the Loadout UI is displayed
         GameManager.instance.LoadOutUI(GameManager.instance.equipmentLoadout);
     }
+
+   
     public void OpenOptionsFromStartMenu()
     {
         OpenOptions(startGame);

@@ -625,7 +625,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -952,7 +952,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -2355,7 +2355,7 @@ MonoBehaviour:
   adsFOV: 40
   adsSpeed: 10
   adsDown: 0
-  adsForward: 0
+  adsForward: -0.25
   pelletsPerShot: 6
   shotSpread: 1
 --- !u!1001 &9018787474859279661

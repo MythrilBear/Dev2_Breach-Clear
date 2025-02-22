@@ -66,6 +66,4 @@ public class AlertSystem : MonoBehaviour
             enemy.investigate(soundPos, radius);
         }
     }
-
-
 }

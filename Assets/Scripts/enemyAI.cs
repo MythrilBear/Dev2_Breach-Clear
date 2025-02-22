@@ -49,6 +49,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
 
     Coroutine co;
+    internal object enemyType;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -98,7 +99,7 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         else { lookForTargets(); }
 
-        
+
 
         counter -= Time.deltaTime;
         if (counter <= 0)
@@ -112,23 +113,23 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             cor = StartCoroutine(patrolling());
         }
-        
+
     }
 
     IEnumerator roam()
     {
-            isRoaming = true;
-            yield return new WaitForSeconds(roamPauseTime);
-            agent.stoppingDistance = 0;
+        isRoaming = true;
+        yield return new WaitForSeconds(roamPauseTime);
+        agent.stoppingDistance = 0;
 
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
+        Vector3 randomPos = Random.insideUnitSphere * roamDist;
+        randomPos += startingPos;
 
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+        agent.SetDestination(hit.position);
 
-            isRoaming = false;
+        isRoaming = false;
     }
 
     bool canSeePlayer()
@@ -181,7 +182,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void lookForTargets()
     {
-        
+
         if (isRotatingLeft)
         {
             lookLeft();

@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6696368003606203443}
+  - component: {fileID: 1304420344083602404}
   - component: {fileID: 5220354956741794130}
   - component: {fileID: 7967327473720043306}
   - component: {fileID: 8856473079020397493}
@@ -166,6 +167,25 @@ Transform:
   - {fileID: 4800171404206521056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304420344083602404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908802744481406258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df65f7b1613dbae44b0c068072584443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highAlertIntensity: 10
+  highAlerts: []
+  lowAlertIntensity: 5
+  lowAlerts: []
+  noAlertsIntensity: 0
+  noAlert: []
+  enemy: {fileID: 5220354956741794130}
 --- !u!114 &5220354956741794130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,8 +209,13 @@ MonoBehaviour:
   animSpeedTrans: 8
   roamPauseTime: 3
   roamDist: 10
+  roaming: 0
   bullet: {fileID: 4043548912659017893, guid: 5a6f6e7d9df86694883156225eac481b, type: 3}
   shootRate: 0.2
+  patrolSpeed: 0
+  startPoint: {fileID: 0}
+  endPoint: {fileID: 0}
+  patrol: 1
 --- !u!195 &7967327473720043306
 NavMeshAgent:
   m_ObjectHideFlags: 0

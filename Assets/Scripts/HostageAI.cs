@@ -1,21 +1,22 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Hostage : MonoBehaviour
+public class HostageAI : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] GameObject hostageUI;
-    [SerializeField] GameObject SittingProp;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Transform escapePoint;
     bool isFreed = false;
     bool playerNearby = false;
     bool isRegistered = false;
-    Vector3 startPosition;
-    float maxRunDistance = 3f;
-   
+
+
     void Start()
     {
         Debug.Log("Hostage Instance ID: " + gameObject.GetInstanceID());
         animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
         if (!isRegistered)
         {
             GameManager.instance.RegisterHostage();
@@ -26,7 +27,7 @@ public class Hostage : MonoBehaviour
         {
             GameManager.instance.AddMissionObjective("Rescue all hostages");
         }
-
+ 
     }
     void Update()
     {
@@ -37,37 +38,46 @@ public class Hostage : MonoBehaviour
             animator.SetTrigger("SitToStand");
             Invoke("StartRunning", 2f);
         }
+        if (isFreed)
+        {
+            float speed = agent.velocity.magnitude;
+            animator.SetFloat("SpeedMultiplier", speed / agent.speed);
+        }
     }
     void StartRunning()
     {
-        if (SittingProp != null)
-        {
-            Destroy(SittingProp);
-        }
-        
         animator.ResetTrigger("SitToStand");
+
         animator.SetTrigger("StandToRun");
-        startPosition = transform.position;
-        InvokeRepeating("MoveForward", 0f, Time.deltaTime);
+
+        if (agent.isOnNavMesh)
+        {
+            
+            agent.SetDestination(escapePoint.position);
+            InvokeRepeating("CheckArrival", 0.5f, 0.5f);
+        }
+        else
+        {
+            Debug.LogError(gameObject.name + " is NOT on the NavMesh! Fix placement.");
+        }
+
+
 
     }
-    
-    void MoveForward()
+    void CheckArrival()
     {
-        float speedMultiplier = animator.GetFloat("SpeedMultiplier");
-        float moveSpeed = 3f * speedMultiplier;
-        transform.position += transform.forward * moveSpeed * Time.deltaTime; 
-        if (Vector3.Distance(startPosition, transform.position) >= maxRunDistance)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             StopRunning();
         }
     }
+   
     void StopRunning()
     {
-        CancelInvoke("MoveForward");
+        CancelInvoke("CheckArrival");
         Disappear();
         GameManager.instance.RescueHostage();
-       
+
     }
     void Disappear()
     {

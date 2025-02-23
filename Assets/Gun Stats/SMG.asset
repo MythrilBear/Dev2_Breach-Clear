@@ -25,6 +25,11 @@ MonoBehaviour:
   maxRecoil: {x: 1, y: 2}
   recoilSpeed: 300
   resetRecoilSpeed: 20
+  recoverPercent: 0.7
+  recoilUp: 0.02
+  recoilBack: 0.08
+  recoilLength: 0
+  recoverLength: 0.0875
   shootDamage: 2
   hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
   shootSound:

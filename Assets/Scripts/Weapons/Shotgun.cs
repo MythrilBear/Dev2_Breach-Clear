@@ -3,7 +3,8 @@ using UnityEngine;
 public class Shotgun : Gun
 {
     public int pelletsPerShot = 6;
-    public float shotSpread = 5.0f;
+    public float shotSpread = 0.0f;
+    
 
     public override void Shoot()
     {
@@ -13,12 +14,12 @@ public class Shotgun : Gun
 
             Vector3 targetPos = cameraTransform.position + cameraTransform.forward * gunStats.shootingRange;
 
-            targetPos = new Vector3(targetPos.x + Random.Range(-shotSpread, shotSpread),
-                                    targetPos.y + Random.Range(-shotSpread, shotSpread),
-                                    targetPos.z + Random.Range(-shotSpread, shotSpread));
+            targetPos = new Vector3(targetPos.x + (Random.Range(-shotSpread, shotSpread) * 5),
+                                    targetPos.y + (Random.Range(-shotSpread, shotSpread) * 5),
+                                    targetPos.z + (Random.Range(-shotSpread, shotSpread) * 5));
 
             Vector3 direction = targetPos - cameraTransform.position;
-            direction = Vector3.Normalize(direction);
+            //direction = Vector3.Normalize(direction);
 
             if (Physics.Raycast(cameraTransform.position, direction,
                 out hit, gunStats.shootingRange, gunStats.targetLayerMask))

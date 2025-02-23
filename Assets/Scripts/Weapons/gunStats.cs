@@ -21,6 +21,14 @@ public class gunStats : ScriptableObject
     public Vector2 maxRecoil;
     public float recoilSpeed;
     public float resetRecoilSpeed;
+    [Space]
+    [Range(0, 2)]
+    public float recoverPercent = 0.2f;
+
+    public float recoilUp = 0.02f;
+    public float recoilBack = 0.08f;
+    public float recoilLength;
+    public float recoverLength;
 
     //public GameObject model;
     public int shootDamage;

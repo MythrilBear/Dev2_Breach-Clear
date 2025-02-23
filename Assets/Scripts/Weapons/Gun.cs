@@ -17,7 +17,8 @@ public abstract class Gun : MonoBehaviour
 
     private bool isReloading = false;
 
-    // ADS functionality
+    [Header("ADS functionality")]
+
     [SerializeField] private Transform adsPosition;
     [SerializeField] private Transform hipPosition;
     [SerializeField] private Camera playerCamera;
@@ -28,6 +29,18 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField] float adsDown;
     [SerializeField] float adsForward;
+
+    [Header("Recoil Settings")]
+    //[Range(0, 1)]
+    //public float recoilPercent = 0.3f;
+    
+
+    private Vector3 originalPosition;
+    private Vector3 recoilVelocity = Vector3.zero;
+
+    private bool recoiling;
+    public bool recovering;
+
 
     private void Start()
     {
@@ -41,6 +54,10 @@ public abstract class Gun : MonoBehaviour
         cameraTransform = playerController.playerCamera.transform;
 
         normalFOV = playerCamera.fieldOfView;
+
+        //originalPosition = transform.localPosition;
+        gunStats.recoilLength = 0;
+        gunStats.recoverLength = 1 / gunStats.fireRate * gunStats.recoverPercent;
     }
 
     public virtual void Update()
@@ -59,10 +76,12 @@ public abstract class Gun : MonoBehaviour
         if (Input.GetButton("Aim"))
         {
             isAiming = true;
+            originalPosition = adsPosition.localPosition;
         }
         else
         {
             isAiming = false;
+            originalPosition = hipPosition.localPosition;
         }
 
         //ADS Mechanic
@@ -70,9 +89,21 @@ public abstract class Gun : MonoBehaviour
         if (isAiming)
         {
             targetLocalPosition = adsPosition.localPosition + Vector3.forward * adsForward + Vector3.down * adsDown;
+            
         }
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPosition, Time.deltaTime * adsSpeed);
+
+
+        
+        if (recoiling)
+        {
+            Recoil();
+        }
+        if (recovering)
+        {
+            Recover();
+        }
     }
 
     public void tryReload()
@@ -94,7 +125,7 @@ public abstract class Gun : MonoBehaviour
 
         if (reserveAmmo >= gunStats.magazineSize)
         {
-            currentAmmo = gunStats .magazineSize;
+            currentAmmo = gunStats.magazineSize;
             reserveAmmo -= gunStats.magazineSize;
         }
         else
@@ -135,6 +166,9 @@ public abstract class Gun : MonoBehaviour
 
     private void HandleShoot()
     {
+        recoiling = true;
+        recovering = false;
+
         currentAmmo--;
         GameManager.instance.updateAmmoCount(currentAmmo);
 
@@ -157,5 +191,34 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void Shoot();
+
+    void Recoil()
+    {
+        Vector3 finalPosition = new Vector3
+            (originalPosition.x, originalPosition.y + gunStats.recoilUp, originalPosition.z - gunStats.recoilBack);
+
+        transform.localPosition = Vector3.SmoothDamp
+            (transform.localPosition, finalPosition, ref recoilVelocity, gunStats.recoilLength);
+
+        if (transform.localPosition == finalPosition)
+        {
+            recoiling = false;
+            recovering = true;
+        }
+    }
+
+    void Recover()
+    {
+        Vector3 finalPosition = originalPosition;
+
+        transform.localPosition = Vector3.SmoothDamp
+            (transform.localPosition, finalPosition, ref recoilVelocity, gunStats.recoverLength);
+
+        if (transform.localPosition == finalPosition)
+        {
+            recoiling = false;
+            recovering = false;
+        }
+    }
 
 }

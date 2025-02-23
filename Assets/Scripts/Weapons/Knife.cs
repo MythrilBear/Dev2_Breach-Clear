@@ -3,6 +3,8 @@ using UnityEngine;
 public class Knife : Gun
 {
     public AudioSource audSource;
+    //public Animator animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Shoot()
     {
@@ -32,6 +34,8 @@ public class Knife : Gun
         {
             Shoot();
             audSource.PlayOneShot(gunStats.shootSound[Random.Range(0, gunStats.shootSound.Length)], gunStats.shootSoundVol);
+
+            GetComponent<Animator>().Play("KnifeSwing");
         }
 
         

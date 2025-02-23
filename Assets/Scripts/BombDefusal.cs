@@ -15,15 +15,15 @@ public class BombDefusal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        { //Press 'B' to start defusing
+        if (Input.GetKeyDown(KeyCode.F))
+        { //Press 'F' to start defusing
             isDefusing = true;
             currentDefusalTime = 0;
         }
         if (isDefusing)
         {
-            if (Input.GetKey(KeyCode.B))
-            { //Hold 'B' to continue defusing
+            if (Input.GetKey(KeyCode.F))
+            { //Hold 'F' to continue defusing
                 currentDefusalTime += Time.deltaTime;
                 if (currentDefusalTime >= defusalTime)
                 {
@@ -33,7 +33,7 @@ public class BombDefusal : MonoBehaviour
             }
             else
             {
-                isDefusing = false; //Release 'B' to stop defusing
+                isDefusing = false; //Release 'F' to stop defusing
             }
         }
     }

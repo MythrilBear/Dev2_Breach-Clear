@@ -230,23 +230,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     {
         if (isCrouching) return;
 
-        if (Input.GetButtonDown("Sprint"))
+        if (Input.GetButtonDown("Sprint") && Stam > 0)
         {
             speed *= sprintMod;
             isSprinting = true;
             StartCoroutine(DecreaseStaminaOverTime());
         }
-        else if (Input.GetButtonUp("Sprint"))
-        {
-            speed /= sprintMod;
-            isSprinting = false;
-            StartCoroutine(RecoverStaminaOverTime());
-        }
-
-        if (Stam <= 0)
+        else if (Input.GetButtonUp("Sprint") || Stam <= 0)
         {
             speed = originalSpeed;
             isSprinting = false;
+            StartCoroutine(RecoverStaminaOverTime());
         }
     }
 

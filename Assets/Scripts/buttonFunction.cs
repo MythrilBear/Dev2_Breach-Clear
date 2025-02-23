@@ -8,6 +8,7 @@ public class buttonFunction : MonoBehaviour
     [SerializeField] public GameObject startGame;
     [SerializeField] public GameObject menuOptions;
     [SerializeField] public GameObject menuCredits;
+    [SerializeField] public GameObject menuControls;
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider SFXSlider;
     [SerializeField] private BackgroundMusic backgroundMusic;
@@ -124,5 +125,17 @@ public class buttonFunction : MonoBehaviour
     {
         startGame.SetActive(true);
         menuCredits.SetActive(false);
+    }
+
+    public void OpenControls()
+    {
+        startGame.SetActive(false);
+        menuControls.SetActive(true);
+    }
+
+    public void CloseControls()
+    {
+        startGame.SetActive(true);
+        menuControls.SetActive(false);
     }
 }

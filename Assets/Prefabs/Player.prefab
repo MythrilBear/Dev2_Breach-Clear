@@ -152,6 +152,10 @@ MonoBehaviour:
   throwForce: 5
   hitSound: {fileID: 8300000, guid: 69c4de6e630250843b4dd2a66ba49a63, type: 3}
   audioSource: {fileID: 8145460023592226899}
+  soundRadius: 0
+  alertSystemSoldier: {fileID: 0}
+  alertSystemHeavy: {fileID: 0}
+  alertSystemSniper: {fileID: 0}
 --- !u!114 &3220917121280248855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,6 +1229,7 @@ MonoBehaviour:
   adsSpeed: 10
   adsDown: 0
   adsForward: 0
+  recovering: 0
 --- !u!4 &1774399872351903550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4103414840200297536, guid: 4948c140e386c4f41b4ca03a672f3a9c, type: 3}
@@ -1329,26 +1334,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife_01
       objectReference: {fileID: 0}
-    - target: {fileID: 8341071877722561220, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8341071877722561220, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8685930764322668670, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8685930764322668670, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8685930764322668670, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8685930764322668670, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.411
@@ -1389,20 +1374,146 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 7.631
       objectReference: {fileID: 0}
-    - target: {fileID: 8685930764322668670, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8341071877722561220, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7024546607041070215}
+    - targetCorrespondingSourceObject: {fileID: 8341071877722561220, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2784790055116124402}
   m_SourcePrefab: {fileID: 100100000, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
 --- !u!1 &5924078363885860166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8341071877722561220, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
   m_PrefabInstance: {fileID: 2447703427662819202}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7024546607041070215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924078363885860166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f2c5dd17a69dd48b7215cf4e9cefd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 0}
+  aud: {fileID: 2784790055116124402}
+  gunStats: {fileID: 11400000, guid: 392142891d38b0d4f980bfc6281172c0, type: 2}
+  playerController: {fileID: 6471940700617647837}
+  cameraTransform: {fileID: 5844858037362672395}
+  currentAmmo: 1
+  adsPosition: {fileID: 0}
+  hipPosition: {fileID: 6448412831561691132}
+  playerCamera: {fileID: 2151178324024853346}
+  adsFOV: 0
+  adsSpeed: 0
+  adsDown: 0
+  adsForward: 0
+  recovering: 0
+  audSource: {fileID: 2784790055116124402}
+--- !u!82 &2784790055116124402
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924078363885860166}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &6448412831561691132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8685930764322668670, guid: 9922dbed75d1d1f4f8bf60bf07599d21, type: 3}
@@ -1886,6 +1997,7 @@ MonoBehaviour:
   adsSpeed: 0
   adsDown: 0
   adsForward: 0
+  recovering: 0
   grenadePrefab: {fileID: 1188298417882237661, guid: e75bbf45869c76f4ea6a70b71189c8af, type: 3}
   throwPosition: {fileID: 3671662516924832089}
   throwDirection: {x: 0, y: 1, z: 0}
@@ -2134,6 +2246,7 @@ MonoBehaviour:
   adsSpeed: 10
   adsDown: 0
   adsForward: 0
+  recovering: 0
 --- !u!1001 &8300585468537780624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2356,6 +2469,7 @@ MonoBehaviour:
   adsSpeed: 10
   adsDown: 0
   adsForward: -0.25
+  recovering: 0
   pelletsPerShot: 6
   shotSpread: 1
 --- !u!1001 &9018787474859279661
@@ -2584,3 +2698,4 @@ MonoBehaviour:
   adsSpeed: 10
   adsDown: 0
   adsForward: 0
+  recovering: 0

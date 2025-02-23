@@ -2032,7 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd07f269fa84287479e24c24645a4040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 0}
+  muzzleFlash: {fileID: 2038979755948900687, guid: 9bee77b335ee1274ea11fbd5367ae449, type: 3}
   aud: {fileID: 2252069569273830952}
   gunStats: {fileID: 11400000, guid: d1151b5da32f0f04fba8b52bdabe3a6b, type: 2}
   playerController: {fileID: 6471940700617647837}

@@ -89,7 +89,11 @@ public abstract class Gun : MonoBehaviour
         if (isAiming)
         {
             targetLocalPosition = adsPosition.localPosition + Vector3.forward * adsForward + Vector3.down * adsDown;
-            
+            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, adsFOV, adsSpeed * Time.deltaTime);
+        }
+        else
+        {
+            playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, normalFOV, adsSpeed * Time.deltaTime);
         }
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetLocalPosition, Time.deltaTime * adsSpeed);

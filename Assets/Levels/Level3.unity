@@ -23510,6 +23510,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: recticle
+      value: 
+      objectReference: {fileID: 1053404177}
     - target: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -23542,6 +23546,11 @@ PrefabInstance:
 --- !u!1 &1053404176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5006123555652541461, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 1053404175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1053404177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4384665306400991373, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
   m_PrefabInstance: {fileID: 1053404175}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1054745193 stripped

@@ -16,7 +16,7 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  shootingRange: 200
+  shootingRange: 400
   fireRate: 2
   magazineSize: 30
   reserveAmmoMax: 90
@@ -29,7 +29,7 @@ MonoBehaviour:
   recoilUp: 0.02
   recoilBack: 0.08
   recoilLength: 0
-  recoverLength: 0
+  recoverLength: 0.1
   shootDamage: 5
   hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
   shootSound:

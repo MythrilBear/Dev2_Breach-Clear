@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e8d599ee8b72848b7ccb531fdbb516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 0
   bulletPrefab: {fileID: 4043548912659017893, guid: 5a6f6e7d9df86694883156225eac481b, type: 3}
   throwPosition: {fileID: 3509015352400595845}
   throwForce: 5
@@ -1225,7 +1224,7 @@ MonoBehaviour:
   adsPosition: {fileID: 5054336104376333013}
   hipPosition: {fileID: 7576577806146783054}
   playerCamera: {fileID: 2151178324024853346}
-  adsFOV: 40
+  adsFOV: 30
   adsSpeed: 10
   adsDown: 0
   adsForward: 0

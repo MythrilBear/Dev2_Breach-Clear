@@ -40,7 +40,7 @@ public class BombDefusal : MonoBehaviour
 
     public void DefuseBomb()
     {
-        Debug.Log("Bomb has been defused!");
+       // Debug.Log("Bomb has been defused!");
         Destroy(gameObject);
         GameManager.instance.CompleteMissionObjective("Defuse Bomb");
     }

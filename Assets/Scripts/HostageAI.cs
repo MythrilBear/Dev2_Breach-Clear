@@ -14,7 +14,7 @@ public class HostageAI : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Hostage Instance ID: " + gameObject.GetInstanceID());
+        //Debug.Log("Hostage Instance ID: " + gameObject.GetInstanceID());
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         if (!isRegistered)
@@ -58,7 +58,7 @@ public class HostageAI : MonoBehaviour
         }
         else
         {
-            Debug.LogError(gameObject.name + " is NOT on the NavMesh! Fix placement.");
+            //Debug.LogError(gameObject.name + " is NOT on the NavMesh! Fix placement.");
         }
 
 

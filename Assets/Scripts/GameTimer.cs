@@ -29,7 +29,7 @@ public class GameTimer : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time's up!!!");
+               // Debug.Log("Time's up!!!");
                 timeRemaining = 0;
                 timerIsRunning = false;
                 TimerEnded();
@@ -47,7 +47,7 @@ public class GameTimer : MonoBehaviour
 
     void TimerEnded()
     {
-        Debug.Log("Timer has ended! GAME OVER");
+       // Debug.Log("Timer has ended! GAME OVER");
         GameManager.instance.timeIsUp();
     }
 }

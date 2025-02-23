@@ -137,7 +137,7 @@ public class enemyAI : MonoBehaviour, IDamage
         playerDirection = GameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDirection, transform.forward);
 
-        Debug.DrawRay(headPos.position, playerDirection);
+        //Debug.DrawRay(headPos.position, playerDirection);
 
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, playerDirection, out hit))
@@ -280,7 +280,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void investigate(Vector3 soundPos, float radius)
     {
-        Debug.Log("Enemy investigating sound at: " + soundPos);
+      //  Debug.Log("Enemy investigating sound at: " + soundPos);
 
         if (co != null) StopCoroutine(co);
         if (cor != null) StopCoroutine(cor);
@@ -293,7 +293,7 @@ public class enemyAI : MonoBehaviour, IDamage
         NavMeshHit hit;
         if (!NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
         {
-            Debug.LogWarning("No valid NavMesh position found, using sound source.");
+           // Debug.LogWarning("No valid NavMesh position found, using sound source.");
             hit.position = soundPos;
         }
 
@@ -308,11 +308,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator InvestigateArea()
     {
-        Debug.Log("Investigating area...");
+        //Debug.Log("Investigating area...");
 
         yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
 
-        Debug.Log("Reached investigation point, pausing...");
+       // Debug.Log("Reached investigation point, pausing...");
         yield return new WaitForSeconds(3f);
 
         if (!canSeePlayer())

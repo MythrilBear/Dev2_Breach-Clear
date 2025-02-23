@@ -14,7 +14,7 @@ public class Hostage : MonoBehaviour
    
     void Start()
     {
-        Debug.Log("Hostage Instance ID: " + gameObject.GetInstanceID());
+        //Debug.Log("Hostage Instance ID: " + gameObject.GetInstanceID());
         animator = GetComponent<Animator>();
         if (!isRegistered)
         {

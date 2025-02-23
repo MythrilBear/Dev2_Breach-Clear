@@ -112,7 +112,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
     void Update()
     {
        
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         if(!GameManager.instance.isPaused)
         {
             movement();

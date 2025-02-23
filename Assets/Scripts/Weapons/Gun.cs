@@ -118,7 +118,7 @@ public abstract class Gun : MonoBehaviour
     {
         isReloading = true;
 
-        Debug.Log(gunStats.gunName + " is reloading...");
+        //Debug.Log(gunStats.gunName + " is reloading...");
         aud.PlayOneShot(gunStats.reloadSound[Random.Range(0, gunStats.reloadSound.Length)], gunStats.reloadSoundVol);
 
         yield return new WaitForSeconds(gunStats.reloadTime);
@@ -135,7 +135,7 @@ public abstract class Gun : MonoBehaviour
         }
 
         isReloading = false;
-        Debug.Log(gunStats.gunName + " is reloaded.");
+        //Debug.Log(gunStats.gunName + " is reloaded.");
         GameManager.instance.updateAmmoCount(currentAmmo);
         GameManager.instance.updateReserveAmmoCount(reserveAmmo);
     }
@@ -178,7 +178,7 @@ public abstract class Gun : MonoBehaviour
         StartCoroutine(flashMuzzleFire());
         // shootSound
 
-        Debug.Log(gunStats.gunName + " shot! Bullets left: " + currentAmmo);
+        //Debug.Log(gunStats.gunName + " shot! Bullets left: " + currentAmmo);
         aud.PlayOneShot(gunStats.shootSound[Random.Range(0, gunStats.shootSound.Length)], gunStats.shootSoundVol);
         Shoot();
     }

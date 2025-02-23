@@ -49,7 +49,7 @@ public class IntelExtraction : MonoBehaviour
 
     void ExtractIntel()
     {
-        Debug.Log("Intel collected!");
+        //Debug.Log("Intel collected!");
         //Destroy(gameObject);
         GameManager.instance.CompleteMissionObjective("Extract Intel");
     }

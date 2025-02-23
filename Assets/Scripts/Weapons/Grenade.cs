@@ -99,7 +99,7 @@ public class Grenade : Gun
 
         GameObject grenade =  Instantiate(grenadePrefab, spawnPosition, cameraTransform.transform.rotation);
 
-        Debug.Log("the grenade has been created");
+        //Debug.Log("the grenade has been created");
 
         Rigidbody rigidbody = grenade.GetComponent<Rigidbody>();
 

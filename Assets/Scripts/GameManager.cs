@@ -182,13 +182,13 @@ public class GameManager : MonoBehaviour
 
     public void AddMissionObjective(string description) //add mission objective
     {
-        Debug.Log("GameManager: AddMissionObjective called with: " + description);
+        //Debug.Log("GameManager: AddMissionObjective called with: " + description);
         MissionObjectiveManager.instance.AddObjective(description);
     }
 
     public void CompleteMissionObjective(string description) //remove completed mission objective
     {
-        Debug.Log("GameManager: CompleteMissionObjective called with: " + description);
+        //Debug.Log("GameManager: CompleteMissionObjective called with: " + description);
         MissionObjectiveManager.instance.CompleteObjective(description);
 
         // Temp win scenario

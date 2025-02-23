@@ -24,7 +24,7 @@ public class Shotgun : Gun
             if (Physics.Raycast(cameraTransform.position, direction,
                 out hit, gunStats.shootingRange, gunStats.targetLayerMask))
             {
-                Debug.Log(gunStats.gunName + " hit " + hit.collider.name);
+                //Debug.Log(gunStats.gunName + " hit " + hit.collider.name);
                 Instantiate(gunStats.hitEffect, hit.point, Quaternion.identity);
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();

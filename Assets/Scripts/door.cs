@@ -21,7 +21,7 @@ public class door : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                Model.SetActive(false);
+               Model.SetActive(false);
                GameManager.instance.buttonInteract.SetActive(false);
             }
         }

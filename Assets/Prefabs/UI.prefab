@@ -4325,6 +4325,9 @@ MonoBehaviour:
   goalCountText: {fileID: 4727957082103236328}
   ammoCountText: {fileID: 1284283549983098265}
   reserveAmmoCountText: {fileID: 8790587799314092192}
+  loadoutScene: {fileID: 0}
+  loadoutScene1: {fileID: 0}
+  loadoutScene2: {fileID: 0}
   equipmentLoadout: 2
   PlayerHPBar: {fileID: 4474885416326757254}
   PlayerStamBar: {fileID: 7687451038680552016}
@@ -4335,6 +4338,7 @@ MonoBehaviour:
   isPaused: 0
   ammoCount: 0
   reserveAmmoCount: 0
+  remainingHostages: 0
 --- !u!114 &8576296166796261545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5548,9 +5552,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Start
+  m_text: 'Hold
 
-    E'
+    F'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -30,6 +30,7 @@ public class IntelExtraction : MonoBehaviour
         
         if (playerInRange)
         {
+            GameManager.instance.buttonInteract.SetActive(true);
             if (Input.GetKey(KeyCode.F))
             {
                 //StartExtraction();
@@ -44,6 +45,10 @@ public class IntelExtraction : MonoBehaviour
             {
                 isExtracting = false;
             }
+        }
+        else
+        {
+            GameManager.instance.buttonInteract.SetActive(false);
         }
     }
 

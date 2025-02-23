@@ -485,19 +485,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IOpen, IStamina
 
     void CheckForBombDefusal()
     {
-        if (Input.GetButtonDown("Defuse") && currentBomb != null)
+        if (Input.GetKeyDown(KeyCode.F) && currentBomb != null)
         {
             float distanceToBomb = Vector3.Distance(transform.position, currentBomb.transform.position);
             if (distanceToBomb <= defusalRange)
             {
-                currentBomb.DefuseBomb();
+                currentBomb.StartDefusal();
             }
         }
     }
 
     void CheckForIntelExtraction()
     {
-        if (Input.GetKeyDown(KeyCode.E) && currentIntel != null)
+        if (Input.GetKeyDown(KeyCode.F) && currentIntel != null)
         {
             float distancetoIntel = Vector3.Distance(transform.position, currentIntel.transform.position);
             if (distancetoIntel <= extractionRange)

@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class ThrowingBullet : MonoBehaviour
 {
-    [SerializeField] private float maxAmmo;
-
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform throwPosition;
     [SerializeField] private float throwForce;
@@ -23,8 +21,11 @@ public class ThrowingBullet : MonoBehaviour
 
     void Start()
     {
-        maxAmmo = GameManager.instance.reserveAmmoCount;
-        currentAmmo = maxAmmo;
+        currentAmmo = GameManager.instance.reserveAmmoCount;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = currentAmmo;
+        audioSource.pitch = currentAmmo;
+
         mainCamera = Camera.main;
     }
 
@@ -53,15 +54,14 @@ public class ThrowingBullet : MonoBehaviour
         // Play the audio clip with a delay
         StartCoroutine(PlayAudioWithDelay(1f)); // Adjust the delay as needed
 
+        // Decrease the current ammo count
+        currentAmmo--;
 
         // Decrease the reserve ammo count in the GameManager
         GameManager.instance.reserveAmmoCount--;
 
         // Update the reserve ammo count in the UI
         GameManager.instance.updateReserveAmmoCount(GameManager.instance.reserveAmmoCount);
-
-        // Set the current ammo to the updated reserve ammo count
-        currentAmmo = GameManager.instance.reserveAmmoCount;
     }
 
     IEnumerator PlayAudioWithDelay(float delay)
@@ -83,6 +83,7 @@ public class ThrowingBullet : MonoBehaviour
             if (enemy != null)
             {
                 enemy.investigate(transform.position, soundRadius);
+
 
                 // Trigger low alert in the alert system
                 if (alertSystemSoldier != null)

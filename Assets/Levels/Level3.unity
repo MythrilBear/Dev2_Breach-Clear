@@ -11755,6 +11755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: jumpSpeed
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19338,7 +19342,15 @@ PrefabInstance:
       value: Office_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5930476362409172455, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 5930476362981975677, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 4549564353555390575, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 4549564353087768919, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 5930476363204929073, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 4549564352556836003, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 4549564354097106710, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
+    - {fileID: 5930476363802855648, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd56745474ca94b4d915d09e7580476d, type: 3}
@@ -31775,9 +31787,37 @@ PrefabInstance:
       value: NavMesh Surface
       objectReference: {fileID: 0}
     - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_TileSize
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.16666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 54db47b99a153584fba652e9729af540, type: 2}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_UseGeometry
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_MinRegionArea
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_BuildHeightMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627832342973391020, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5225118411328928265, guid: d6b3f512f6790444fb253062404cc37a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.469291

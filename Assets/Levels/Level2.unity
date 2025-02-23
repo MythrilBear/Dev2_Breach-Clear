@@ -51903,6 +51903,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: recticle
+      value: 
+      objectReference: {fileID: 1315538149}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: Selection1
       value: 
       objectReference: {fileID: 0}
@@ -51953,6 +51957,11 @@ PrefabInstance:
 --- !u!224 &1315538148 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121660207660528407, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+  m_PrefabInstance: {fileID: 1315538147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1315538149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4384665306400991373, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
   m_PrefabInstance: {fileID: 1315538147}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1317342643

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public Image PlayerStamBar;
     public GameObject damagePanel;
     public GameObject buttonInteract;
+    public GameObject recticle;
 
     public GameObject player;
     public playerController playerScript;

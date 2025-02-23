@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] GameObject muzzleFlash;
+    
 
     [SerializeField] AudioSource aud;
 
@@ -88,11 +89,13 @@ public abstract class Gun : MonoBehaviour
         Vector3 targetLocalPosition = hipPosition.localPosition;
         if (isAiming)
         {
+            GameManager.instance.recticle.SetActive(false);
             targetLocalPosition = adsPosition.localPosition + Vector3.forward * adsForward + Vector3.down * adsDown;
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, adsFOV, adsSpeed * Time.deltaTime);
         }
         else
         {
+            GameManager.instance.recticle.SetActive(true);
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, normalFOV, adsSpeed * Time.deltaTime);
         }
 

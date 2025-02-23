@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMPro.TMP_Text goalCountText;
     [SerializeField] TMPro.TMP_Text ammoCountText;
     [SerializeField] TMPro.TMP_Text reserveAmmoCountText;
+    [SerializeField] GameObject loadoutScene;
+    [SerializeField] GameObject loadoutScene1;
+    [SerializeField] GameObject loadoutScene2;
 
     [Range(0, 2)] [SerializeField] public int equipmentLoadout;
 
@@ -153,12 +156,15 @@ public class GameManager : MonoBehaviour
         goalCount += amount;
         goalCountText.text = goalCount.ToString("F0");
 
-        // you win
         if (goalCount <= 0)
         {
             statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+
+            if (SceneManager.GetActiveScene().name == "Level2")
+            {
+                menuActive = menuWin;
+                menuActive.SetActive(true);
+            }
         }
     }
 

@@ -12,14 +12,17 @@ EditorBuildSettings:
     path: Assets/Levels/LoadOutScene.unity
     guid: 2b2a82a1985b470418820408053832e4
   - enabled: 1
-    path: Assets/Levels/Dialogue scene.unity
-    guid: 9da5e7ad2f4be8a408d9af9c5e199ab0
-  - enabled: 1
     path: Assets/Levels/Level1.unity
     guid: 8c377a4563ef1064386c6d04e678b8f5
   - enabled: 1
+    path: Assets/Levels/LoadOutScene 1.unity
+    guid: 670e256fbe91964419ea95e96cca63ce
+  - enabled: 1
     path: Assets/Levels/Level2.unity
     guid: 3e4f5f633adc17043b5b27d9d60bf904
+  - enabled: 1
+    path: Assets/Levels/LoadOutScene 2.unity
+    guid: ec8879c61fa0db64bb3f716f3d5f041e
   - enabled: 1
     path: Assets/Levels/Level3.unity
     guid: e004a79ed4c1ddd4c9607cbb02d4ade0

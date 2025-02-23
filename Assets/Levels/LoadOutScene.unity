@@ -344,6 +344,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7119255139847856568, guid: d7f4651c98d87474f9c817bae226842a, type: 3}
   m_PrefabInstance: {fileID: 428404405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &428404409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2548930605068631870, guid: d7f4651c98d87474f9c817bae226842a, type: 3}
+  m_PrefabInstance: {fileID: 428404405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1165874048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -464,6 +469,10 @@ PrefabInstance:
       propertyPath: Selection3
       value: 
       objectReference: {fileID: 428404406}
+    - target: {fileID: 4443335237886758668, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: loadoutScene
+      value: 
+      objectReference: {fileID: 428404409}
     - target: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 0

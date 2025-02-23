@@ -59,17 +59,18 @@ public class CurrentEquipment : MonoBehaviour
             else if (knife.activeSelf)
             {
                 knife.SetActive(false);
-                specialEquipment.SetActive(true);
-                GameManager.instance.updateAmmoCount(-1);
-            }
-            else if (specialEquipment.activeSelf)
-            {
-                specialEquipment.SetActive(false);
+                //specialEquipment.SetActive(true);
                 heldGrenade.SetActive(true);
-                //tossedGrenade.SetActive(true);
-                //Destroy(tossedGrenade);
-                GameManager.instance.updateAmmoCount(0);
+                //GameManager.instance.updateAmmoCount(-1);
             }
+            //else if (specialEquipment.activeSelf)
+            //{
+            //    specialEquipment.SetActive(false);
+            //    heldGrenade.SetActive(true);
+            //    //tossedGrenade.SetActive(true);
+            //    //Destroy(tossedGrenade);
+            //    GameManager.instance.updateAmmoCount(0);
+            //}
             else if (heldGrenade.activeSelf)
             {
                 heldGrenade.SetActive(false);
@@ -101,16 +102,17 @@ public class CurrentEquipment : MonoBehaviour
             else if (heldGrenade.activeSelf)
             {
                 heldGrenade.SetActive(false);
-                //tossedGrenade.SetActive(false);
-                specialEquipment.SetActive(true);
-                GameManager.instance.updateAmmoCount(-1);
-            }
-            else if (specialEquipment.activeSelf)
-            {
-                specialEquipment.SetActive(false);
                 knife.SetActive(true);
-                GameManager.instance.updateAmmoCount(-1);
+                //tossedGrenade.SetActive(false);
+                //specialEquipment.SetActive(true);
+                //GameManager.instance.updateAmmoCount(-1);
             }
+            //else if (specialEquipment.activeSelf)
+            //{
+            //    specialEquipment.SetActive(false);
+            //    knife.SetActive(true);
+            //    GameManager.instance.updateAmmoCount(-1);
+            //}
             else if (knife.activeSelf)
             {
                 knife.SetActive(false);

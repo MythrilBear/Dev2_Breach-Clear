@@ -21,4 +21,11 @@ public class BackgroundMusic : MonoBehaviour
         audioSource.playOnAwake = true;
         audioSource.Play();
     }
+
+    public void SetMusicVolume(float volume)
+    {
+        this.volume = volume;
+        if (audioSource != null)
+            audioSource.volume = volume;
+    }
 }

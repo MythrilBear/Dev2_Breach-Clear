@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,11 +47,12 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "LoadOutScene")
         {
-
             player = GameObject.FindWithTag("Player");
-            playerScript = player.GetComponent<playerController>();
-            PlayerEquip = player.GetComponent<CurrentEquipment>();
-            MissionObjectiveManager.instance.missionObjective.SetActive(true);
+            if (player != null)
+            {
+                playerScript = player.GetComponent<playerController>();
+                PlayerEquip = player.GetComponent<CurrentEquipment>();
+            }
         }
     }
   
@@ -206,6 +208,7 @@ public class GameManager : MonoBehaviour
         remainingHostages--;
         if (remainingHostages <= 0)
         {
+            buttonInteract.SetActive(false);
             CompleteMissionObjective("Rescue Hostage");
         }
     }

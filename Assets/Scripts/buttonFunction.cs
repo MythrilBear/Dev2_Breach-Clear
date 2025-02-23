@@ -10,7 +10,8 @@ public class buttonFunction : MonoBehaviour
     [SerializeField] public GameObject menuCredits;
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider SFXSlider;
-   // [SerializeField] public AudioMixer audioMixer;
+    [SerializeField] private BackgroundMusic backgroundMusic;
+    [SerializeField] private SoundEffectsManager soundEffectsManager;
 
     private GameObject previousMenu;
 
@@ -20,7 +21,9 @@ public class buttonFunction : MonoBehaviour
 
         // Add listeners to save values when sliders are changed
         musicSlider.onValueChanged.AddListener(delegate { SaveOptions(); });
+        musicSlider.onValueChanged.AddListener(delegate { backgroundMusic.SetMusicVolume(musicSlider.value); });
         SFXSlider.onValueChanged.AddListener(delegate { SaveOptions(); });
+        SFXSlider.onValueChanged.AddListener(delegate { soundEffectsManager.SetSFXVolume(SFXSlider.value); });
     }
 
     public void resume()
@@ -107,18 +110,9 @@ public class buttonFunction : MonoBehaviour
     public void LoadOptions()
     {
         if (PlayerPrefs.HasKey("MusicVolume"))
-        {
-            float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
-            musicSlider.value = musicVolume;
-           // SetMusicVolume(musicVolume);
-        }
-
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         if (PlayerPrefs.HasKey("SFXVolume"))
-        {
-            float SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
-            SFXSlider.value = SFXVolume;
-           // SetSFXVolume(SFXVolume);
-        }
+            SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     } 
     public void OpenCredits()
     {
@@ -131,16 +125,4 @@ public class buttonFunction : MonoBehaviour
         startGame.SetActive(true);
         menuCredits.SetActive(false);
     }
-
-    // Method to set music volume
-    //public void SetMusicVolume(float volume)
-    //{
-    //    audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-    //}
-
-    //// Method to set SFX volume
-    //public void SetSFXVolume(float volume)
-    //{
-    //    audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-    //}
 }

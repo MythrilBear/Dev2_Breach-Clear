@@ -210,7 +210,7 @@ MonoBehaviour:
   roamPauseTime: 2
   roamDist: 15
   roaming: 0
-  bullet: {fileID: 4043548912659017893, guid: 5a6f6e7d9df86694883156225eac481b, type: 3}
+  bullet: {fileID: 4043548912659017893, guid: ebf8877c7b8884247ba1e3fa0c269572, type: 3}
   shootRate: 1
   patrolSpeed: 0
   startPoint: {fileID: 0}

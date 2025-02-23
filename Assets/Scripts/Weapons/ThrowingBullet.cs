@@ -24,14 +24,13 @@ public class ThrowingBullet : MonoBehaviour
     void Start()
     {
         maxAmmo = GameManager.instance.reserveAmmoCount;
+        currentAmmo = maxAmmo;
         mainCamera = Camera.main;
     }
 
 
     void Update()
     {
-        currentAmmo = maxAmmo;
-
         if (Input.GetKeyDown(KeyCode.G) && currentAmmo > 0)
         {
             ThrowBullet();
@@ -54,11 +53,15 @@ public class ThrowingBullet : MonoBehaviour
         // Play the audio clip with a delay
         StartCoroutine(PlayAudioWithDelay(1f)); // Adjust the delay as needed
 
-        // Decrease the current ammo count
-        maxAmmo--;
+
+        // Decrease the reserve ammo count in the GameManager
+        GameManager.instance.reserveAmmoCount--;
 
         // Update the reserve ammo count in the UI
-        GameManager.instance.updateReserveAmmoCount(maxAmmo);
+        GameManager.instance.updateReserveAmmoCount(GameManager.instance.reserveAmmoCount);
+
+        // Set the current ammo to the updated reserve ammo count
+        currentAmmo = GameManager.instance.reserveAmmoCount;
     }
 
     IEnumerator PlayAudioWithDelay(float delay)

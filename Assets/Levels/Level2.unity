@@ -51802,10 +51802,18 @@ PrefabInstance:
       propertyPath: volume
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1247005681050323770, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1898023031442882545, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2668114624894770280, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 2880859098051969056, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -51894,6 +51902,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3743152596392531156, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -57
+      objectReference: {fileID: 0}
     - target: {fileID: 4384665306400991373, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -51922,10 +51934,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5718794076984565431, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 7198409682621061175, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7219803005209256683, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345968379068791791, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8150575920730193938, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -30,7 +30,7 @@ MonoBehaviour:
   recoilBack: 0.08
   recoilLength: 0
   recoverLength: 0.0875
-  shootDamage: 2
+  shootDamage: 1
   hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 400dba089a86f734db497230719d2689, type: 3}

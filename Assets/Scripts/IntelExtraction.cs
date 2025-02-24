@@ -5,7 +5,7 @@ using UnityEngine;
 public class IntelExtraction : MonoBehaviour
 {
 
-    private float extractionTime = 5f; //required time to extract the intel
+    private float extractionTime = 3f; //required time to extract the intel
     private float currentExtractionTime = 0;
     private bool isExtracting = false;
     bool playerInRange;

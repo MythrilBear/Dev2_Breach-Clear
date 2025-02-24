@@ -210,6 +210,8 @@ public class GameManager : MonoBehaviour
         {
             buttonInteract.SetActive(false);
             CompleteMissionObjective("Rescue Hostage");
+            menuActive = menuWin;
+            menuActive.SetActive(true);
         }
     }
     public void youLose()

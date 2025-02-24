@@ -50,11 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  aud: {fileID: 5828033799784774000}
-  detonateEffect: {fileID: 1301697207402410478, guid: 39f852c28f9c3fd45a427c24f3564ba7, type: 3}
-  detonateSound:
-  - {fileID: 8300000, guid: f25a498e9aed9134fac98a90bd26d251, type: 3}
-  detonateSoundVol: 0.5
 --- !u!136 &8088525689281451670
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -74,7 +69,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 20
   m_Height: 3.0003648
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

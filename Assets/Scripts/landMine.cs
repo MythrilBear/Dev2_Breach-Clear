@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class landMine : MonoBehaviour
+public class landMine : MonoBehaviour, IDamage
 {
 
     [SerializeField] int damage;
+    [SerializeField] GameObject explosionEffect;
 
 
     bool steppedOn;
@@ -27,5 +28,19 @@ public class landMine : MonoBehaviour
             GameManager.instance.playerScript.takeDamage(damage);
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Projectile"))
+        {
+            Explode();
+        }
+    }
+    void Explode()
+    {
+        // Destroy the mine
+        Destroy(gameObject);
+    }
+
+    public void takeDamage(int amount)
+    {
+        Explode();
     }
 }

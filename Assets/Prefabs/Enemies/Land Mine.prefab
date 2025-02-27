@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  explosionEffect: {fileID: 3109276388449417748}
 --- !u!136 &8088525689281451670
 CapsuleCollider:
   m_ObjectHideFlags: 0

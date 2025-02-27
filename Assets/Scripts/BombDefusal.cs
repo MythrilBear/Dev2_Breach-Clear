@@ -10,7 +10,7 @@ public class BombDefusal : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameManager.instance.AddMissionObjective("Defuse Bomb");
+        GameManager.instance.AddMissionObjective("Locate and Defuse the bomb before time runs out!");
     }
 
     // Update is called once per frame
@@ -55,7 +55,7 @@ public class BombDefusal : MonoBehaviour
     {
        // Debug.Log("Bomb has been defused!");
         //Destroy(gameObject);
-        GameManager.instance.CompleteMissionObjective("Defuse Bomb");
+        GameManager.instance.CompleteMissionObjective("Locate and Defuse the bomb before time runs out!");
     }
 
     

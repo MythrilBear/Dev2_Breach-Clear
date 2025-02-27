@@ -25,9 +25,8 @@ public class HostageAI : MonoBehaviour
 
         if (GameManager.instance.remainingHostages == 1)
         {
-            GameManager.instance.AddMissionObjective("Rescue all hostages");
+            GameManager.instance.AddMissionObjective("Locate all and rescue all hostages!");
         }
- 
     }
     void Update()
     {

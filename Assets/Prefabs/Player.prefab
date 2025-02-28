@@ -193,8 +193,8 @@ MonoBehaviour:
   speed: 4
   sprintMod: 2
   jumpMax: 1
-  jumpSpeed: 12
-  gravity: 28
+  jumpSpeed: 10
+  gravity: 29
   crouchHeight: 0.8
   crouchSpeedMod: 2
   gunList: []

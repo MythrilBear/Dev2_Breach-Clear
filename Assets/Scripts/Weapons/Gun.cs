@@ -70,7 +70,7 @@ public abstract class Gun : MonoBehaviour
         }
         if (GameManager.instance.reserveAmmoCount != reserveAmmo)
         {
-            GameManager.instance.updateAmmoCount(reserveAmmo);
+            GameManager.instance.updateReserveAmmoCount(reserveAmmo);
         }
 
 

@@ -54,7 +54,11 @@ public class CurrentEquipment : MonoBehaviour
             {
                 primaryWeapon.SetActive(false);
                 knife.SetActive(true);
-                GameManager.instance.updateAmmoCount(-1);
+
+                GameManager.instance.ammoDisplayText.SetActive(false);
+                GameManager.instance.ammoCountDisplay.SetActive(false);
+                GameManager.instance.ammoDisplaySlash.SetActive(false);
+                GameManager.instance.ammoReserveDisplay.SetActive(false);
             }
             else if (knife.activeSelf)
             {
@@ -62,6 +66,10 @@ public class CurrentEquipment : MonoBehaviour
                 //specialEquipment.SetActive(true);
                 heldGrenade.SetActive(true);
                 //GameManager.instance.updateAmmoCount(-1);
+
+                GameManager.instance.ammoDisplayText.SetActive(true);
+                GameManager.instance.ammoCountDisplay.SetActive(true);
+                
             }
             //else if (specialEquipment.activeSelf)
             //{
@@ -76,6 +84,8 @@ public class CurrentEquipment : MonoBehaviour
                 heldGrenade.SetActive(false);
                 //tossedGrenade.SetActive(false);
                 secondaryWeapon.SetActive(true);
+                GameManager.instance.ammoDisplaySlash.SetActive(true);
+                GameManager.instance.ammoReserveDisplay.SetActive(true);
 
             }
             else if (secondaryWeapon.activeSelf)
@@ -97,12 +107,15 @@ public class CurrentEquipment : MonoBehaviour
                 heldGrenade.SetActive(true);
                 //tossedGrenade.SetActive(true);
                 //Destroy(tossedGrenade);
-                GameManager.instance.updateAmmoCount(0);
+                GameManager.instance.ammoDisplaySlash.SetActive(false);
+                GameManager.instance.ammoReserveDisplay.SetActive(false);
             }
             else if (heldGrenade.activeSelf)
             {
                 heldGrenade.SetActive(false);
                 knife.SetActive(true);
+                GameManager.instance.ammoCountDisplay.SetActive(false);
+                GameManager.instance.ammoDisplayText.SetActive(false);
                 //tossedGrenade.SetActive(false);
                 //specialEquipment.SetActive(true);
                 //GameManager.instance.updateAmmoCount(-1);
@@ -117,6 +130,12 @@ public class CurrentEquipment : MonoBehaviour
             {
                 knife.SetActive(false);
                 primaryWeapon.SetActive(true);
+
+                GameManager.instance.ammoDisplayText.SetActive(true);
+                GameManager.instance.ammoDisplaySlash.SetActive(true);
+                GameManager.instance.ammoReserveDisplay.SetActive(true);
+                GameManager.instance.ammoCountDisplay.SetActive(true);
+                
             }
 
         }

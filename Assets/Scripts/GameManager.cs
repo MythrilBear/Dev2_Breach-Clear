@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
     public GameObject damagePanel;
     public GameObject buttonInteract;
     public GameObject recticle;
+    public GameObject ammoCountDisplay;
+    public GameObject ammoReserveDisplay;
+    public GameObject ammoDisplaySlash;
+    public GameObject ammoDisplayText;
 
     public GameObject player;
     public playerController playerScript;

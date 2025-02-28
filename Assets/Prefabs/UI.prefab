@@ -5111,6 +5111,10 @@ MonoBehaviour:
   damagePanel: {fileID: 5147054717739856502}
   buttonInteract: {fileID: 7469041217741282205}
   recticle: {fileID: 0}
+  ammoCountDisplay: {fileID: 6173764296647907848}
+  ammoReserveDisplay: {fileID: 7516358383124912644}
+  ammoDisplaySlash: {fileID: 373821337989441451}
+  ammoDisplayText: {fileID: 8150575920730193938}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0

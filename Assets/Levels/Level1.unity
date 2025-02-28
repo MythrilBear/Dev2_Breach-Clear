@@ -51675,6 +51675,22 @@ PrefabInstance:
       propertyPath: recticle
       value: 
       objectReference: {fileID: 1635583375}
+    - target: {fileID: 6004734046335496666, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_text
+      value: 'Forward - w          Jump - Space
+
+        Backward - S        Lean
+        Left - Q
+
+        Left - A                  Lean Right - E
+
+        Right
+        -D          Sprint -Left Shift(hold)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313532940100970447, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

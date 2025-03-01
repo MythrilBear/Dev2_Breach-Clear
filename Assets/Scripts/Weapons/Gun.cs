@@ -16,7 +16,7 @@ public abstract class Gun : MonoBehaviour
     public float currentAmmo = 0f;
     private float fireDelay = 0f;
 
-    private bool isReloading = false;
+    
 
     [Header("ADS functionality")]
 
@@ -115,7 +115,7 @@ public abstract class Gun : MonoBehaviour
 
     public void tryReload()
     {
-        if (!isReloading && currentAmmo < gunStats.magazineSize && reserveAmmo > 0)
+        if (!GameManager.instance.isReloading && currentAmmo < gunStats.magazineSize && reserveAmmo > 0)
         {
             StartCoroutine(Reload());
         }
@@ -123,7 +123,7 @@ public abstract class Gun : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        isReloading = true;
+        GameManager.instance.isReloading = true;
 
         //Debug.Log(gunStats.gunName + " is reloading...");
         aud.PlayOneShot(gunStats.reloadSound[Random.Range(0, gunStats.reloadSound.Length)], gunStats.reloadSoundVol);
@@ -141,7 +141,7 @@ public abstract class Gun : MonoBehaviour
             reserveAmmo = 0;
         }
 
-        isReloading = false;
+        GameManager.instance.isReloading = false;
         //Debug.Log(gunStats.gunName + " is reloaded.");
         GameManager.instance.updateAmmoCount(currentAmmo);
         GameManager.instance.updateReserveAmmoCount(reserveAmmo);
@@ -149,7 +149,7 @@ public abstract class Gun : MonoBehaviour
 
     public void TryShoot()
     {
-        if (isReloading || GameManager.instance.isPaused)
+        if (GameManager.instance.isReloading || GameManager.instance.isPaused)
         {
             return;
         }

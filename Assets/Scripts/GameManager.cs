@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public playerController playerScript;
 
     public bool isPaused;
+    public bool isReloading = false;
 
     int goalCount;
     public float ammoCount;

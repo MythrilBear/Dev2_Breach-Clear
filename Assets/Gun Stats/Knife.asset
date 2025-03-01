@@ -31,7 +31,7 @@ MonoBehaviour:
   recoilLength: 0
   recoverLength: 0.2
   shootDamage: 10
-  hitEffect: {fileID: 8567743453655228817, guid: 212ef1a41838ce044a9ac54994866708, type: 3}
+  hitEffect: {fileID: 8567743453655228817, guid: 0462eb10c77144b4f9ecbd26bbfb572e, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 94890d031b480e5408378ab5e53e3f5a, type: 3}
   - {fileID: 8300000, guid: f0e1ab28cdabd0c4eb94301dee6561f8, type: 3}

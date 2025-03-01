@@ -97,7 +97,10 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             scanDirection = transform.rotation.eulerAngles.y;
         }
-        else { lookForTargets(); }
+        else 
+        { 
+            lookForTargets();
+        }
 
 
 

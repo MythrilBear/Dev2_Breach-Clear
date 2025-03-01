@@ -48,7 +48,7 @@ public class CurrentEquipment : MonoBehaviour
     void Update()
     {
         if (primaryWeapon == null) return;
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && !GameManager.instance.isReloading)
         {
             if (primaryWeapon.activeSelf)
             {
@@ -94,7 +94,7 @@ public class CurrentEquipment : MonoBehaviour
                 primaryWeapon.SetActive(true);
             }
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !GameManager.instance.isReloading)
         {
             if (primaryWeapon.activeSelf)
             {

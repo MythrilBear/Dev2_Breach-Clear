@@ -26,7 +26,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private float adsFOV;
     private float normalFOV;
     [SerializeField] private float adsSpeed;
-    private bool isAiming = false;
+    
 
     [SerializeField] float adsDown;
     [SerializeField] float adsForward;
@@ -76,18 +76,18 @@ public abstract class Gun : MonoBehaviour
 
         if (Input.GetButton("Aim"))
         {
-            isAiming = true;
+            GameManager.instance.isAiming = true;
             originalPosition = adsPosition.localPosition;
         }
         else
         {
-            isAiming = false;
+            GameManager.instance.isAiming = false;
             originalPosition = hipPosition.localPosition;
         }
 
         //ADS Mechanic
         Vector3 targetLocalPosition = hipPosition.localPosition;
-        if (isAiming)
+        if (GameManager.instance.isAiming)
         {
             GameManager.instance.recticle.SetActive(false);
             targetLocalPosition = adsPosition.localPosition + Vector3.forward * adsForward + Vector3.down * adsDown;

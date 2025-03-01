@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused;
     public bool isReloading = false;
+    public bool isAiming = false;
 
     int goalCount;
     public float ammoCount;

@@ -65,7 +65,8 @@ public class buttonFunction : MonoBehaviour
 
     public void StartGame()
     {
-        
+        GameManager.instance.menuActive = startGame;
+
         SceneManager.LoadScene("LoadoutScene");
         // Make sure the cursor is visible and not locked
         Cursor.visible = true;
@@ -87,7 +88,13 @@ public class buttonFunction : MonoBehaviour
     public void OpenOptionsFromPauseMenu()
     {
         OpenOptions(GameManager.instance.menuPause);
+        GameObject missionObjective = GameObject.Find("Mission Objective");
+        if (missionObjective != null)
+        {
+            missionObjective.SetActive(false);
+        }
     }
+
     public void OpenOptions(GameObject currentMenu)
     {
         previousMenu = currentMenu;
@@ -97,8 +104,14 @@ public class buttonFunction : MonoBehaviour
 
     public void CloseOptions()
     {
-        menuOptions.SetActive(false);
+        GameObject missionObjective = GameObject.Find("Mission Objective");
         previousMenu.SetActive(true);
+        menuOptions.SetActive(false);
+
+        if(missionObjective != null)
+        {
+            missionObjective.SetActive(true);
+        }
     }
 
     public void SaveOptions()
@@ -115,6 +128,7 @@ public class buttonFunction : MonoBehaviour
         if (PlayerPrefs.HasKey("SFXVolume"))
             SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     } 
+
     public void OpenCredits()
     {
         startGame.SetActive(false);
@@ -129,13 +143,13 @@ public class buttonFunction : MonoBehaviour
 
     public void OpenControls()
     {
-        startGame.SetActive(false);
         menuControls.SetActive(true);
+        GameManager.instance.menuActive = menuControls;     
     }
 
     public void CloseControls()
     {
-        startGame.SetActive(true);
+        previousMenu.SetActive(true);
         menuControls.SetActive(false);
     }
 }

@@ -14,7 +14,7 @@ public class IntelExtraction : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-         GameManager.instance.AddMissionObjective("Extract Intel");
+         GameManager.instance.AddMissionObjective("Locate the enemy desktop and extract the intel!");
     }
 
     public void StartExtraction()
@@ -56,7 +56,7 @@ public class IntelExtraction : MonoBehaviour
     {
         //Debug.Log("Intel collected!");
         //Destroy(gameObject);
-        GameManager.instance.CompleteMissionObjective("Extract Intel");
+        GameManager.instance.CompleteMissionObjective("Located the enemy desktop and extracted the intel!");
     }
 
     private void OnTriggerEnter(Collider other)

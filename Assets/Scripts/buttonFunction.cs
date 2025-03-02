@@ -100,6 +100,8 @@ public class buttonFunction : MonoBehaviour
         previousMenu = currentMenu;
         startGame.SetActive(false);
         menuOptions.SetActive(true);
+
+        GameManager.instance.menuActive = menuOptions;
     }
 
     public void CloseOptions()
@@ -108,7 +110,7 @@ public class buttonFunction : MonoBehaviour
         previousMenu.SetActive(true);
         menuOptions.SetActive(false);
 
-        if(missionObjective != null)
+        if (missionObjective != null)
         {
             missionObjective.SetActive(true);
         }

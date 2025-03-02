@@ -51687,6 +51687,10 @@ PrefabInstance:
       propertyPath: recticle
       value: 
       objectReference: {fileID: 1635583375}
+    - target: {fileID: 5460130388425451153, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6313532940100970447, guid: 4245d8da5e387ce4da16d0b739360ea5, type: 3}
       propertyPath: m_IsActive
       value: 0

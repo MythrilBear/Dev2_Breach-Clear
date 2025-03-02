@@ -56,7 +56,7 @@ public class IntelExtraction : MonoBehaviour
     {
         //Debug.Log("Intel collected!");
         //Destroy(gameObject);
-        GameManager.instance.CompleteMissionObjective("Located the enemy desktop and extracted the intel!");
+        GameManager.instance.CompleteMissionObjective("Locate the enemy desktop and extract the intel!");
     }
 
     private void OnTriggerEnter(Collider other)

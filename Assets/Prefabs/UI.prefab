@@ -5980,7 +5980,7 @@ RectTransform:
   m_Father: {fileID: 7441184913069404219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7459,7 +7459,7 @@ RectTransform:
   m_Father: {fileID: 6878411859032271425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8801,7 +8801,7 @@ RectTransform:
   m_Father: {fileID: 9005868114498038156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10021,15 +10021,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Forward - W          Jump - Space
-
-    Backward - S        Lean Left -
-    Q
-
-    Left - A                  Lean Right - E
-
-    Right -D          Sprint
-    -Left Shift(hold)'
+  m_text: "Forward - W          Jump - Space\nBackward - S        Lean Left - Q\nLeft
+    - A                  Lean Right - E\nRight -D          Sprint -Left Shift(hold)\nReload
+    Gun - R \tCrouch - C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11697,18 +11691,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 698505845662275064}
-        m_TargetAssemblyTypeName: buttonFunction, Assembly-CSharp
-        m_MethodName: CloseOptionsfromPause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7892479757842089696
 GameObject:
   m_ObjectHideFlags: 0
@@ -11776,12 +11758,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Throw a Bullet - G
 
-    Aim Down Sights - Hold RT Mouse Click
+    Shoot Guns - Lt Mouse Click
 
-    Throw
-    Granade - Hold LT Mouse Click
+    Aim Down Sights
+    - Hold RT Mouse Click
 
-    Weapon Switch - Center Mouse Wheel'
+    Throw Granade - Hold LT Mouse Click
+
+    Weapon Switch
+    - Center Mouse Wheel'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11929,7 +11914,7 @@ RectTransform:
   m_Father: {fileID: 3720292872317580572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13323,7 +13308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: -0.000054359436}
+  m_AnchoredPosition: {x: 1.6138916, y: -0.000054359436}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5003525669286222836

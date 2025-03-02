@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
                 PlayerEquip = player.GetComponent<CurrentEquipment>();
             }
         }
+        goalCount = FindObjectsByType<enemyAI>(FindObjectsSortMode.None).Length;
+        goalCountText.text = goalCount.ToString();
     }
   
     public void SelectLoadout(int Select)

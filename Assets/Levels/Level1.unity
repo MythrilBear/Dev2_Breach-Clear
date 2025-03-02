@@ -50148,6 +50148,10 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6471940700617647837, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
+      propertyPath: crouchHeight
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7024546607041070215, guid: 980e0f06fc170004099cb5a2311ec5cf, type: 3}
       propertyPath: adsPosition
       value: 
